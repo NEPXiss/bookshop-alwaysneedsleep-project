@@ -16,7 +16,7 @@ public class StaffAccount extends Account implements Registrable {
 
     @Override
     public void addAccountToDataBase(){
-        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this.getPassword());
+        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
     }
 
     public int getStaffNumber() {
