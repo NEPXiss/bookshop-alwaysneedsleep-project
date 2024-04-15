@@ -9,22 +9,16 @@ public abstract class Book extends StoreItem {
     private BookGenre bookGenre;
     private String title;
     private String author;
-    private Image image;
     private String description;
     private int rating;
 
     public Book(int quantity, String itemLocation, BookGenre bookGenre, String title, String author, String imageByPath, String description, int rating) {
-        super(quantity, itemLocation);
+        super(quantity, itemLocation, imageByPath);
         this.bookGenre = bookGenre;
         this.title = title;
         this.author = author;
-        setImageByPath(imageByPath);
         this.description = description;
-        if (rating < 0) {
-            this.rating = 0;
-        } else if (rating > 5) {
-            this.rating = 5;
-        }
+        setRating(rating);
     }
 
     public BookGenre getBookGenre() {
@@ -37,10 +31,6 @@ public abstract class Book extends StoreItem {
 
     public String getAuthor() {
         return author;
-    }
-
-    public Image getImage() {
-        return image;
     }
 
     public String getDescription() {
@@ -61,16 +51,6 @@ public abstract class Book extends StoreItem {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public void setImageByPath(String imagePath) {
-        try {
-            String classLoaderPath = ClassLoader.getSystemResource(imagePath).toString();
-            this.image = new Image(classLoaderPath);
-        } catch (Exception e) {
-            String classLoaderPath = ClassLoader.getSystemResource("default.png").toString();
-            this.image = new Image(classLoaderPath);
-        }
     }
 
     public void setDescription(String description) {

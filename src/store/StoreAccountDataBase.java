@@ -1,6 +1,7 @@
 package store;
 
 import base.Account;
+import person.AdminAccount;
 
 import java.util.HashMap;
 
@@ -10,6 +11,11 @@ public class StoreAccountDataBase {
 
     public StoreAccountDataBase() {
         this.accountMap = new HashMap<>();
+
+        //put AdminAccount
+        AdminAccount adminAccount = new AdminAccount();
+        adminAccount.addAccountToDataBase();
+
         //example accounts
     }
 
@@ -26,9 +32,5 @@ public class StoreAccountDataBase {
             storeAccountDataBase = new StoreAccountDataBase();
         }
         return storeAccountDataBase;
-    }
-
-    public static void setStoreAccountDataBase(StoreAccountDataBase storeAccountDataBase) {
-        StoreAccountDataBase.storeAccountDataBase = storeAccountDataBase;
     }
 }

@@ -1,12 +1,18 @@
 package base;
 
+
+import javafx.scene.image.Image;
+
 public abstract class StoreItem {
     private int quantity;
     private String itemLocation;
 
-    public StoreItem(int quantity, String itemLocation) {
+    private Image image;
+
+    public StoreItem(int quantity, String itemLocation, String imageByPath) {
         this.quantity = quantity;
         this.itemLocation = itemLocation;
+        setImageByPath(imageByPath);
     }
 
     public boolean isAvailable() {
@@ -14,6 +20,16 @@ public abstract class StoreItem {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void setImageByPath(String imagePath) {
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(imagePath).toString();
+            this.image = new Image(classLoaderPath);
+        } catch (Exception e) {
+            String classLoaderPath = ClassLoader.getSystemResource("default.png").toString();
+            this.image = new Image(classLoaderPath);
         }
     }
 
@@ -32,4 +48,6 @@ public abstract class StoreItem {
     public void setItemLocation(String itemLocation) {
         this.itemLocation = itemLocation;
     }
+
+    public Image getImage() { return image;}
 }
