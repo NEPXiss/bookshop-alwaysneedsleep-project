@@ -69,5 +69,10 @@ public class LoginController {
         staffSigninPage.changeScene("../page/StaffLoginInterface.fxml");
     }
 
+    public void registerButtonClicked() throws IOException {
+        Main registrationPage = Main.getInstance();
+        registrationPage.changeScene("../page/RegistrationInterface.fxml");
+    }
+
 
 }
