@@ -13,7 +13,7 @@
       <AnchorPane fx:id="leftRootPane" prefHeight="786.0" prefWidth="440.0" style="-fx-background-color: #8B322C;" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <AnchorPane prefHeight="786.0" prefWidth="920.0" style="-fx-background-color: FFC470;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="centerRootPane" prefHeight="786.0" prefWidth="920.0" style="-fx-background-color: FFC470;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="310.0" layoutY="310.0" text="Username : ">
                <font>

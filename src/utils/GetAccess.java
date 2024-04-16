@@ -1,5 +1,6 @@
 package utils;
 
+import base.Account;
 import store.StoreAccountDataBase;
 import usage.ControllerInstance;
 
@@ -10,5 +11,9 @@ public class GetAccess {
             isValid = true;
         }
         return isValid;
+    }
+
+    public static boolean isAccountExist(String username){
+        return StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().containsKey(username);
     }
 }

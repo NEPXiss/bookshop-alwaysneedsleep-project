@@ -13,15 +13,21 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
+    private static Main instance;
     @Override
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
+        instance = this;
         Parent root = FXMLLoader.load(getClass().getResource("../page/LoginInterface.fxml"));
         Scene scene = new Scene(root,1360,786);
         primaryStage.setScene(scene);
         primaryStage.setTitle("UserLogin");
         primaryStage.setResizable(false);
         primaryStage.show();
+    }
+
+    public static Main getInstance() {
+        return instance;
     }
 
     public void changeScene(String fxml) throws IOException {

@@ -2,6 +2,7 @@ package person;
 
 import base.Account;
 import store.StoreAccountDataBase;
+import usage.ControllerInstance;
 import usage.Registrable;
 
 public class StaffAccount extends Account implements Registrable {
@@ -9,7 +10,7 @@ public class StaffAccount extends Account implements Registrable {
     private String staffDisplayName;
 
     public StaffAccount(String username, String password, int staffNumber, String staffDisplayName) {
-        super(username, password);
+        super(username, password, ControllerInstance.STAFF);
         this.staffNumber = staffNumber;
         this.staffDisplayName = staffDisplayName;
     }

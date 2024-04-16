@@ -31,36 +31,44 @@ public class StaffLogInController {
     private Label staffLogInMessageLabel;
 
 
-    public void staffSignInButtonClicked(){
+    public void staffSignInButtonClicked() {
         boolean isStaffAccount = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof StaffAccount;
         boolean isAdminAccount = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof AdminAccount;
         boolean isStaffOrAdminAccount = isAdminAccount || isStaffAccount;
         boolean isAccountExist = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().containsKey(usernameTextField.getText());
-        if (isAccountExist && isStaffOrAdminAccount){
-            if (isStaffAccount){
-                if (GetAccess.validateLogin(usernameTextField.getText(),logInPasswordField.getText())){
-                    staffLogInMessageLabel.setText("Logging in...");
-                    ////go to staff main page
-                }else{
-                    staffLogInMessageLabel.setText("Incorrect Password - Please try logging in again");
+
+        if (!(usernameTextField.getText().isEmpty()) && !(logInPasswordField.getText().isEmpty())) {
+            if (isAccountExist && isStaffOrAdminAccount) {
+                if (isStaffAccount) {
+                    if (GetAccess.validateLogin(usernameTextField.getText(), logInPasswordField.getText())) {
+                        staffLogInMessageLabel.setText("Logging in...");
+                        ////go to staff main page
+                    } else {
+                        staffLogInMessageLabel.setText("Incorrect Password - Please try again");
+                    }
+                } else {
+                    if (GetAccess.validateLogin(usernameTextField.getText(), logInPasswordField.getText())) {
+                        staffLogInMessageLabel.setText("Logging in...");
+                        ////go to admin main page
+                    } else {
+                        staffLogInMessageLabel.setText("Incorrect Password - Please try again");
+                    }
                 }
+            } else {
+                staffLogInMessageLabel.setText("This username has not been registered");
             }
-            else { if (GetAccess.validateLogin(usernameTextField.getText(),logInPasswordField.getText())){
-                    staffLogInMessageLabel.setText("Logging in...");
-                    ////go to staff main page
-                }else{
-                    staffLogInMessageLabel.setText("Incorrect Password - Please try again");
-                }
-            }
+        } else if ((usernameTextField.getText().isEmpty()) && !(logInPasswordField.getText().isEmpty())) {
+            staffLogInMessageLabel.setText("Please enter your username");
+
+        } else if (!(usernameTextField.getText().isEmpty()) && (logInPasswordField.getText().isEmpty())) {
+            staffLogInMessageLabel.setText("Please enter your password");
         } else {
-            staffLogInMessageLabel.setText("This username has not been registered");
+            staffLogInMessageLabel.setText("Please enter username and password");
         }
     }
 
     public void setSignInAsUserButtonClicked() throws IOException {
-        Main userSigninPage = new Main();
+        Main userSigninPage = Main.getInstance();
         userSigninPage.changeScene("../page/LoginInterface.fxml");
     }
-
-
 }

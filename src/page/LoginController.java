@@ -39,23 +39,33 @@ public class LoginController {
 
     public void signInButtonClicked() {
         boolean isUserAccount = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof UserAccount;
-        boolean isAccountExist = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().containsKey(usernameTextField.getText());
-        if (isAccountExist || isUserAccount) {
-            if (GetAccess.validateLogin(usernameTextField.getText(),logInPasswordField.getText())) {
-                logInMessageLabel.setText("Logging in...");
-                ////go to main page
+        boolean isAccountExist = GetAccess.isAccountExist(usernameTextField.getText());
+
+        if (!(usernameTextField.getText().isEmpty()) && !(logInPasswordField.getText().isEmpty())) {
+            if (isAccountExist && isUserAccount) {
+                if (GetAccess.validateLogin(usernameTextField.getText(), logInPasswordField.getText())) {
+                    logInMessageLabel.setText("Logging in...");
+                    ////go to main page
 
 
+                } else {
+                    logInMessageLabel.setText("Incorrect Password - Please try again");
+                }
             } else {
-                logInMessageLabel.setText("Incorrect Password - Please try again");
+                logInMessageLabel.setText("This username has not been registered");
             }
+        } else if ((usernameTextField.getText().isEmpty()) && !(logInPasswordField.getText().isEmpty())) {
+            logInMessageLabel.setText("Please enter your username");
+
+        } else if (!(usernameTextField.getText().isEmpty()) && (logInPasswordField.getText().isEmpty())) {
+            logInMessageLabel.setText("Please enter your password");
         } else {
-            logInMessageLabel.setText("This username has not been registered");
+            logInMessageLabel.setText("Please enter username and password");
         }
     }
 
     public void setSignInAsStaffButtonClicked() throws IOException {
-        Main staffSigninPage = new Main();
+        Main staffSigninPage = Main.getInstance();
         staffSigninPage.changeScene("../page/StaffLoginInterface.fxml");
     }
 
