@@ -9,11 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import person.AdminAccount;
 import person.StaffAccount;
 import person.UserAccount;
 import store.StoreAccountDataBase;
+import utils.Config;
 import utils.GetAccess;
 
 import java.io.IOException;
@@ -29,6 +32,28 @@ public class StaffLogInController {
     private Label signInAsUserButton;
     @FXML
     private Label staffLogInMessageLabel;
+    @FXML
+    private ImageView displayLogoImage;
+    private static StaffLogInController instance;
+
+    public StaffLogInController(){
+        StaffLogInController.instance = this;
+    }
+
+    public static StaffLogInController getInstance(){
+        if (instance == null) {
+            StaffLogInController.instance = new StaffLogInController();
+        }
+        return instance;
+    }
+
+    public void setLogoImage(){
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(Config.logoImage1).toString();
+            Image logoImage = new Image(classLoaderPath);
+            displayLogoImage.setImage(logoImage);
+        } catch (Exception e) {}
+    }
 
 
     public void staffSignInButtonClicked() {
@@ -70,5 +95,8 @@ public class StaffLogInController {
     public void setSignInAsUserButtonClicked() throws IOException {
         Main userSigninPage = Main.getInstance();
         userSigninPage.changeScene("../page/LoginInterface.fxml");
+
+        ///Set logo image in LoginInterface
+        LoginController.getInstance().setLogoImage();
     }
 }

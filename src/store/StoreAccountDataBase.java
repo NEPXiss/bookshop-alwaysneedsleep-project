@@ -2,6 +2,7 @@ package store;
 
 import base.Account;
 import person.AdminAccount;
+import person.UserAccount;
 import utils.Config;
 
 import java.util.HashMap;
@@ -17,7 +18,8 @@ public class StoreAccountDataBase {
         AdminAccount adminAccount = new AdminAccount();
         accountMap.put(adminAccount.getUsername(),adminAccount);
         //example accounts
-
+        UserAccount userAccount1 = new UserAccount("suvijak", "12345");
+        accountMap.put(userAccount1.getUsername(),userAccount1);
 
     }
 

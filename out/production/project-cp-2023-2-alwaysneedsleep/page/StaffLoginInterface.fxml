@@ -4,13 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="786.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.StaffLogInController">
    <left>
-      <AnchorPane prefHeight="786.0" prefWidth="440.0" style="-fx-background-color: #8B322C;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="786.0" prefWidth="440.0" style="-fx-background-color: #8B322C;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="displayLogoImage" fitHeight="179.0" fitWidth="192.0" layoutX="139.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../res/logo_color_1.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="786.0" prefWidth="920.0" style="-fx-background-color: FFC470;" BorderPane.alignment="CENTER">

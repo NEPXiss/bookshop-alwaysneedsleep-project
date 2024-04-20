@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import page.LoginController;
 
 import java.io.IOException;
 
@@ -21,9 +22,13 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../page/LoginInterface.fxml"));
         Scene scene = new Scene(root,1360,786);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("UserLogin");
+        primaryStage.setTitle("BookSphere");
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        ///Set logo image in LoginInterface
+        LoginController.getInstance().setLogoImage();
+
     }
 
     public static Main getInstance() {

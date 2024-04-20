@@ -3,8 +3,11 @@ package page;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import person.UserAccount;
 import store.StoreAccountDataBase;
+import utils.Config;
 
 import java.io.IOException;
 
@@ -21,6 +24,26 @@ public class RegistrationController {
     private Label backButton;
     @FXML
     private Label messageAlert;
+    @FXML
+    private ImageView displayLogoImage;
+    private static RegistrationController instance;
+
+    public RegistrationController() { RegistrationController.instance = this;}
+
+    public static RegistrationController getInstance(){
+        if (instance == null) {
+            RegistrationController.instance = new RegistrationController();
+        }
+        return instance;
+    }
+
+    public void setLogoImage(){
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(Config.logoImage1).toString();
+            Image logoImage = new Image(classLoaderPath);
+            displayLogoImage.setImage(logoImage);
+        } catch (Exception e) {}
+    }
 
     public void createNewUserAccount() throws IOException {
         String username = usernameTextField.getText();
@@ -67,6 +90,9 @@ public class RegistrationController {
     public void backButtonClicked() throws IOException {
         Main backToLogInPage = Main.getInstance();
         backToLogInPage.changeScene("../page/LoginInterface.fxml");
+
+        ///Set logo image in LoginInterface
+        LoginController.getInstance().setLogoImage();
     }
 
 

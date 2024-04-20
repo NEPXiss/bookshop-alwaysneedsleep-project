@@ -1,6 +1,7 @@
 package person;
 
 import base.Account;
+import javafx.scene.image.Image;
 import store.StoreAccountDataBase;
 import store.data.Order;
 import usage.ControllerInstance;
