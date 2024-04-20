@@ -95,7 +95,13 @@ public class RegistrationController {
         LoginController.getInstance().setLogoImage();
     }
 
+    public void onMouseEnterBackButton(){
+        backButton.setPrefWidth(50);
+    }
 
+    public void onMouseExitBackButton(){
+        backButton.setPrefWidth(40);
+    }
 
 
 

@@ -59,12 +59,12 @@
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="260.0" text="Best Sellers">
+                  <Label fx:id="bestSellersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterBestSellersButton" onMouseExited="#onMouseExitBestSellersButton" prefHeight="53.0" prefWidth="260.0" text="Best Sellers">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="260.0" text="Catagories">
+                  <Label fx:id="categoriesLabel" alignment="CENTER" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -84,12 +84,12 @@
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="260.0" text="Wishlist">
+                  <Label fx:id="wishlistLabel" alignment="CENTER" onMouseEntered="#onMouseEnterWishListButton" onMouseExited="#onMouseExitWishListButton" prefHeight="53.0" prefWidth="260.0" text="Wishlist">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
+                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -107,13 +107,13 @@
                      </opaqueInsets>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="260.0" text="Settings">
+                  <Label fx:id="settingLabel" alignment="CENTER" onMouseEntered="#onMouseEnterSettingsButton" onMouseExited="#onMouseExitSettingsButton" prefHeight="53.0" prefWidth="260.0" text="Settings">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutLabelClicked" prefHeight="53.0" prefWidth="260.0" text="Log Out">
+                  <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutLabelClicked" onMouseEntered="#onMouseEnterLogOutButton" onMouseExited="#onMouseExitLogOutButton" prefHeight="53.0" prefWidth="260.0" text="Log Out">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>

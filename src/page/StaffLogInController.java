@@ -99,4 +99,13 @@ public class StaffLogInController {
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
     }
+
+
+    public void onMouseEnterSignInAsUserButton(){
+        signInAsUserButton.setPrefWidth(105);
+    }
+
+    public void onMouseExitSignInAsUserButton(){
+        signInAsUserButton.setPrefWidth(95);
+    }
 }

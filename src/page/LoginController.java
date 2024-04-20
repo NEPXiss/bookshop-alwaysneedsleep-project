@@ -114,4 +114,13 @@ public class LoginController {
         /// Set Logo image for RegistrationInterface
         RegistrationController.getInstance().setLogoImage();
     }
+
+    public void onMouseEnterSignInAsStaffButton(){
+        signInAsStaffButton.setPrefWidth(105);
+    }
+
+    public void onMouseExitSignInAsStaffButton(){
+        signInAsStaffButton.setPrefWidth(95);
+    }
+
 }

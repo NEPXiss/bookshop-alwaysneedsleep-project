@@ -9,6 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import store.ProgramController;
 import utils.Config;
 
@@ -19,6 +22,17 @@ public class UserMainPageController {
     private Label usernameLabel;
     @FXML
     private Label logOutLabel;
+    @FXML
+    private Label bestSellersLabel;
+    @FXML
+    private Label categoriesLabel;
+    @FXML
+    private Label wishlistLabel;
+    @FXML
+    private Label userOrdersLabel;
+    @FXML
+    private Label settingLabel;
+
     @FXML
     private ImageView profileAvatarIcon;
     private static UserMainPageController instance;
@@ -49,6 +63,57 @@ public class UserMainPageController {
     public void logOutLabelClicked() throws IOException {
         Main backToLogInPage = Main.getInstance();
         backToLogInPage.changeScene("../page/LoginInterface.fxml");
+
+        ///Set logo image in LoginInterface
+        LoginController.getInstance().setLogoImage();
+    }
+
+    public void onMouseEnterLogOutButton(){
+        logOutLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitLogOutButton(){
+        logOutLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    }
+
+    public void onMouseEnterBestSellersButton(){
+        bestSellersLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitBestSellersButton(){
+        bestSellersLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    }
+
+    public void onMouseEnterCategoriesButton(){
+        categoriesLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitCategoriesButton(){
+        categoriesLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    }
+
+    public void onMouseEnterSettingsButton(){
+        settingLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitSettingsButton(){
+        settingLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    }
+
+    public void onMouseEnterWishListButton(){
+        wishlistLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitWishListButton(){
+        wishlistLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    }
+
+    public void onMouseEnterUserOrdersButton(){
+        userOrdersLabel.setBackground(Background.fill(Color.web("99627A")));
+    }
+
+    public void onMouseExitUserOrdersButton(){
+        userOrdersLabel.setBackground(Background.fill(Color.web("E7CBCB")));
     }
 
 }
