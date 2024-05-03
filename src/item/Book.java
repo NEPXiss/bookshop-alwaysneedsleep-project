@@ -1,67 +1,21 @@
 package item;
 
 import base.StoreItem;
-import javafx.scene.image.Image;
-import usage.BookGenre;
+import usage.ItemGenre;
 
 
-public abstract class Book extends StoreItem {
-    private BookGenre bookGenre;
-    private String title;
-    private String author;
+public class Book extends StoreItem {
     private String description;
-    private int rating;
 
-    public Book(int quantity, String itemLocation, BookGenre bookGenre, String title, String author, String imageByPath, String description, int rating) {
-        super(quantity, itemLocation, imageByPath);
-        this.bookGenre = bookGenre;
-        this.title = title;
-        this.author = author;
+    public Book(String title, String authorBrand, ItemGenre itemGenre, double price, int rating, int quantity, String itemLocation, String imageByPath) {
+        super(title, authorBrand, itemGenre, price, rating, quantity, itemLocation, imageByPath);
+    }
+
+    public void setDescription(String description){
         this.description = description;
-        setRating(rating);
-    }
-
-    public BookGenre getBookGenre() {
-        return bookGenre;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public String getDescription() {
         return description;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setBookGenre(BookGenre bookGenre) {
-        this.bookGenre = bookGenre;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setRating(int rating) {
-        if (rating < 0) {
-            this.rating = 0;
-        } else if (rating > 5) {
-            this.rating = 5;
-        }
     }
 }

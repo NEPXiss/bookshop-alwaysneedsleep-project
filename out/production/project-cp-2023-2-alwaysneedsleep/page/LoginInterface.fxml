@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="786.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.LoginController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.LoginController">
    <left>
       <AnchorPane fx:id="leftRootPane" prefHeight="786.0" prefWidth="440.0" style="-fx-background-color: #8B322C;" BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
          </children></AnchorPane>
    </left>
    <right>
-      <AnchorPane fx:id="centerRootPane" prefHeight="786.0" prefWidth="920.0" style="-fx-background-color: FFC470;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="centerRootPane" prefHeight="786.0" prefWidth="1360.0" style="-fx-background-color: FFC470;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="310.0" layoutY="310.0" text="Username : ">
                <font>

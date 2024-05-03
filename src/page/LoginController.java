@@ -75,6 +75,9 @@ public class LoginController {
                     ///// Set usernameLabel in UserMainPageInterface
                     UserMainPageController.getInstance().setUsernameLabel();
                     UserMainPageController.getInstance().setProfileAvatarIcon();
+
+                    ///// Reload/Set items in UserMainPageInterface
+                    UserMainPageController.getInstance().reloadUserMainPage();
                 } else {
                     logInMessageLabel.setText("Incorrect Password - Please try again");
                 }

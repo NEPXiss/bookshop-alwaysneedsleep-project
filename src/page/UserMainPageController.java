@@ -2,6 +2,7 @@ package page;
 
 import application.Main;
 import base.Account;
+import base.StoreItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.AccessibleAction;
@@ -10,9 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import store.ProgramController;
+import store.StoreStorage;
 import utils.Config;
 
 import java.io.IOException;
@@ -34,6 +37,8 @@ public class UserMainPageController {
     private Label settingLabel;
     @FXML
     private ImageView profileAvatarIcon;
+    @FXML
+    private HBox newArrivalsPane;
     private static UserMainPageController instance;
 
     public UserMainPageController() {
@@ -45,6 +50,26 @@ public class UserMainPageController {
             UserMainPageController.instance = new UserMainPageController();
         }
         return instance;
+    }
+
+    public void reloadUserMainPage() throws IOException {
+        setNewArrivals();
+        setRecommendedItems();
+    }
+
+    public void setNewArrivals() throws IOException {
+        for (StoreItem item: StoreStorage.getStorage().getNewArrivalList()){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ExclusiveCard.fxml"));
+            HBox itemCard = fxmlLoader.load();
+            ExclusiveCardController cardController = fxmlLoader.getController();
+            cardController.setCard(item);
+            newArrivalsPane.getChildren().add(itemCard);
+        }
+    }
+
+    public void setRecommendedItems() {
+
     }
 
     public void setUsernameLabel() {
@@ -67,6 +92,9 @@ public class UserMainPageController {
         LoginController.getInstance().setLogoImage();
     }
 
+
+    /// All methods below are related to FX EventHandler
+
     public void onMouseEnterLogOutButton(){
         logOutLabel.setBackground(Background.fill(Color.web("99627A")));
     }
@@ -75,9 +103,7 @@ public class UserMainPageController {
         logOutLabel.setBackground(Background.fill(Color.web("E7CBCB")));
     }
 
-    public void onMouseEnterBestSellersButton(){
-        bestSellersLabel.setBackground(Background.fill(Color.web("99627A")));
-    }
+    public void onMouseEnterBestSellersButton(){ bestSellersLabel.setBackground(Background.fill(Color.web("99627A")));}
 
     public void onMouseExitBestSellersButton(){
         bestSellersLabel.setBackground(Background.fill(Color.web("E7CBCB")));

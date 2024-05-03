@@ -1,21 +1,34 @@
 package base;
 
-
 import javafx.scene.image.Image;
+import usage.ItemGenre;
+import usage.Orderable;
 
-public abstract class StoreItem {
+public abstract class StoreItem implements Orderable {
     private int quantity;
     private String itemLocation;
+    private final String title;
     private Image image;
+    private final ItemGenre itemGenre;
+    private double price;
+    private final String authorBrand;
+    private int rating;
 
-    public StoreItem(int quantity, String itemLocation, String imageByPath) {
+    public StoreItem(String title, String authorBrand, ItemGenre itemGenre, double price, int rating, int quantity, String itemLocation, String imageByPath) {
+        this.title = title;
+        this.authorBrand = authorBrand;
         this.quantity = quantity;
+        this.itemGenre = itemGenre;
+        this.price = price;
+        setRating(rating);
         this.itemLocation = itemLocation;
         setImageByPath(imageByPath);
+
     }
 
-    public boolean isAvailable() {
-        if (quantity > 0) {
+    @Override
+    public boolean isOrderable() {
+        if (this.getQuantity() > 0) {
             return true;
         } else {
             return false;
@@ -36,6 +49,10 @@ public abstract class StoreItem {
         return quantity;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getItemLocation() {
         return itemLocation;
     }
@@ -48,5 +65,37 @@ public abstract class StoreItem {
         this.itemLocation = itemLocation;
     }
 
-    public Image getImage() { return image;}
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemGenre getItemGenre() {
+        return itemGenre;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getAuthorBrand() {
+        return authorBrand;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setRating(int rating) {
+        if (rating < 0) {
+            this.rating = 0;
+        } else if (rating > 5) {
+            this.rating = 5;
+        } else {
+            this.rating = rating;
+        }
+    }
 }
