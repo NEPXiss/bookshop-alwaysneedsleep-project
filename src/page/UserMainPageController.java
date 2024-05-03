@@ -32,7 +32,6 @@ public class UserMainPageController {
     private Label userOrdersLabel;
     @FXML
     private Label settingLabel;
-
     @FXML
     private ImageView profileAvatarIcon;
     private static UserMainPageController instance;

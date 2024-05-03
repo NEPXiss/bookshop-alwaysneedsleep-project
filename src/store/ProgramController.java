@@ -1,9 +1,6 @@
 package store;
 
 import base.Account;
-import item.Book;
-import item.BorrowableBook;
-import javafx.scene.image.Image;
 import usage.ControllerInstance;
 
 public class ProgramController {

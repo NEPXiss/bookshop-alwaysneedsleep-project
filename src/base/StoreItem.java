@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 public abstract class StoreItem {
     private int quantity;
     private String itemLocation;
-
     private Image image;
 
     public StoreItem(int quantity, String itemLocation, String imageByPath) {
@@ -28,7 +27,7 @@ public abstract class StoreItem {
             String classLoaderPath = ClassLoader.getSystemResource(imagePath).toString();
             this.image = new Image(classLoaderPath);
         } catch (Exception e) {
-            String classLoaderPath = ClassLoader.getSystemResource("default.png").toString();
+            String classLoaderPath = ClassLoader.getSystemResource("defaultbook.png").toString();
             this.image = new Image(classLoaderPath);
         }
     }

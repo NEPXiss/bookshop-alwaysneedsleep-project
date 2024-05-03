@@ -67,7 +67,7 @@ public class RegistrationController {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Registered successfully");
                             alert.setHeaderText(null);
-                            alert.setContentText("Your account has been registered");
+                            alert.setContentText("Your account has been registered!");
                             alert.showAndWait();
 
                             ////////////////////////////////////
@@ -77,6 +77,8 @@ public class RegistrationController {
                             ////////////////////////////////////
                             Main backToLogInPage = Main.getInstance();
                             backToLogInPage.changeScene("../page/LoginInterface.fxml");
+                            ///Set logo image in LoginInterface
+                            LoginController.getInstance().setLogoImage();
 
                         } else {
                             messageAlert.setText("Passwords do not match. Please try again");

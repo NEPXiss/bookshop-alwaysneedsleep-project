@@ -27,21 +27,13 @@ import java.util.function.LongToIntFunction;
 public class LoginController {
 
     @FXML
-    private Button signInButton;
-    @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField logInPasswordField;
     @FXML
-    private Button registerButton;
-    @FXML
     private Label signInAsStaffButton;
     @FXML
     private Label logInMessageLabel;
-    @FXML
-    private AnchorPane leftRootPane;
-    @FXML
-    private AnchorPane centerRootPane;
     @FXML
     private ImageView displayLogoImage  = new ImageView();
     private static LoginController instance;
