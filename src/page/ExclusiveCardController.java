@@ -36,10 +36,7 @@ public class ExclusiveCardController {
         setStarLabel(storeItem.getRating());
         setPriceLabel(storeItem.getPrice());
         setAuthorBrandLabel(storeItem.getAuthorBrand());
-    }
-
-    public HBox getItemCard() {
-        return itemCard;
+        setGenreLabel(storeItem.getItemGenre());
     }
 
     public void setItemImage(Image itemImage) {
@@ -55,16 +52,18 @@ public class ExclusiveCardController {
     }
 
     public void setGenreLabel(ItemGenre itemGenre) {
-        if (itemGenre.equals(ItemGenre.FICTION)){
+        if (itemGenre.equals(ItemGenre.FICTION)) {
             genreLabel.setText("Fiction");
         } else if (itemGenre.equals(ItemGenre.EDUCATION)) {
             genreLabel.setText("Education");
         } else if (itemGenre.equals(ItemGenre.HISTORY)) {
-            genreLabel.setText("History");
+            genreLabel.setText("History & Politics");
         } else if (itemGenre.equals(ItemGenre.SCIENCE)) {
             genreLabel.setText("Science");
         } else if (itemGenre.equals(ItemGenre.PSYCHOLOGY)) {
             genreLabel.setText("Psychology");
+        } else if (itemGenre.equals(ItemGenre.PHILOSOPHY)) {
+            genreLabel.setText("Philosophy");
         } else if (itemGenre.equals(ItemGenre.STATIONERY)) {
             genreLabel.setText("Stationery");
         }
@@ -76,8 +75,8 @@ public class ExclusiveCardController {
 
     public void setStarLabel(int starRate) {
         String stars = "";
-        for (int i=0; i < starRate; i++) {
-        stars += "★";
+        for (int i = 0; i < starRate; i++) {
+            stars += "★";
         }
         this.starLabel.setText(stars);
     }

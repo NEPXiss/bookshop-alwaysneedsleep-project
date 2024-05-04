@@ -25,7 +25,7 @@
          <children>
             <Label fx:id="itemTitleLabel" prefHeight="45.0" prefWidth="266.0" text="Les Miserable">
                <font>
-                  <Font name="FreesiaDSE" size="52.0" />
+                  <Font name="FreesiaDSE Bold" size="52.0" />
                </font>
             </Label>
             <Label fx:id="authorBrandLabel" prefHeight="34.0" prefWidth="273.0" text="Victor Hugo">

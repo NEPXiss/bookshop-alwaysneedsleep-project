@@ -9,9 +9,7 @@ import javafx.scene.AccessibleAction;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import store.ProgramController;
@@ -39,6 +37,8 @@ public class UserMainPageController {
     private ImageView profileAvatarIcon;
     @FXML
     private HBox newArrivalsPane;
+    @FXML
+    private GridPane recommendedItemsPane;
     private static UserMainPageController instance;
 
     public UserMainPageController() {
@@ -68,8 +68,24 @@ public class UserMainPageController {
         }
     }
 
-    public void setRecommendedItems() {
+    public void setRecommendedItems() throws IOException {
+        int row = 0;
+        int column = 0;
 
+        for (StoreItem item: StoreStorage.getStorage().getRecommendedItemsList()){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Card.fxml"));
+            VBox itemCard = fxmlLoader.load();
+            CardController cardController = fxmlLoader.getController();
+            cardController.setCard(item);
+            recommendedItemsPane.add(itemCard, column%6, row%6);
+
+            column+=1;
+            if ((column!=0)&&(column%6 == 0)) {
+                column = 0;
+                row += 1;
+            }
+        }
     }
 
     public void setUsernameLabel() {

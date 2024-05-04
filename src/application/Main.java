@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import page.LoginController;
 import utils.Config;
+import utils.DatabaseInitializer;
 
 import java.io.IOException;
 
@@ -38,6 +39,9 @@ public class Main extends Application {
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
+
+        ///Initialize Database
+        DatabaseInitializer.initializeDataBase();
 
     }
 
