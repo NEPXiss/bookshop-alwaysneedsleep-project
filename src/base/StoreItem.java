@@ -40,7 +40,7 @@ public abstract class StoreItem implements Orderable {
             String classLoaderPath = ClassLoader.getSystemResource(imagePath).toString();
             this.image = new Image(classLoaderPath);
         } catch (Exception e) {
-            String classLoaderPath = ClassLoader.getSystemResource("defaultbook.png").toString();
+            String classLoaderPath = ClassLoader.getSystemResource("default/defaultbook.png").toString();
             this.image = new Image(classLoaderPath);
         }
     }
