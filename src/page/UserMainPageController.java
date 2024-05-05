@@ -17,8 +17,6 @@ import store.ProgramController;
 import store.StoreStorage;
 import utils.Config;
 
-import java.io.IOException;
-
 public class UserMainPageController {
     @FXML
     private Label usernameLabel;
@@ -60,14 +58,14 @@ public class UserMainPageController {
             try {
                 setNewArrivals();
                 setRecommendedItems();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
         t.start();
     }
 
-    public void setNewArrivals() throws IOException {
+    public void setNewArrivals() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -77,7 +75,7 @@ public class UserMainPageController {
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     ExclusiveCardController cardController = fxmlLoader.getController();
@@ -88,7 +86,7 @@ public class UserMainPageController {
         });
     }
 
-    public void setRecommendedItems() throws IOException {
+    public void setRecommendedItems() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -100,7 +98,7 @@ public class UserMainPageController {
                     VBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     CardController cardController = fxmlLoader.getController();
@@ -139,7 +137,7 @@ public class UserMainPageController {
         }
     }
 
-    public void logOutLabelClicked() throws IOException {
+    public void logOutLabelClicked() {
         Main backToLogInPage = Main.getInstance();
         backToLogInPage.changeScene("../page/LoginInterface.fxml");
 

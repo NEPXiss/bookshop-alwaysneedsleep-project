@@ -2,24 +2,18 @@ package page;
 
 import application.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import person.AdminAccount;
 import person.StaffAccount;
-import person.UserAccount;
 import store.StoreAccountDataBase;
 import utils.Config;
 import utils.GetAccess;
 
-import java.io.IOException;
 
 public class StaffLogInController {
     @FXML
@@ -92,7 +86,7 @@ public class StaffLogInController {
         }
     }
 
-    public void setSignInAsUserButtonClicked() throws IOException {
+    public void setSignInAsUserButtonClicked() {
         Main userSigninPage = Main.getInstance();
         userSigninPage.changeScene("../page/LoginInterface.fxml");
 
