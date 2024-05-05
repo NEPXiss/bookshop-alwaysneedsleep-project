@@ -16,7 +16,7 @@
          <children>
             <ImageView fx:id="displayLogoImage" fitHeight="179.0" fitWidth="192.0" layoutX="139.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/logo_color_2.png" />
+                  <Image url="@../../res/icons/logo_color_2.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

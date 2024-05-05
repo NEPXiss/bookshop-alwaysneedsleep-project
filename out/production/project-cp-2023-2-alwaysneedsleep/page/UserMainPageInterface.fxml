@@ -23,7 +23,7 @@
          <children>
             <ImageView fx:id="topLeftIconLogo" fitHeight="58.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/logo_color_1.png" />
+                  <Image url="@../../res/icons/logo_color_1.png" />
                </image>
                <HBox.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
