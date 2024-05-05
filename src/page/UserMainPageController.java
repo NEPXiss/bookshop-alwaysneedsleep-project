@@ -146,7 +146,7 @@ public class UserMainPageController {
     }
 
 
-    /// All methods below are related to FX EventHandler
+    /// All methods below are related to "graphical" FX EventHandler
 
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));

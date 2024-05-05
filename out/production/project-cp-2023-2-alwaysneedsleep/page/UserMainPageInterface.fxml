@@ -46,7 +46,7 @@
                   </Label>
                   <ImageView fx:id="profileAvatarIcon" fitHeight="48.0" fitWidth="51.0" layoutX="1000.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../res/defaultprofile.png" />
+                        <Image url="@../../res/default/defaultprofile.png" />
                      </image>
                   </ImageView>
                </children>

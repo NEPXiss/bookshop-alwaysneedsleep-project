@@ -55,10 +55,9 @@ public class Main extends Application {
         try {
             Parent pane = FXMLLoader.load(getClass().getResource(fxml));
             stg.getScene().setRoot(pane);
-        } catch (Exception e) {
+        } catch (Exception e) {e.printStackTrace();
 
         }
     }
-
 
 }

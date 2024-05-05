@@ -1,10 +1,12 @@
 package page;
 
+import application.Main;
 import base.StoreItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class CardController {
     @FXML
@@ -17,6 +19,7 @@ public class CardController {
     private Label starLabel;
     @FXML
     private Label priceLabel;
+    private StoreItem storeItem;
     private static CardController instance;
 
     public CardController() {CardController.instance = this;}
@@ -27,6 +30,11 @@ public class CardController {
         setStarLabel(storeItem.getRating());
         setPriceLabel(storeItem.getPrice());
         setAuthorBrandLabel(storeItem.getAuthorBrand());
+        this.storeItem = storeItem;
+    }
+
+    public StoreItem getStoreItem() {
+        return storeItem;
     }
 
     public void setItemImage(Image itemImage) {
@@ -49,5 +57,28 @@ public class CardController {
         this.priceLabel.setText(price + "฿");
     }
 
+    public void onMouseClickTitleLabel(){
+        Main bookPage = Main.getInstance();
+        bookPage.changeScene("../page/BookPageInterface.fxml");
+
+        ///Set up -> setPage and setMoreFromThisAuthor
+        BookPageController.getInstance().setPage(this.storeItem);
+        Thread t = new Thread(() -> {
+            try {
+                BookPageController.getInstance().setMoreFromThisBox(this.storeItem);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        t.start();
+    }
+
+    public void onEnterTitleLabel(){
+        titleLabel.setTextFill(Color.web("3737D5"));
+    }
+
+    public void onExitTitleLabel() {
+        titleLabel.setTextFill(Color.BLACK);
+    }
 
 }

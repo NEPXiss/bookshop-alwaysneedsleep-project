@@ -23,6 +23,7 @@ public class ExclusiveCardController {
     private Label priceLabel;
     @FXML
     private Label starLabel;
+    private StoreItem storeItem;
     private static ExclusiveCardController instance;
 
     public ExclusiveCardController() {
@@ -36,6 +37,11 @@ public class ExclusiveCardController {
         setPriceLabel(storeItem.getPrice());
         setAuthorBrandLabel(storeItem.getAuthorBrand());
         setGenreLabel(storeItem.getItemGenre());
+        this.storeItem = storeItem;
+    }
+
+    public StoreItem getStoreItem() {
+        return storeItem;
     }
 
     public void setItemImage(Image itemImage) {
