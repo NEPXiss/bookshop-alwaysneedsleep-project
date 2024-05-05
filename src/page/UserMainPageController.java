@@ -1,17 +1,18 @@
 package page;
 
 import application.Main;
-import base.Account;
 import base.StoreItem;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.AccessibleAction;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import store.ProgramController;
 import store.StoreStorage;
 import utils.Config;
@@ -39,6 +40,8 @@ public class UserMainPageController {
     private HBox newArrivalsPane;
     @FXML
     private GridPane recommendedItemsPane;
+    @FXML
+    private ImageView topLeftIconLogo;
     private static UserMainPageController instance;
 
     public UserMainPageController() {
@@ -52,40 +55,66 @@ public class UserMainPageController {
         return instance;
     }
 
-    public void reloadUserMainPage() throws IOException {
-        setNewArrivals();
-        setRecommendedItems();
+    public void reloadUserMainPage() {
+        Thread t = new Thread(() -> {
+            try {
+                setNewArrivals();
+                setRecommendedItems();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        t.start();
     }
 
     public void setNewArrivals() throws IOException {
-        for (StoreItem item: StoreStorage.getStorage().getNewArrivalList()){
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ExclusiveCard.fxml"));
-            HBox itemCard = fxmlLoader.load();
-            ExclusiveCardController cardController = fxmlLoader.getController();
-            cardController.setCard(item);
-            newArrivalsPane.getChildren().add(itemCard);
-        }
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (StoreItem item : StoreStorage.getStorage().getNewArrivalList()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("ExclusiveCard.fxml"));
+                    HBox itemCard = null;
+                    try {
+                        itemCard = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    ExclusiveCardController cardController = fxmlLoader.getController();
+                    cardController.setCard(item);
+                    newArrivalsPane.getChildren().add(itemCard);
+                }
+            }
+        });
     }
 
     public void setRecommendedItems() throws IOException {
-        int row = 0;
-        int column = 0;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                int row = 0;
+                int column = 0;
+                for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("Card.fxml"));
+                    VBox itemCard = null;
+                    try {
+                        itemCard = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    CardController cardController = fxmlLoader.getController();
+                    cardController.setCard(item);
+                    recommendedItemsPane.add(itemCard, column % 6, row % 6);
 
-        for (StoreItem item: StoreStorage.getStorage().getRecommendedItemsList()){
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("Card.fxml"));
-            VBox itemCard = fxmlLoader.load();
-            CardController cardController = fxmlLoader.getController();
-            cardController.setCard(item);
-            recommendedItemsPane.add(itemCard, column%6, row%6);
-
-            column+=1;
-            if ((column!=0)&&(column%6 == 0)) {
-                column = 0;
-                row += 1;
+                    column += 1;
+                    if ((column != 0) && (column % 6 == 0)) {
+                        column = 0;
+                        row += 1;
+                    }
+                }
             }
-        }
+        });
     }
 
     public void setUsernameLabel() {
@@ -97,7 +126,17 @@ public class UserMainPageController {
             String classLoaderPath = ClassLoader.getSystemResource(Config.profileImage).toString();
             Image profileImage = new Image(classLoaderPath);
             profileAvatarIcon.setImage(profileImage);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
+    }
+
+    public void setTopLeftIconLogo() {
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(Config.logoImage1).toString();
+            Image profileImage = new Image(classLoaderPath);
+            topLeftIconLogo.setImage(profileImage);
+        } catch (Exception e) {
+        }
     }
 
     public void logOutLabelClicked() throws IOException {
@@ -111,50 +150,52 @@ public class UserMainPageController {
 
     /// All methods below are related to FX EventHandler
 
-    public void onMouseEnterLogOutButton(){
-        logOutLabel.setBackground(Background.fill(Color.web("99627A")));
+    public void onMouseEnterLogOutButton() {
+        logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseExitLogOutButton(){
-        logOutLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseExitLogOutButton() {
+        logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseEnterBestSellersButton(){ bestSellersLabel.setBackground(Background.fill(Color.web("99627A")));}
-
-    public void onMouseExitBestSellersButton(){
-        bestSellersLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseEnterBestSellersButton() {
+        bestSellersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseEnterCategoriesButton(){
-        categoriesLabel.setBackground(Background.fill(Color.web("99627A")));
+    public void onMouseExitBestSellersButton() {
+        bestSellersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseExitCategoriesButton(){
-        categoriesLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseEnterCategoriesButton() {
+        categoriesLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseEnterSettingsButton(){
-        settingLabel.setBackground(Background.fill(Color.web("99627A")));
+    public void onMouseExitCategoriesButton() {
+        categoriesLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseExitSettingsButton(){
-        settingLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseEnterSettingsButton() {
+        settingLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseEnterWishListButton(){
-        wishlistLabel.setBackground(Background.fill(Color.web("99627A")));
+    public void onMouseExitSettingsButton() {
+        settingLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseExitWishListButton(){
-        wishlistLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseEnterWishListButton() {
+        wishlistLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseEnterUserOrdersButton(){
-        userOrdersLabel.setBackground(Background.fill(Color.web("99627A")));
+    public void onMouseExitWishListButton() {
+        wishlistLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseExitUserOrdersButton(){
-        userOrdersLabel.setBackground(Background.fill(Color.web("E7CBCB")));
+    public void onMouseEnterUserOrdersButton() {
+        userOrdersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
+    }
+
+    public void onMouseExitUserOrdersButton() {
+        userOrdersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
 }
