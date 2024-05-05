@@ -1,11 +1,13 @@
 package page;
 
+import application.Main;
 import base.StoreItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import usage.ItemGenre;
 
 public class ExclusiveCardController {
@@ -84,5 +86,29 @@ public class ExclusiveCardController {
             stars += "★";
         }
         this.starLabel.setText(stars);
+    }
+
+    public void onMouseClickTitleLabel(){
+        Main bookPage = Main.getInstance();
+        bookPage.changeScene("../page/BookPageInterface.fxml");
+
+        ///Set up -> setPage and setMoreFromThisAuthor
+        BookPageController.getInstance().setPage(this.storeItem);
+        Thread t = new Thread(() -> {
+            try {
+                BookPageController.getInstance().setMoreFromThisBox(this.storeItem);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        t.start();
+    }
+
+    public void onEnterTitleLabel(){
+        itemTitleLabel.setTextFill(Color.web("3737D5"));
+    }
+
+    public void onExitTitleLabel() {
+        itemTitleLabel.setTextFill(Color.BLACK);
     }
 }

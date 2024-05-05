@@ -23,7 +23,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
          </HBox.margin>
          <children>
-            <Label fx:id="itemTitleLabel" prefHeight="45.0" prefWidth="266.0" text="Les Miserable">
+            <Label fx:id="itemTitleLabel" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="45.0" prefWidth="266.0" text="Les Miserable">
                <font>
                   <Font name="FreesiaDSE Bold" size="52.0" />
                </font>

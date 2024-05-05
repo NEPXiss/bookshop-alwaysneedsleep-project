@@ -43,7 +43,7 @@ public class BookPageController {
     @FXML
     private Label logOutLabel;
     @FXML
-    private Label bestSellersLabel;
+    private Label cartLabel;
     @FXML
     private Label categoriesLabel;
     @FXML
@@ -176,50 +176,35 @@ public class BookPageController {
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
-
     public void onMouseExitLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
-    public void onMouseEnterBestSellersButton() {
-        bestSellersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
+    public void onMouseEnterCartButton() { cartLabel.setBackground(Background.fill(Color.web("D4D4D4"))); }
+    public void onMouseExitCartButton() {
+        cartLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
-    public void onMouseExitBestSellersButton() {
-        bestSellersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
-    }
-
     public void onMouseEnterCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
-
     public void onMouseExitCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
     public void onMouseEnterSettingsButton() {
         settingLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
-
     public void onMouseExitSettingsButton() {
         settingLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
     public void onMouseEnterWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
-
     public void onMouseExitWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
     public void onMouseEnterUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
-
     public void onMouseExitUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-
-
 }

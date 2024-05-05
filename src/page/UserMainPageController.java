@@ -23,7 +23,7 @@ public class UserMainPageController {
     @FXML
     private Label logOutLabel;
     @FXML
-    private Label bestSellersLabel;
+    private Label cartLabel;
     @FXML
     private Label categoriesLabel;
     @FXML
@@ -156,12 +156,12 @@ public class UserMainPageController {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
-    public void onMouseEnterBestSellersButton() {
-        bestSellersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
+    public void onMouseEnterCartButton() {
+        cartLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
 
-    public void onMouseExitBestSellersButton() {
-        bestSellersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
+    public void onMouseExitCartButton() {
+        cartLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
 
     public void onMouseEnterCategoriesButton() {
