@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemCard" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="445.0" style="-fx-background-radius: 20; -fx-background-color: EEEEEE; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.ExclusiveCardController">
+<HBox fx:id="itemCard" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="445.0" style="-fx-background-radius: 20; -fx-background-color: #EEEEEE; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.ExclusiveCardController">
    <children>
       <ImageView fx:id="itemImage" fitHeight="180.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -45,7 +45,7 @@
             </Label>
             <Label fx:id="starLabel" prefHeight="43.0" prefWidth="266.0" text="star">
                <font>
-                  <Font name="FreesiaDSE" size="26.0" />
+                  <Font size="26.0" />
                </font></Label>
          </children>
       </VBox>

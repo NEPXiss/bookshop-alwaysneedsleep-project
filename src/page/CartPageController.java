@@ -5,7 +5,6 @@ import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -82,6 +81,14 @@ public class CartPageController {
 
         t.start();
 
+    }
+
+    public VBox getCartBox(){
+        return this.cartBox;
+    }
+
+    public Label getTotalPriceLabel(){
+        return totalPriceLabel;
     }
 
     /// All methods below are related to "functional" FX EventHandler

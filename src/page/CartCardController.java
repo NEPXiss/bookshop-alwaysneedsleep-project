@@ -1,10 +1,11 @@
 package page;
 
-import application.Main;
 import base.StoreItem;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import person.UserAccount;
 import store.ProgramController;
 import usage.ItemGenre;
@@ -24,6 +25,8 @@ public class CartCardController {
     private Label totalPriceLabel;
     @FXML
     private ImageView itemImage;
+    @FXML
+    private HBox cardBox;
     private StoreItem storeItem;
 
     public void setCard(StoreItem storeItem, int quantity){
@@ -61,9 +64,21 @@ public class CartCardController {
         userAccount.getCartMap().remove(this.storeItem);
         Thread t = new Thread(() -> {
             try {
-                Main cartPage = Main.getInstance();
-                cartPage.changeScene("../page/CartPageInterface.fxml");
-                CartPageController.getInstance().setPage();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        /// remove cart card
+                        CartPageController.getInstance().getCartBox().getChildren().remove(cardBox);
+
+                        /// update total price in CartPage
+                        UserAccount enteredUserAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+                        double totalPrice = 0;
+                        for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
+                            totalPrice+=enteredUserAccount.getCartMap().get(item)*item.getPrice();
+                        }
+                        CartPageController.getInstance().getTotalPriceLabel().setText(totalPrice + " ฿");
+                    }
+                });
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
