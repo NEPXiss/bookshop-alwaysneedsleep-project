@@ -137,6 +137,15 @@ public class UserMainPageController {
         }
     }
 
+    /// All methods below are related to "functional" FX EventHandler
+    public void userCartLabelClicked(){
+        Main cartPage = Main.getInstance();
+        cartPage.changeScene("../page/CartPageInterface.fxml");
+
+        ///Set Cart Page
+        CartPageController.getInstance().setPage();
+    }
+
     public void logOutLabelClicked() {
         Main backToLogInPage = Main.getInstance();
         backToLogInPage.changeScene("../page/LoginInterface.fxml");

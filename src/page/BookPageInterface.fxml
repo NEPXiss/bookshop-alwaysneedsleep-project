@@ -69,7 +69,7 @@
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
-                  <Label fx:id="cartLabel" alignment="CENTER" onMouseEntered="#onMouseEnterCartButton" onMouseExited="#onMouseExitCartButton" prefHeight="53.0" prefWidth="260.0" text="Your Cart">
+                  <Label fx:id="cartLabel" alignment="CENTER" onMouseClicked="#userCartLabelClicked" onMouseEntered="#onMouseEnterCartButton" onMouseExited="#onMouseExitCartButton" prefHeight="53.0" prefWidth="260.0" text="Your Cart">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -239,7 +239,7 @@
                                     </Label>
                                     <ChoiceBox fx:id="quantityBox" prefHeight="27.0" prefWidth="67.0" />
                                     <Separator orientation="VERTICAL" prefHeight="42.0" prefWidth="29.0" />
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Add to Cart">
+                                    <Button mnemonicParsing="false" onMouseClicked="#onQuantityBoxSelected" prefHeight="25.0" prefWidth="164.0" text="Add to Cart">
                                        <font>
                                           <Font name="FreesiaUPC" size="22.0" />
                                        </font>
@@ -249,6 +249,10 @@
                                     <Insets left="10.0" />
                                  </VBox.margin>
                               </HBox>
+                              <Label fx:id="quantityBoxAlert" alignment="CENTER" prefHeight="17.0" prefWidth="557.0" textFill="RED">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font></Label>
                            </children>
                         </VBox>
                         <Label fx:id="backLabel" alignment="CENTER" layoutX="996.0" layoutY="431.0" onMouseClicked="#returnToUserMainPage" onMouseEntered="#onMouseEnterBackLabel" onMouseExited="#onMouseExitBackLabel" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #DFDFDF;" text="Back">

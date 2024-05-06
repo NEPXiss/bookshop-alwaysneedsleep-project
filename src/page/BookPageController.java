@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import person.UserAccount;
 import store.ProgramController;
 import store.StoreStorage;
 import utils.Config;
@@ -58,6 +59,8 @@ public class BookPageController {
     private ImageView topLeftIconLogo;
     @FXML
     private Label backLabel;
+    @FXML
+    private Label quantityBoxAlert;
     private final String[] quantity = {"1", "2", "3", "4", "5"};
     private StoreItem storeItem;
     private static BookPageController instance;
@@ -99,6 +102,7 @@ public class BookPageController {
             Image profileImage = new Image(classLoaderPath);
             wishlistIcon.setImage(profileImage);
 
+            /// Set item detail
             storeItemImage.setImage(storeItem.getImage());
             titleLabel.setText(storeItem.getTitle());
             authorBrandLabel.setText(storeItem.getAuthorBrand());
@@ -144,6 +148,14 @@ public class BookPageController {
     }
 
     /// All methods below are related to "functional" FX EventHandler
+    public void userCartLabelClicked(){
+        Main cartPage = Main.getInstance();
+        cartPage.changeScene("../page/CartPageInterface.fxml");
+
+        ///Set Cart Page
+        CartPageController.getInstance().setPage();
+    }
+
     public void returnToUserMainPage() {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/UserMainPageInterface.fxml");
@@ -163,6 +175,27 @@ public class BookPageController {
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
+    }
+
+    public void onQuantityBoxSelected() {
+        if (this.quantityBox.getValue() == null) {
+            quantityBoxAlert.setText("Please select quantity");
+        } else {
+            UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+
+            if (!(userAccount.getCartMap().containsKey(this.storeItem))) {
+                userAccount.getCartMap().put(this.storeItem,Integer.parseInt(this.quantityBox.getValue()));
+                quantityBoxAlert.setText("");
+            } else {
+                if (userAccount.getCartMap().get(this.storeItem)+Integer.parseInt(this.quantityBox.getValue()) > 5){
+                    quantityBoxAlert.setText("You can order a maximum of 5 quantity of this item per order. You have " + userAccount.getCartMap().get(this.storeItem) + " on your cart.");
+                } else {
+                    int oldQuantity = userAccount.getCartMap().get(this.storeItem);
+                    userAccount.getCartMap().put(this.storeItem,oldQuantity + Integer.parseInt(this.quantityBox.getValue()));
+                    quantityBoxAlert.setText("");
+                }
+            }
+        }
     }
 
 
