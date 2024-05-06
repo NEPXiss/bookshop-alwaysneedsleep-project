@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="786.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.userpage.BookPageController">
+   <top>
+      <HBox prefHeight="61.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="topLeftIconLogo" fitHeight="58.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../res/icons/logo_color_2.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="TOP_LEFT" onMouseClicked="#returnToUserMainPage" prefHeight="62.0" prefWidth="194.0" style="-fx-background-color: FFFFFF;" text=" BookSphere" textFill="#bf135f">
+               <font>
+                  <Font name="French Script MT" size="45.0" />
+               </font>
+            </Label>
+            <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #8B322C;" />
+            <AnchorPane prefHeight="61.0" prefWidth="1101.0" style="-fx-background-color: #DD5746;">
+               <children>
+                  <TextField fx:id="searchTextField" layoutX="40.0" layoutY="18.0" prefHeight="25.0" prefWidth="236.0" promptText="Search" style="-fx-background-radius: 50;" />
+                  <Button layoutX="288.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" style="-fx-background-radius: 25;" text="Search" />
+                  <Label fx:id="usernameLabel" alignment="CENTER" layoutX="886.0" layoutY="21.0" prefHeight="17.0" prefWidth="120.0" text="suvijak" textFill="WHITE">
+                     <font>
+                        <Font name="DS-Arkorn" size="23.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="profileAvatarIcon" fitHeight="48.0" fitWidth="51.0" layoutX="1000.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/default/defaultprofile.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <AnchorPane prefHeight="725.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="160.0" prefWidth="260.0">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="270.0" style="-fx-background-color: #99627A;" text="  Browse" textFill="WHITE">
+                     <font>
+                        <Font name="BoonTook Mon Ultra" size="22.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="cartLabel" alignment="CENTER" onMouseClicked="#userCartLabelClicked" onMouseEntered="#onMouseEnterCartButton" onMouseExited="#onMouseExitCartButton" prefHeight="53.0" prefWidth="260.0" text="Your Cart">
+                     <font>
+                        <Font name="DS-Arkorn" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="categoriesLabel" alignment="CENTER" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
+                     <font>
+                        <Font name="DS-Arkorn" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutY="161.0" prefHeight="160.0" prefWidth="260.0">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="271.0" style="-fx-background-color: #99627A;" text="  Your Books" textFill="WHITE">
+                     <font>
+                        <Font name="BoonTook Mon Ultra" size="22.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="wishlistLabel" alignment="CENTER" onMouseEntered="#onMouseEnterWishListButton" onMouseExited="#onMouseExitWishListButton" prefHeight="53.0" prefWidth="260.0" text="Wishlist">
+                     <font>
+                        <Font name="DS-Arkorn" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
+                     <font>
+                        <Font name="DS-Arkorn" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutY="321.0" prefHeight="160.0" prefWidth="260.0">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="271.0" style="-fx-background-color: #99627A;" text="  Settings" textFill="WHITE">
+                     <font>
+                        <Font name="BoonTook Mon Ultra" size="22.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutLabelClicked" onMouseEntered="#onMouseEnterLogOutButton" onMouseExited="#onMouseExitLogOutButton" prefHeight="53.0" prefWidth="260.0" text="Log Out">
+                     <font>
+                        <Font name="DS-Arkorn" size="30.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="757.0" prefWidth="1102.0">
+               <children>
+                  <AnchorPane prefHeight="475.0" prefWidth="1102.0">
+                     <children>
+                        <ImageView fx:id="storeItemImage" fitHeight="367.0" fitWidth="256.0" layoutX="87.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/books/letteroftolkien.jpg" />
+                           </image>
+                        </ImageView>
+                        <HBox layoutX="79.0" layoutY="413.0" prefHeight="36.0" prefWidth="238.0">
+                           <children>
+                              <ImageView fx:id="wishlistIcon" fitHeight="36.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../res/icons/transparenthearticon.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label alignment="CENTER" prefHeight="36.0" prefWidth="205.0" text="Add to Your Wishlist">
+                                 <font>
+                                    <Font name="FreesiaUPC" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <VBox layoutX="355.0" layoutY="38.0" prefHeight="379.0" prefWidth="650.0">
+                           <children>
+                              <Label fx:id="titleLabel" prefHeight="17.0" prefWidth="619.0" text="The Letters of J.R.R. Tolkien">
+                                 <font>
+                                    <Font name="FreesiaUPC" size="49.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="40.0" prefWidth="623.0">
+                                 <children>
+                                    <Label prefHeight="42.0" prefWidth="121.0" text="by">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="33.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="authorBrandLabel" prefHeight="40.0" prefWidth="688.0" text="J.R.R. Tolkien">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <Text fx:id="descriptionText" strokeType="OUTSIDE" strokeWidth="0.0" text="J.R.R. Tolkien was one of the most prolific letter writers of this century. Over the years he wrote to his publishers, his family, to friends (including C.S. Lewis, W.H. Auden and Naomi Mitchison) and to fans of his books. The letters present a fascinating and highly detailed portrait of the man in many of his aspects: as storyteller, scholar, Catholic, parent and observer of the world around him. They also shed much light on his creative genius and grand design for the creation of a whole new world – Middle-earth." wrappingWidth="609.13671875">
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Separator prefWidth="200.0" />
+                              <HBox prefHeight="21.0" prefWidth="650.0">
+                                 <children>
+                                    <Label text="Availability Status : ">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="33.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="availableLabel" prefHeight="52.0" prefWidth="322.0" text="In Stock">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox prefHeight="29.0" prefWidth="650.0">
+                                 <children>
+                                    <Label fx:id="priceLabel" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="650.0" text="350 ฿">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="50.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" right="10.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="650.0">
+                                 <children>
+                                    <Label prefHeight="41.0" prefWidth="119.0" text="QUANTITY :">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="33.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="quantityBox" prefHeight="27.0" prefWidth="67.0" />
+                                    <Separator orientation="VERTICAL" prefHeight="42.0" prefWidth="29.0" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#onQuantityBoxSelected" prefHeight="25.0" prefWidth="164.0" text="Add to Cart">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="22.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label fx:id="quantityBoxAlert" alignment="CENTER" prefHeight="17.0" prefWidth="557.0" textFill="RED">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font></Label>
+                           </children>
+                        </VBox>
+                        <Label fx:id="backLabel" alignment="CENTER" layoutX="996.0" layoutY="431.0" onMouseClicked="#returnToUserMainPage" onMouseEntered="#onMouseEnterBackLabel" onMouseExited="#onMouseExitBackLabel" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #DFDFDF;" text="Back">
+                           <font>
+                              <Font name="FreesiaUPC" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox prefHeight="353.0" prefWidth="1102.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label prefHeight="35.0" prefWidth="1094.0" text="More from this author / More products like this">
+                           <font>
+                              <Font name="FreesiaUPC" size="33.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane prefHeight="254.0" prefWidth="1102.0">
+                           <content>
+                              <HBox fx:id="moreFromThisBox" prefHeight="198.0" prefWidth="1280.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import page.LoginController;
+import page.login.LoginController;
 import utils.Config;
 import utils.DatabaseInitializer;
 
@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         instance = this;
-        Parent root = FXMLLoader.load(getClass().getResource("../page/LoginInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../page/login/LoginInterface.fxml"));
         Scene scene = new Scene(root, 1360, 786);
         primaryStage.setScene(scene);
 
