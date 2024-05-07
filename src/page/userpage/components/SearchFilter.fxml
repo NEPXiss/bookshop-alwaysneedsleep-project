@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.userpage.components.SearchFilter">
+   <children>
+      <ChoiceBox fx:id="filterChoiceBox" prefWidth="150.0">
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
+      </ChoiceBox>
+      <Label alignment="CENTER" onMouseClicked="#onSearchFilterClicked" prefHeight="17.0" prefWidth="71.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;" text="SEARCH">
+         <font>
+            <Font name="FreesiaUPC" size="24.0" />
+         </font>
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
+      </Label>
+   </children>
+</HBox>

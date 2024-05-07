@@ -116,6 +116,8 @@ public class BookPageController {
             } else {
                 availableLabel.setText("Out of Stock");
             }
+
+            /// Set quantityBox
             quantityBox.getItems().addAll(quantity);
             priceLabel.setText(storeItem.getPrice() + " ฿");
             if (storeItem instanceof Book) {

@@ -5,6 +5,7 @@ import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -15,9 +16,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.login.LoginController;
 import page.card.SearchCardController;
+import page.userpage.components.SearchFilter;
 import store.ProgramController;
 import store.StoreStorage;
 import utils.Config;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchPageController {
     @FXML
@@ -42,6 +47,9 @@ public class SearchPageController {
     private Label searchResultAlert;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private HBox topHBox;
+    private ArrayList<StoreItem> searchedStoreItems;
     private static SearchPageController instance;
 
     public SearchPageController() {
@@ -57,6 +65,20 @@ public class SearchPageController {
 
     public void setPage(String searchInput) {
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
+        this.searchedStoreItems = new ArrayList<>();
+
+        /// Add filterBox
+        FXMLLoader filterLoader = new FXMLLoader();
+        filterLoader.setLocation(getClass().getResource("../userpage/components/SearchFilter.fxml"));
+        HBox filterBox = null;
+        try {
+            filterBox = filterLoader.load();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        SearchFilter searchFilter = filterLoader.getController();
+        searchFilter.setFilterChoiceBox();
+        topHBox.getChildren().add(filterBox);
 
         /// Set Avatar Icon
         try {
@@ -86,11 +108,16 @@ public class SearchPageController {
 
     }
 
+
     public void setSearchBox(String searchInput) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                searchResultAlert.setText("Search Result for  ..." + searchInput +"...");
+                if (searchInput.isEmpty()){
+                    searchResultAlert.setText("Search Result for  ...");
+                } else {
+                    searchResultAlert.setText("Search Result for  ..." + searchInput +"...");
+                }
                 for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
                     if ((item.getTitle().toLowerCase().contains(searchInput.toLowerCase())) || ((item.getAuthorBrand().toLowerCase().contains(searchInput.toLowerCase())))) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -104,10 +131,43 @@ public class SearchPageController {
                         SearchCardController searchCardController = fxmlLoader.getController();
                         searchCardController.setCard(item);
                         searchBox.getChildren().add(itemCard);
+
+                        searchedStoreItems.add(item);
                     }
                 }
             }
         });
+    }
+
+    public void setSearchBoxByArrayList(ArrayList<StoreItem> storeItems){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Node topHBox = searchBox.getChildren().get(0);
+                Node separator = searchBox.getChildren().get(1);
+                searchBox.getChildren().clear();
+                searchBox.getChildren().add(topHBox);
+                searchBox.getChildren().add(separator);
+
+                for (StoreItem item : storeItems) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                        HBox itemCard = null;
+                        try {
+                            itemCard = fxmlLoader.load();
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                        SearchCardController searchCardController = fxmlLoader.getController();
+                        searchCardController.setCard(item);
+                        searchBox.getChildren().add(itemCard);
+                }
+            }
+        });
+    }
+
+    public ArrayList<StoreItem> getSearchedStoreItems(){
+        return searchedStoreItems;
     }
 
     /// All methods below are related to "functional" FX EventHandler
