@@ -200,6 +200,14 @@ public class BookPageController {
         WishlistPageController.getInstance().setPage();
     }
 
+    public void CategoriesLabelClicked(){
+        Main categoriesPage = Main.getInstance();
+        categoriesPage.changeScene("../page/userpage/CategoriesPage.fxml");
+
+        ///Set Cart Page
+        CategoriesPageController.getInstance().setPage();
+    }
+
     public void onQuantityBoxSelected() {
         if (this.quantityBox.getValue() == null) {
             quantityBoxAlert.setText("Please select quantity");

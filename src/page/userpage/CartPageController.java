@@ -159,6 +159,14 @@ public class CartPageController {
         LoginController.getInstance().setLogoImage();
     }
 
+    public void CategoriesLabelClicked(){
+        Main categoriesPage = Main.getInstance();
+        categoriesPage.changeScene("../page/userpage/CategoriesPage.fxml");
+
+        ///Set Cart Page
+        CategoriesPageController.getInstance().setPage();
+    }
+
 
     /// All methods below are related to "graphical" FX EventHandler
     public void onMouseEnterLogOutButton() {

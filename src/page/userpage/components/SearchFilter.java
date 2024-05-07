@@ -4,6 +4,12 @@ import base.StoreItem;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import page.userpage.SearchPageController;
 import page.userpage.UserMainPageController;
 
@@ -15,6 +21,8 @@ import java.util.Objects;
 public class SearchFilter {
     @FXML
     private ChoiceBox<String> filterChoiceBox;
+    @FXML
+    private Label searchLabel;
     private static SearchFilter instance;
 
     public SearchFilter() {
@@ -68,6 +76,14 @@ public class SearchFilter {
 
         }
         return storeItems;
+    }
+
+    public void onEnterSearchLabel(){
+        this.searchLabel.setBackground(Background.fill(Color.web( "606060")));
+    }
+
+    public void onExitSearchLabel(){
+        this.searchLabel.setBackground(Background.fill(Color.web( "E0E0E0")));
     }
 
 }

@@ -74,7 +74,7 @@
                               <Font name="DS-Arkorn" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="categoriesLabel" alignment="CENTER" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
+                        <Label fx:id="categoriesLabel" alignment="CENTER" onMouseClicked="#CategoriesLabelClicked" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
                            <font>
                               <Font name="DS-Arkorn" size="30.0" />
                            </font>

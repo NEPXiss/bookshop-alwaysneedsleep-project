@@ -19,6 +19,7 @@ import page.card.SearchCardController;
 import page.userpage.components.SearchFilter;
 import store.ProgramController;
 import store.StoreStorage;
+import usage.ItemGenre;
 import utils.Config;
 
 import java.util.ArrayList;
@@ -113,33 +114,145 @@ public class SearchPageController {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                if (searchInput.isEmpty()){
-                    searchResultAlert.setText("Search Result for  ...");
-                } else {
-                    searchResultAlert.setText("Search Result for  ..." + searchInput +"...");
-                }
-                for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
-                    if ((item.getTitle().toLowerCase().contains(searchInput.toLowerCase())) || ((item.getAuthorBrand().toLowerCase().contains(searchInput.toLowerCase())))) {
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
-                        HBox itemCard = null;
-                        try {
-                            itemCard = fxmlLoader.load();
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+                if ((searchInput.equals("FICTION")) || (searchInput.equals("HISTORY AND POLITICS")) || (searchInput.equals("PHILOSOPHY")) || (searchInput.equals("SCIENCE")) || (searchInput.equals("PSYCHOLOGY")) || (searchInput.equals("EDUCATION"))) {
+                    if ((searchInput.equals("FICTION"))){
+                        searchResultAlert.setText("FICTION");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.FICTION)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
                         }
-                        SearchCardController searchCardController = fxmlLoader.getController();
-                        searchCardController.setCard(item);
-                        searchBox.getChildren().add(itemCard);
+                    } else if ((searchInput.equals("PHILOSOPHY"))){
+                        searchResultAlert.setText("PHILOSOPHY");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.PHILOSOPHY)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
+                        }
+                    } else if ((searchInput.equals("SCIENCE"))){
+                        searchResultAlert.setText("SCIENCE");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.SCIENCE)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
+                        }
+                    }else if ((searchInput.equals("PSYCHOLOGY"))){
+                        searchResultAlert.setText("PSYCHOLOGY");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.PSYCHOLOGY)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
+                        }
+                    }else if ((searchInput.equals("EDUCATION"))) {
+                        searchResultAlert.setText("EDUCATION");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.EDUCATION)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
+                        }
+                    }else {
+                        searchResultAlert.setText("HISTORY AND POLITICS");
+                        for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
+                            if (item.getItemGenre().equals(ItemGenre.HISTORY)){
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                HBox itemCard = null;
+                                try {
+                                    itemCard = fxmlLoader.load();
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                SearchCardController searchCardController = fxmlLoader.getController();
+                                searchCardController.setCard(item);
+                                searchBox.getChildren().add(itemCard);
+                                searchedStoreItems.add(item);
+                            }
+                        }
+                    }
 
-                        searchedStoreItems.add(item);
+                } else {
+                    if (searchInput.isEmpty()) {
+                        searchResultAlert.setText("Search Result for  ...");
+                    } else {
+                        searchResultAlert.setText("Search Result for  ..." + searchInput + "...");
+                    }
+                    for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
+                        if ((item.getTitle().toLowerCase().contains(searchInput.toLowerCase())) || ((item.getAuthorBrand().toLowerCase().contains(searchInput.toLowerCase())))) {
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                            HBox itemCard = null;
+                            try {
+                                itemCard = fxmlLoader.load();
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            SearchCardController searchCardController = fxmlLoader.getController();
+                            searchCardController.setCard(item);
+                            searchBox.getChildren().add(itemCard);
+                            searchedStoreItems.add(item);
+                        }
                     }
                 }
             }
         });
     }
 
-    public void setSearchBoxByArrayList(ArrayList<StoreItem> storeItems){
+    public void setSearchBoxByArrayList(ArrayList<StoreItem> storeItems) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -150,28 +263,28 @@ public class SearchPageController {
                 searchBox.getChildren().add(separator);
 
                 for (StoreItem item : storeItems) {
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
-                        HBox itemCard = null;
-                        try {
-                            itemCard = fxmlLoader.load();
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                        SearchCardController searchCardController = fxmlLoader.getController();
-                        searchCardController.setCard(item);
-                        searchBox.getChildren().add(itemCard);
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                    HBox itemCard = null;
+                    try {
+                        itemCard = fxmlLoader.load();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    SearchCardController searchCardController = fxmlLoader.getController();
+                    searchCardController.setCard(item);
+                    searchBox.getChildren().add(itemCard);
                 }
             }
         });
     }
 
-    public ArrayList<StoreItem> getSearchedStoreItems(){
+    public ArrayList<StoreItem> getSearchedStoreItems() {
         return searchedStoreItems;
     }
 
     /// All methods below are related to "functional" FX EventHandler
-    public void userCartLabelClicked(){
+    public void userCartLabelClicked() {
         Main cartPage = Main.getInstance();
         cartPage.changeScene("../page/userpage/CartPageInterface.fxml");
 
@@ -179,7 +292,7 @@ public class SearchPageController {
         CartPageController.getInstance().setPage();
     }
 
-    public void onWishlistLabelClicked(){
+    public void onWishlistLabelClicked() {
         Main wishlistPage = Main.getInstance();
         wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
 
@@ -208,7 +321,7 @@ public class SearchPageController {
         LoginController.getInstance().setLogoImage();
     }
 
-    public void onSearchButtonClicked(){
+    public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();
         searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
 
@@ -216,34 +329,51 @@ public class SearchPageController {
         SearchPageController.getInstance().setPage(this.searchTextField.getText());
     }
 
+    public void CategoriesLabelClicked() {
+        Main categoriesPage = Main.getInstance();
+        categoriesPage.changeScene("../page/userpage/CategoriesPage.fxml");
+
+        ///Set Cart Page
+        CategoriesPageController.getInstance().setPage();
+    }
+
     /// All methods below are related to "graphical" FX EventHandler
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterCartButton() {
         cartLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitCartButton() {
         cartLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
