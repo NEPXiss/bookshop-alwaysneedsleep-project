@@ -37,7 +37,6 @@ public class CardController {
     public StoreItem getStoreItem() {
         return storeItem;
     }
-
     public void setItemImage(Image itemImage) {
         this.itemImage.setImage(itemImage);
     }
@@ -77,7 +76,6 @@ public class CardController {
     public void onEnterTitleLabel(){
         titleLabel.setTextFill(Color.web("3737D5"));
     }
-
     public void onExitTitleLabel() {
         titleLabel.setTextFill(Color.BLACK);
     }

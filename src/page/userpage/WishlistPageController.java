@@ -14,12 +14,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.CartCardController;
+import page.card.WishlistCardController;
 import page.login.LoginController;
 import person.UserAccount;
 import store.ProgramController;
 import utils.Config;
 
-public class CartPageController {
+public class WishlistPageController {
+    @FXML
+    private VBox wishlistBox;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -37,20 +40,14 @@ public class CartPageController {
     @FXML
     private ImageView topLeftIconLogo;
     @FXML
-    private VBox cartBox;
-    @FXML
-    private Label totalPriceLabel;
-    @FXML
     private TextField searchTextField;
-    private static CartPageController instance;
+    private static WishlistPageController instance;
 
-    public CartPageController() {
-        CartPageController.instance = this;
-    }
+    public WishlistPageController() {WishlistPageController.instance = this;}
 
-    public static CartPageController getInstance() {
+    public static WishlistPageController getInstance() {
         if (instance == null) {
-            CartPageController.instance = new CartPageController();
+            WishlistPageController.instance = new WishlistPageController();
         }
         return instance;
     }
@@ -76,7 +73,7 @@ public class CartPageController {
 
         Thread t = new Thread(() -> {
             try {
-                reloadCartBox();
+                reloadWishlistBox();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -86,42 +83,37 @@ public class CartPageController {
 
     }
 
-    public VBox getCartBox(){
-        return this.cartBox;
+    public VBox getWishlistBox() {
+        return wishlistBox;
     }
 
-    public Label getTotalPriceLabel(){
-        return totalPriceLabel;
-    }
-
-    /// All methods below are related to "functional" FX EventHandler
-    public void reloadCartBox(){
+    public void reloadWishlistBox(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 UserAccount enteredUserAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
-                if (!(enteredUserAccount.getCartMap().isEmpty())){
-                    double totalPrice = 0;
-                    for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
+                if (!(enteredUserAccount.getWishList().isEmpty())){
+                    for (StoreItem item : enteredUserAccount.getWishList()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/CartCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("../card/WishlistCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
-                        CartCardController cardController = fxmlLoader.getController();
-                        cardController.setCard(item,enteredUserAccount.getCartMap().get(item));
-                        cartBox.getChildren().add(itemCard);
-                        totalPrice+=enteredUserAccount.getCartMap().get(item)*item.getPrice();
+                        WishlistCardController wishlistCardController = fxmlLoader.getController();
+                        wishlistCardController.setCard(item);
+                        wishlistBox.getChildren().add(itemCard);
                     }
-                    totalPriceLabel.setText(totalPrice + " ฿");
                 }
             }
         });
     }
 
+
+
+    /// All methods below are related to "functional" FX EventHandler
     public void returnToUserMainPage() {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
@@ -133,14 +125,6 @@ public class CartPageController {
 
         ///// Reload/Set items in UserMainPageInterface
         UserMainPageController.getInstance().setPage();
-    }
-
-    public void onWishlistLabelClicked(){
-        Main wishlistPage = Main.getInstance();
-        wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
-
-        ///Set search Page
-        WishlistPageController.getInstance().setPage();
     }
 
     public void onSearchButtonClicked(){
@@ -157,6 +141,14 @@ public class CartPageController {
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
+    }
+
+    public void userCartLabelClicked(){
+        Main cartPage = Main.getInstance();
+        cartPage.changeScene("../page/userpage/CartPageInterface.fxml");
+
+        ///Set Cart Page
+        CartPageController.getInstance().setPage();
     }
 
 

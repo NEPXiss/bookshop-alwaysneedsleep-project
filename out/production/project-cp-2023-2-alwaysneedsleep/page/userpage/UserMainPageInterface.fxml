@@ -95,7 +95,7 @@
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
-                  <Label fx:id="wishlistLabel" alignment="CENTER" onMouseEntered="#onMouseEnterWishListButton" onMouseExited="#onMouseExitWishListButton" prefHeight="53.0" prefWidth="260.0" text="Wishlist">
+                  <Label fx:id="wishlistLabel" alignment="CENTER" onMouseClicked="#onWishlistLabelClicked" onMouseEntered="#onMouseEnterWishListButton" onMouseExited="#onMouseExitWishListButton" prefHeight="53.0" prefWidth="260.0" text="Wishlist">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>

@@ -119,6 +119,14 @@ public class SearchPageController {
         CartPageController.getInstance().setPage();
     }
 
+    public void onWishlistLabelClicked(){
+        Main wishlistPage = Main.getInstance();
+        wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
+
+        ///Set search Page
+        WishlistPageController.getInstance().setPage();
+    }
+
     public void returnToUserMainPage() {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
@@ -129,7 +137,7 @@ public class SearchPageController {
         UserMainPageController.getInstance().setTopLeftIconLogo();
 
         ///// Reload/Set items in UserMainPageInterface
-        UserMainPageController.getInstance().reloadUserMainPage();
+        UserMainPageController.getInstance().setPage();
     }
 
     public void logOutLabelClicked() {

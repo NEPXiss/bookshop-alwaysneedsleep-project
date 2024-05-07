@@ -72,7 +72,7 @@ public class LoginController {
                         UserMainPageController.getInstance().setTopLeftIconLogo();
 
                         ///// Reload/Set items in UserMainPageInterface
-                        UserMainPageController.getInstance().reloadUserMainPage();
+                        UserMainPageController.getInstance().setPage();
                     } else {
                         logInMessageLabel.setText("Incorrect Password - Please try again");
                     }

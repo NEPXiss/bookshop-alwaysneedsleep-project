@@ -14,16 +14,22 @@ import java.util.HashMap;
 public class UserAccount extends Account implements Registrable {
     private ArrayList<Order> orderList;
     private HashMap<StoreItem, Integer> cartMap;
+    private ArrayList<StoreItem> wishList;
 
     public UserAccount(String username, String password) {
         super(username, password, ControllerInstance.USER);
         this.orderList = new ArrayList<Order>();
         this.cartMap = new HashMap<>();
+        this.wishList = new ArrayList<>();
     }
 
     @Override
     public void addAccountToDataBase(){
         StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
+    }
+
+    public ArrayList<StoreItem> getWishList(){
+        return wishList;
     }
 
     public ArrayList<Order> getOrderList() {

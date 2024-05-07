@@ -64,6 +64,8 @@ public class BookPageController {
     private Label quantityBoxAlert;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private Label addToWishlistLabel;
     private final String[] quantity = {"1", "2", "3", "4", "5"};
     private StoreItem storeItem;
     private static BookPageController instance;
@@ -177,7 +179,7 @@ public class BookPageController {
         UserMainPageController.getInstance().setTopLeftIconLogo();
 
         ///// Reload/Set items in UserMainPageInterface
-        UserMainPageController.getInstance().reloadUserMainPage();
+        UserMainPageController.getInstance().setPage();
     }
 
     public void logOutLabelClicked() {
@@ -186,6 +188,14 @@ public class BookPageController {
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
+    }
+
+    public void onWishlistLabelClicked(){
+        Main wishlistPage = Main.getInstance();
+        wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
+
+        ///Set search Page
+        WishlistPageController.getInstance().setPage();
     }
 
     public void onQuantityBoxSelected() {
@@ -209,8 +219,17 @@ public class BookPageController {
         }
     }
 
+    public void onAddToWishlistLabelClicked(){
+        UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+        userAccount.getWishList().add(this.storeItem);
+    }
+
 
     /// All methods below are related to "graphical" FX EventHandler
+    public void onEnterAddToWishlistLabel() { addToWishlistLabel.setTextFill(Color.web("3737D5")); }
+    public void onExitAddToWishlistLabel() {
+        addToWishlistLabel.setTextFill(Color.BLACK);
+    }
     public void onMouseEnterBackLabel() {
         backLabel.setBackground(Background.fill(Color.web( "606060")));
     }

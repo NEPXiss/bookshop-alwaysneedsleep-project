@@ -57,7 +57,7 @@ public class UserMainPageController {
         return instance;
     }
 
-    public void reloadUserMainPage() {
+    public void setPage() {
         Thread t = new Thread(() -> {
             try {
                 setNewArrivals();
@@ -164,6 +164,14 @@ public class UserMainPageController {
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());
+    }
+
+    public void onWishlistLabelClicked(){
+        Main wishlistPage = Main.getInstance();
+        wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
+
+        ///Set search Page
+        WishlistPageController.getInstance().setPage();
     }
 
 
