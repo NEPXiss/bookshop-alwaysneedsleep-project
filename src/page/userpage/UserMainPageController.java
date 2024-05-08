@@ -19,9 +19,10 @@ import page.card.ExclusiveCardController;
 import page.login.LoginController;
 import store.ProgramController;
 import store.StoreStorage;
+import usage.PageSettable;
 import utils.Config;
 
-public class UserMainPageController {
+public class UserMainPageController implements PageSettable {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -57,7 +58,26 @@ public class UserMainPageController {
         return instance;
     }
 
+    @Override
     public void setPage() {
+        usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
+
+        /// Set Avatar Icon
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(Config.profileImage).toString();
+            Image profileImage = new Image(classLoaderPath);
+            profileAvatarIcon.setImage(profileImage);
+        } catch (Exception e) {
+        }
+
+        /// Set Top Left Logo
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource(Config.logoImage1).toString();
+            Image profileImage = new Image(classLoaderPath);
+            topLeftIconLogo.setImage(profileImage);
+        } catch (Exception e) {
+        }
+
         Thread t = new Thread(() -> {
             try {
                 setNewArrivals();
@@ -67,6 +87,14 @@ public class UserMainPageController {
             }
         });
         t.start();
+    }
+
+    @Override
+    public void setPage(StoreItem storeItem) {
+    }
+
+    @Override
+    public void setPage(String input) {
     }
 
     public void setNewArrivals() {
@@ -117,28 +145,6 @@ public class UserMainPageController {
                 }
             }
         });
-    }
-
-    public void setUsernameLabel() {
-        usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
-    }
-
-    public void setProfileAvatarIcon() {
-        try {
-            String classLoaderPath = ClassLoader.getSystemResource(Config.profileImage).toString();
-            Image profileImage = new Image(classLoaderPath);
-            profileAvatarIcon.setImage(profileImage);
-        } catch (Exception e) {
-        }
-    }
-
-    public void setTopLeftIconLogo() {
-        try {
-            String classLoaderPath = ClassLoader.getSystemResource(Config.logoImage1).toString();
-            Image profileImage = new Image(classLoaderPath);
-            topLeftIconLogo.setImage(profileImage);
-        } catch (Exception e) {
-        }
     }
 
     /// All methods below are related to "functional" FX EventHandler

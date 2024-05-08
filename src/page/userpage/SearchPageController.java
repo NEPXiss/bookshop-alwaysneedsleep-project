@@ -20,12 +20,13 @@ import page.userpage.components.SearchFilter;
 import store.ProgramController;
 import store.StoreStorage;
 import usage.ItemGenre;
+import usage.PageSettable;
 import utils.Config;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchPageController {
+public class SearchPageController implements PageSettable {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -64,6 +65,13 @@ public class SearchPageController {
         return instance;
     }
 
+    @Override
+    public void setPage() {}
+
+    @Override
+    public void setPage(StoreItem storeItem) {}
+
+    @Override
     public void setPage(String searchInput) {
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
         this.searchedStoreItems = new ArrayList<>();
@@ -304,12 +312,7 @@ public class SearchPageController {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
 
-        ///// Set usernameLabel and Logo in UserMainPageInterface
-        UserMainPageController.getInstance().setUsernameLabel();
-        UserMainPageController.getInstance().setProfileAvatarIcon();
-        UserMainPageController.getInstance().setTopLeftIconLogo();
-
-        ///// Reload/Set items in UserMainPageInterface
+        ///// Set UserMainPage
         UserMainPageController.getInstance().setPage();
     }
 

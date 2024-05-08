@@ -13,7 +13,7 @@
             <Insets left="40.0" />
          </HBox.margin>
       </ChoiceBox>
-      <Label fx:id="searchLabel" alignment="CENTER" onMouseClicked="#onSearchFilterClicked" onMouseEntered="#onEnterSearchLabel" onMouseExited="#onExitSearchLabel" prefHeight="17.0" prefWidth="71.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15;" text="SEARCH">
+      <Label fx:id="searchLabel" alignment="CENTER" onMouseClicked="#onSearchFilterClicked" onMouseEntered="#onEnterSearchLabel" onMouseExited="#onExitSearchLabel" prefHeight="17.0" prefWidth="71.0" style="-fx-background-color: #E0E0E0;" text="SEARCH">
          <font>
             <Font name="FreesiaUPC" size="24.0" />
          </font>

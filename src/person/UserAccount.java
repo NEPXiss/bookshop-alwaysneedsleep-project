@@ -26,6 +26,7 @@ public class UserAccount extends Account implements Registrable {
     @Override
     public void addAccountToDataBase(){
         StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
+        StoreAccountDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
     }
 
     public ArrayList<StoreItem> getWishList(){

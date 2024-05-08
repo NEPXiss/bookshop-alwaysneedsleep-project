@@ -21,9 +21,10 @@ import page.login.LoginController;
 import person.UserAccount;
 import store.ProgramController;
 import store.StoreStorage;
+import usage.PageSettable;
 import utils.Config;
 
-public class BookPageController {
+public class BookPageController implements PageSettable {
     @FXML
     private ImageView wishlistIcon;
     @FXML
@@ -81,6 +82,11 @@ public class BookPageController {
         return instance;
     }
 
+    @Override
+    public void setPage() {
+    }
+
+    @Override
     public void setPage(StoreItem storeItem) {
         try {
             this.storeItem = storeItem;
@@ -131,6 +137,11 @@ public class BookPageController {
         }
     }
 
+    @Override
+    public void setPage(String input) {
+
+    }
+
     public void setMoreFromThisBox(StoreItem storeItemOfThisPage){
         Platform.runLater(new Runnable() {
             @Override
@@ -175,12 +186,7 @@ public class BookPageController {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
 
-        ///// Set usernameLabel and Logo in UserMainPageInterface
-        UserMainPageController.getInstance().setUsernameLabel();
-        UserMainPageController.getInstance().setProfileAvatarIcon();
-        UserMainPageController.getInstance().setTopLeftIconLogo();
-
-        ///// Reload/Set items in UserMainPageInterface
+        ///// Set UserMainPage
         UserMainPageController.getInstance().setPage();
     }
 

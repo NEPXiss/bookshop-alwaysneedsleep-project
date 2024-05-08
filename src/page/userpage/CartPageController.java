@@ -17,9 +17,10 @@ import page.card.CartCardController;
 import page.login.LoginController;
 import person.UserAccount;
 import store.ProgramController;
+import usage.PageSettable;
 import utils.Config;
 
-public class CartPageController {
+public class CartPageController implements PageSettable {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -55,6 +56,7 @@ public class CartPageController {
         return instance;
     }
 
+    @Override
     public void setPage(){
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
 
@@ -83,6 +85,16 @@ public class CartPageController {
         });
 
         t.start();
+
+    }
+
+    @Override
+    public void setPage(StoreItem storeItem) {
+
+    }
+
+    @Override
+    public void setPage(String input) {
 
     }
 
@@ -126,12 +138,7 @@ public class CartPageController {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
 
-        ///// Set usernameLabel and Logo in UserMainPageInterface
-        UserMainPageController.getInstance().setUsernameLabel();
-        UserMainPageController.getInstance().setProfileAvatarIcon();
-        UserMainPageController.getInstance().setTopLeftIconLogo();
-
-        ///// Reload/Set items in UserMainPageInterface
+        ///// Set UserMainPage
         UserMainPageController.getInstance().setPage();
     }
 

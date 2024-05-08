@@ -2,6 +2,7 @@ package store.data;
 
 import base.StoreItem;
 import person.UserAccount;
+import usage.DeliveryStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,17 +12,18 @@ public class Order {
     private HashMap<StoreItem,Integer> orderItems;
     private double totalCost;
     private String deliveryAddress;
+    private DeliveryStatus deliveryStatus;
 
     public Order(String username, HashMap<StoreItem, Integer> orderItems, double totalCost, String deliveryAddress) {
         this.username = username;
         this.orderItems = orderItems;
         this.totalCost = totalCost;
         this.deliveryAddress = deliveryAddress;
+        this.deliveryStatus = DeliveryStatus.AWAITING;
+
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() {return username;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -50,4 +52,8 @@ public class Order {
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
+
+    public DeliveryStatus getDeliveryStatus() {return deliveryStatus;}
+
+    public void setDeliveryStatus(DeliveryStatus deliveryStatus) {this.deliveryStatus = deliveryStatus;}
 }

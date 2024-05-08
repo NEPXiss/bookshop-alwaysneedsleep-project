@@ -66,12 +66,7 @@ public class LoginController {
                         ///// Set ProgramController
                         ProgramController.getInstance().setEnteredAccount(StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()), ControllerInstance.USER);
 
-                        ///// Set usernameLabel and Logo in UserMainPageInterface
-                        UserMainPageController.getInstance().setUsernameLabel();
-                        UserMainPageController.getInstance().setProfileAvatarIcon();
-                        UserMainPageController.getInstance().setTopLeftIconLogo();
-
-                        ///// Reload/Set items in UserMainPageInterface
+                        ///// Set UserMainPageInterface
                         UserMainPageController.getInstance().setPage();
                     } else {
                         logInMessageLabel.setText("Incorrect Password - Please try again");

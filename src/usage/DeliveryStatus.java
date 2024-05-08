@@ -1,5 +1,5 @@
 package usage;
 
 public enum DeliveryStatus {
-    AWAITING, DELIVERED, CONFIRMING
+    AWAITING, DELIVERED, CONFIRMED
 }

@@ -1,6 +1,7 @@
 package page.userpage;
 
 import application.Main;
+import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.CategoriesCardController;
 import page.login.LoginController;
-import page.userpage.components.SearchFilter;
 import store.ProgramController;
+import usage.PageSettable;
 import utils.Config;
 
-public class CategoriesPageController {
+public class CategoriesPageController implements PageSettable {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -50,6 +51,7 @@ public class CategoriesPageController {
         return instance;
     }
 
+    @Override
     public void setPage() {
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
 
@@ -167,17 +169,22 @@ public class CategoriesPageController {
         t.start();
     }
 
+    @Override
+    public void setPage(StoreItem storeItem) {
+
+    }
+
+    @Override
+    public void setPage(String input) {
+
+    }
+
     /// All methods below are related to "functional" FX EventHandler
     public void returnToUserMainPage() {
         Main userMainPage = Main.getInstance();
         userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
 
-        ///// Set usernameLabel and Logo in UserMainPageInterface
-        UserMainPageController.getInstance().setUsernameLabel();
-        UserMainPageController.getInstance().setProfileAvatarIcon();
-        UserMainPageController.getInstance().setTopLeftIconLogo();
-
-        ///// Reload/Set items in UserMainPageInterface
+        ///// Set UserMainPage
         UserMainPageController.getInstance().setPage();
     }
 
