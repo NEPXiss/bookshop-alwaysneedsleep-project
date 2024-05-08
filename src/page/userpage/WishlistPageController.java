@@ -20,7 +20,7 @@ import store.ProgramController;
 import usage.PageSettable;
 import utils.Config;
 
-public class WishlistPageController implements PageSettable {
+public class WishlistPageController extends UserPage implements PageSettable {
     @FXML
     private VBox wishlistBox;
     @FXML
@@ -54,7 +54,9 @@ public class WishlistPageController implements PageSettable {
 
     @Override
     public void setPage(){
-        usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
+
+        /// POLYMORPHISM
+        usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getDisplayUsername());
 
         /// Set Avatar Icon
         try {
@@ -126,11 +128,7 @@ public class WishlistPageController implements PageSettable {
 
     /// All methods below are related to "functional" FX EventHandler
     public void returnToUserMainPage() {
-        Main userMainPage = Main.getInstance();
-        userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
-
-        ///// Set UserMainPage
-        UserMainPageController.getInstance().setPage();
+        super.returnToUserMainPage();
     }
 
     public void onSearchButtonClicked(){
@@ -142,27 +140,15 @@ public class WishlistPageController implements PageSettable {
     }
 
     public void logOutLabelClicked() {
-        Main backToLogInPage = Main.getInstance();
-        backToLogInPage.changeScene("../page/login/LoginInterface.fxml");
-
-        ///Set logo image in LoginInterface
-        LoginController.getInstance().setLogoImage();
+        super.logOutLabelClicked();
     }
 
     public void userCartLabelClicked(){
-        Main cartPage = Main.getInstance();
-        cartPage.changeScene("../page/userpage/CartPageInterface.fxml");
-
-        ///Set Cart Page
-        CartPageController.getInstance().setPage();
+        super.userCartLabelClicked();
     }
 
-    public void CategoriesLabelClicked(){
-        Main categoriesPage = Main.getInstance();
-        categoriesPage.changeScene("../page/userpage/CategoriesPage.fxml");
-
-        ///Set Cart Page
-        CategoriesPageController.getInstance().setPage();
+    public void categoriesLabelClicked(){
+        super.categoriesLabelClicked();
     }
 
 

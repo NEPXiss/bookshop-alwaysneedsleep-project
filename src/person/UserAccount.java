@@ -2,9 +2,8 @@ package person;
 
 import base.Account;
 import base.StoreItem;
-import javafx.scene.image.Image;
 import store.StoreAccountDataBase;
-import store.data.Order;
+import store.Order;
 import usage.ControllerInstance;
 import usage.Registrable;
 
@@ -15,7 +14,6 @@ public class UserAccount extends Account implements Registrable {
     private ArrayList<Order> orderList;
     private HashMap<StoreItem, Integer> cartMap;
     private ArrayList<StoreItem> wishList;
-
     public UserAccount(String username, String password) {
         super(username, password, ControllerInstance.USER);
         this.orderList = new ArrayList<Order>();
@@ -24,22 +22,23 @@ public class UserAccount extends Account implements Registrable {
     }
 
     @Override
-    public void addAccountToDataBase(){
-        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
-        StoreAccountDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
+    public String getDisplayUsername(){
+        return "USER : " + super.getUsername();
+    }  /// OVERRIDE TO USE POLYMORPHISM
+
+    public ArrayList<Order> getOrderList() {return orderList;}
+
+    public HashMap<StoreItem, Integer> getCartMap() {
+        return cartMap;
     }
 
-    public ArrayList<StoreItem> getWishList(){
+    public ArrayList<StoreItem> getWishList() {
         return wishList;
     }
 
-    public ArrayList<Order> getOrderList() {
-        return orderList;
-    }
-
-    public HashMap<StoreItem, Integer> getCartMap() {return cartMap;}
-
-    public void setOrderList(ArrayList<Order> orderList) {
-        this.orderList = orderList;
+    @Override
+    public void addAccountToDataBase(){
+        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
+        StoreAccountDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
     }
 }

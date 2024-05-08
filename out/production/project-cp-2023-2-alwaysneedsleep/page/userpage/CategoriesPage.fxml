@@ -38,7 +38,7 @@
                      <children>
                         <TextField fx:id="searchTextField" layoutX="40.0" layoutY="18.0" prefHeight="25.0" prefWidth="236.0" promptText="Search" style="-fx-background-radius: 50;" />
                         <Button layoutX="288.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" style="-fx-background-radius: 25;" text="Search" />
-                        <Label fx:id="usernameLabel" alignment="CENTER" layoutX="886.0" layoutY="21.0" prefHeight="17.0" prefWidth="120.0" textFill="WHITE">
+                        <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="447.0" layoutY="22.0" prefHeight="19.0" prefWidth="546.0" textFill="WHITE">
                            <font>
                               <Font name="DS-Arkorn" size="23.0" />
                            </font>

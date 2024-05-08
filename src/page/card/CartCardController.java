@@ -12,9 +12,10 @@ import page.userpage.BookPageController;
 import page.userpage.CartPageController;
 import person.UserAccount;
 import store.ProgramController;
+import usage.CardSettable;
 import usage.ItemGenre;
 
-public class CartCardController {
+public class CartCardController implements CardSettable {
     @FXML
     private Label titleLabel;
     @FXML
@@ -33,6 +34,12 @@ public class CartCardController {
     private HBox cardBox;
     private StoreItem storeItem;
 
+    @Override
+    public void setCard(StoreItem storeItem) {
+
+    }
+
+    @Override
     public void setCard(StoreItem storeItem, int quantity){
         this.storeItem = storeItem;
         this.titleLabel.setText(storeItem.getTitle());
@@ -43,6 +50,11 @@ public class CartCardController {
         this.quantityLabel.setText(String.valueOf(quantity));
         double totalPrice = storeItem.getPrice()*quantity;
         this.totalPriceLabel.setText(totalPrice + " ฿");
+    }
+
+    @Override
+    public void setCard(String genreIconPath, String genreLabel) {
+
     }
 
     public void setGenreLabel(ItemGenre itemGenre) {

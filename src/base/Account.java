@@ -1,10 +1,6 @@
 package base;
 
-import javafx.scene.image.Image;
-import store.data.Order;
 import usage.ControllerInstance;
-
-import java.util.ArrayList;
 
 public abstract class Account {
     private String username;
@@ -27,6 +23,10 @@ public abstract class Account {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getDisplayUsername() {
+        return "ACCOUNT : " + getUsername();
     }
 
     public void setUsername(String username) {

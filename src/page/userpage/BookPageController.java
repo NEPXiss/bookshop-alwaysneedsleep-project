@@ -6,6 +6,7 @@ import item.Book;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,7 +25,7 @@ import store.StoreStorage;
 import usage.PageSettable;
 import utils.Config;
 
-public class BookPageController implements PageSettable {
+public class BookPageController extends UserPage implements PageSettable {
     @FXML
     private ImageView wishlistIcon;
     @FXML
@@ -90,7 +91,9 @@ public class BookPageController implements PageSettable {
     public void setPage(StoreItem storeItem) {
         try {
             this.storeItem = storeItem;
-            usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
+
+            /// POLYMORPHISM
+            usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getDisplayUsername());
 
             /// Set Avatar Icon
             try {
@@ -142,12 +145,12 @@ public class BookPageController implements PageSettable {
 
     }
 
-    public void setMoreFromThisBox(StoreItem storeItemOfThisPage){
+    public void setMoreFromThisBox(StoreItem storeItemOfThisPage) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                for(StoreItem storeItem: StoreStorage.getStorage().getShelfMap().keySet()){
-                    if ((storeItem.getAuthorBrand().equals(storeItemOfThisPage.getAuthorBrand())) && !(storeItem.equals(storeItemOfThisPage))){
+                for (StoreItem storeItem : StoreStorage.getStorage().getShelfMap().keySet()) {
+                    if ((storeItem.getAuthorBrand().equals(storeItemOfThisPage.getAuthorBrand())) && !(storeItem.equals(storeItemOfThisPage))) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("../card/Card.fxml"));
                         VBox itemCard = null;
@@ -166,15 +169,11 @@ public class BookPageController implements PageSettable {
     }
 
     /// All methods below are related to "functional" FX EventHandler
-    public void userCartLabelClicked(){
-        Main cartPage = Main.getInstance();
-        cartPage.changeScene("../page/userpage/CartPageInterface.fxml");
-
-        ///Set Cart Page
-        CartPageController.getInstance().setPage();
+    public void userCartLabelClicked() {
+        super.userCartLabelClicked();
     }
 
-    public void onSearchButtonClicked(){
+    public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();
         searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
 
@@ -183,35 +182,19 @@ public class BookPageController implements PageSettable {
     }
 
     public void returnToUserMainPage() {
-        Main userMainPage = Main.getInstance();
-        userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
-
-        ///// Set UserMainPage
-        UserMainPageController.getInstance().setPage();
+        super.returnToUserMainPage();
     }
 
     public void logOutLabelClicked() {
-        Main backToLogInPage = Main.getInstance();
-        backToLogInPage.changeScene("../page/login/LoginInterface.fxml");
-
-        ///Set logo image in LoginInterface
-        LoginController.getInstance().setLogoImage();
+        super.logOutLabelClicked();
     }
 
-    public void onWishlistLabelClicked(){
-        Main wishlistPage = Main.getInstance();
-        wishlistPage.changeScene("../page/userpage/WishlistPage.fxml");
-
-        ///Set search Page
-        WishlistPageController.getInstance().setPage();
+    public void onWishlistLabelClicked() {
+        super.onWishlistLabelClicked();
     }
 
-    public void CategoriesLabelClicked(){
-        Main categoriesPage = Main.getInstance();
-        categoriesPage.changeScene("../page/userpage/CategoriesPage.fxml");
-
-        ///Set Cart Page
-        CategoriesPageController.getInstance().setPage();
+    public void categoriesLabelClicked() {
+        super.categoriesLabelClicked();
     }
 
     public void onQuantityBoxSelected() {
@@ -221,62 +204,102 @@ public class BookPageController implements PageSettable {
             UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
 
             if (!(userAccount.getCartMap().containsKey(this.storeItem))) {
-                userAccount.getCartMap().put(this.storeItem,Integer.parseInt(this.quantityBox.getValue()));
+                userAccount.getCartMap().put(this.storeItem, Integer.parseInt(this.quantityBox.getValue()));
                 quantityBoxAlert.setText("");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Item already added to cart");
+                alert.setHeaderText(null);
+                alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " quantity of this item has been added to your cart!");
+                alert.showAndWait();
             } else {
-                if (userAccount.getCartMap().get(this.storeItem)+Integer.parseInt(this.quantityBox.getValue()) > 5){
+                if (userAccount.getCartMap().get(this.storeItem) + Integer.parseInt(this.quantityBox.getValue()) > 5) {
                     quantityBoxAlert.setText("You can order a maximum of 5 quantity of this item per order. You have " + userAccount.getCartMap().get(this.storeItem) + " on your cart.");
                 } else {
                     int oldQuantity = userAccount.getCartMap().get(this.storeItem);
-                    userAccount.getCartMap().put(this.storeItem,oldQuantity + Integer.parseInt(this.quantityBox.getValue()));
+                    userAccount.getCartMap().put(this.storeItem, oldQuantity + Integer.parseInt(this.quantityBox.getValue()));
                     quantityBoxAlert.setText("");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Item already added to cart");
+                    alert.setHeaderText(null);
+                    alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " more quantity of this item has been added to your cart!");
+                    alert.showAndWait();
                 }
             }
         }
     }
 
-    public void onAddToWishlistLabelClicked(){
+    public void onAddToWishlistLabelClicked() {
         UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
-        userAccount.getWishList().add(this.storeItem);
+        if (userAccount.getWishList().contains(this.storeItem)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Item already added to wishlist");
+            alert.setHeaderText(null);
+            alert.setContentText("This item has already been added to your wishlist!");
+            alert.showAndWait();
+        } else {
+            userAccount.getWishList().add(this.storeItem);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Item added to wishlist");
+            alert.setHeaderText(null);
+            alert.setContentText("This item has been added to your wishlist!");
+            alert.showAndWait();
+        }
     }
 
 
     /// All methods below are related to "graphical" FX EventHandler
-    public void onEnterAddToWishlistLabel() { addToWishlistLabel.setTextFill(Color.web("3737D5")); }
+    public void onEnterAddToWishlistLabel() {
+        addToWishlistLabel.setTextFill(Color.web("3737D5"));
+    }
+
     public void onExitAddToWishlistLabel() {
         addToWishlistLabel.setTextFill(Color.BLACK);
     }
+
     public void onMouseEnterBackLabel() {
-        backLabel.setBackground(Background.fill(Color.web( "606060")));
+        backLabel.setBackground(Background.fill(Color.web("606060")));
     }
+
     public void onMouseExitBackLabel() {
-        backLabel.setBackground(Background.fill(Color.web( "DFDFDF")));
+        backLabel.setBackground(Background.fill(Color.web("DFDFDF")));
     }
+
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
-    public void onMouseEnterCartButton() { cartLabel.setBackground(Background.fill(Color.web("D4D4D4"))); }
+
+    public void onMouseEnterCartButton() {
+        cartLabel.setBackground(Background.fill(Color.web("D4D4D4")));
+    }
+
     public void onMouseExitCartButton() {
         cartLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitCategoriesButton() {
         categoriesLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitWishListButton() {
         wishlistLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
     public void onMouseEnterUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }

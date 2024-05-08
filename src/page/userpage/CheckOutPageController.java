@@ -5,24 +5,27 @@ import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import page.card.CardController;
-import page.card.ExclusiveCardController;
+import page.card.CartCardController;
 import page.login.LoginController;
+import person.UserAccount;
 import store.ProgramController;
-import store.StoreStorage;
 import usage.PageSettable;
 import utils.Config;
 
-public class UserMainPageController extends UserPage implements PageSettable {
+public class CheckOutPageController extends CartPageController {
+    @FXML
+    private Label orderingAsLabel;
+    @FXML
+    private Label totalPriceLabel;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -38,31 +41,20 @@ public class UserMainPageController extends UserPage implements PageSettable {
     @FXML
     private ImageView profileAvatarIcon;
     @FXML
-    private HBox newArrivalsPane;
-    @FXML
-    private GridPane recommendedItemsPane;
-    @FXML
     private ImageView topLeftIconLogo;
     @FXML
-    private TextField searchTextField;
-    private static UserMainPageController instance;
-
-    public UserMainPageController() {
-        UserMainPageController.instance = this;
-    }
-
-    public static UserMainPageController getInstance() {
-        if (instance == null) {
-            UserMainPageController.instance = new UserMainPageController();
-        }
-        return instance;
-    }
+    private VBox cartBox;
+    @FXML
+    private Button placeOrderButton;
+    @FXML
+    private ImageView qrCodeImage;
 
     @Override
     public void setPage() {
-
         /// POLYMORPHISM
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getDisplayUsername());
+
+        orderingAsLabel.setText(ProgramController.getInstance().getEnteredAccount().getUsername());
 
         /// Set Avatar Icon
         try {
@@ -80,10 +72,17 @@ public class UserMainPageController extends UserPage implements PageSettable {
         } catch (Exception e) {
         }
 
+        /// Set QRCODE
+        try {
+            String classLoaderPath = ClassLoader.getSystemResource("default/qrcode.png").toString();
+            Image qrCode = new Image(classLoaderPath);
+            qrCodeImage.setImage(qrCode);
+        } catch (Exception e) {
+        }
+
         Thread t = new Thread(() -> {
             try {
-                setNewArrivals();
-                setRecommendedItems();
+                setCartBox();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -91,92 +90,66 @@ public class UserMainPageController extends UserPage implements PageSettable {
         t.start();
     }
 
-    @Override
-    public void setPage(StoreItem storeItem) {
-    }
-
-    @Override
-    public void setPage(String input) {
-    }
-
-    public void setNewArrivals() {
+    public void setCartBox() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                for (StoreItem item : StoreStorage.getStorage().getNewArrivalList()) {
+                UserAccount enteredUserAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+                double totalPrice = 0;
+                for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/ExclusiveCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("../card/CartCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    ExclusiveCardController cardController = fxmlLoader.getController();
-                    cardController.setCard(item);
-                    newArrivalsPane.getChildren().add(itemCard);
+                    CartCardController cardController = fxmlLoader.getController();
+                    cardController.setCard(item,enteredUserAccount.getCartMap().get(item));
+                    cartBox.getChildren().add(itemCard);
+                    totalPrice+=enteredUserAccount.getCartMap().get(item)*item.getPrice();
                 }
+                totalPriceLabel.setText(totalPrice + " ฿");
             }
         });
     }
 
-    public void setRecommendedItems() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                int row = 0;
-                int column = 0;
-                for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/Card.fxml"));
-                    VBox itemCard = null;
-                    try {
-                        itemCard = fxmlLoader.load();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                    CardController cardController = fxmlLoader.getController();
-                    cardController.setCard(item);
-                    recommendedItemsPane.add(itemCard, column % 6, row % 6);
+    public void onPlaceOrderButtonClicked(){
+        if (cartBox.getChildren().isEmpty()) {
+        } else {
 
-                    column += 1;
-                    if ((column != 0) && (column % 6 == 0)) {
-                        column = 0;
-                        row += 1;
-                    }
-                }
-            }
-        });
+        }
     }
 
     /// All methods below are related to "functional" FX EventHandler
-    public void userCartLabelClicked(){
-        super.userCartLabelClicked();
+
+    public void returnToUserMainPage() {
+        super.returnToUserMainPage();
+    }
+
+    public void onWishlistLabelClicked() {
+        super.onWishlistLabelClicked();
+    }
+
+    public void onSearchButtonClicked() {
+        super.onSearchButtonClicked();
     }
 
     public void logOutLabelClicked() {
         super.logOutLabelClicked();
     }
 
-    public void onSearchButtonClicked(){
-        Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
-
-        ///Set search Page
-        SearchPageController.getInstance().setPage(this.searchTextField.getText());
-    }
-
-    public void onWishlistLabelClicked(){
-        super.onWishlistLabelClicked();
-    }
-
-    public void categoriesLabelClicked(){
+    public void categoriesLabelClicked() {
         super.categoriesLabelClicked();
+    }
+
+    public void userCartLabelClicked(){
+        super.userCartLabelClicked();
     }
 
 
     /// All methods below are related to "graphical" FX EventHandler
-
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }

@@ -36,7 +36,7 @@
                <children>
                   <TextField fx:id="searchTextField" layoutX="40.0" layoutY="18.0" prefHeight="25.0" prefWidth="236.0" promptText="Search" style="-fx-background-radius: 50;" />
                   <Button layoutX="288.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#onSearchButtonClicked" style="-fx-background-radius: 25;" text="Search" />
-                  <Label fx:id="usernameLabel" alignment="CENTER" layoutX="886.0" layoutY="21.0" prefHeight="17.0" prefWidth="120.0" textFill="WHITE">
+                  <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="527.0" layoutY="22.0" prefHeight="19.0" prefWidth="465.0" textFill="WHITE">
                      <font>
                         <Font name="DS-Arkorn" size="23.0" />
                      </font>
@@ -72,7 +72,7 @@
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="categoriesLabel" alignment="CENTER" onMouseClicked="#CategoriesLabelClicked" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
+                  <Label fx:id="categoriesLabel" alignment="CENTER" onMouseClicked="#categoriesLabelClicked" onMouseEntered="#onMouseEnterCategoriesButton" onMouseExited="#onMouseExitCategoriesButton" prefHeight="53.0" prefWidth="260.0" text="Categories">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -149,8 +149,20 @@
                               <Separator prefWidth="200.0" />
                               <VBox fx:id="cartBox" prefHeight="562.0" prefWidth="960.0" />
                               <Separator prefWidth="200.0" />
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="914.0">
                                  <children>
+                                    <HBox prefHeight="48.0" prefWidth="653.0">
+                                       <children>
+                                          <Label fx:id="proceedToCheckOutLabel" alignment="CENTER" onMouseClicked="#onProceedToCheckOutLabelClicked" onMouseEntered="#onMouseEnterCheckOutLabel" onMouseExited="#onMouseExitCheckOutLabel" prefHeight="61.0" prefWidth="205.0" style="-fx-background-color: #E0E0E0;" text="Proceed to Checkout">
+                                             <font>
+                                                <Font name="FreesiaUPC" size="31.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets top="15.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                     <Label prefHeight="64.0" prefWidth="106.0" text="Total :">
                                        <font>
                                           <Font name="FreesiaUPC" size="52.0" />

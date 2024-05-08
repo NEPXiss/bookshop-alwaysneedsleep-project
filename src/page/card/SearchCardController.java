@@ -7,9 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import page.userpage.BookPageController;
+import usage.CardSettable;
 import usage.ItemGenre;
 
-public class SearchCardController {
+public class SearchCardController implements CardSettable {
     @FXML
     private Label titleLabel;
     @FXML
@@ -22,6 +23,7 @@ public class SearchCardController {
     private ImageView itemImage;
     private StoreItem storeItem;
 
+    @Override
     public void setCard(StoreItem storeItem){
         this.storeItem = storeItem;
         this.titleLabel.setText(storeItem.getTitle());
@@ -29,6 +31,16 @@ public class SearchCardController {
         setGenreLabel(storeItem.getItemGenre());
         this.unitPriceLabel.setText(storeItem.getPrice() + " ฿");
         this.itemImage.setImage(storeItem.getImage());
+    }
+
+    @Override
+    public void setCard(StoreItem storeItem, int quantity) {
+
+    }
+
+    @Override
+    public void setCard(String genreIconPath, String genreLabel) {
+
     }
 
     public void setGenreLabel(ItemGenre itemGenre) {
