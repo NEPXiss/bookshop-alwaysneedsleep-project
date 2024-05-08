@@ -9,10 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import page.userpage.BookPageController;
-import usage.CardSettable;
 import usage.ItemGenre;
 
-public class ExclusiveCardController implements CardSettable {
+public class ExclusiveCardController {
     @FXML
     private HBox itemCard;
     @FXML
@@ -34,7 +33,6 @@ public class ExclusiveCardController implements CardSettable {
         ExclusiveCardController.instance = this;
     }
 
-    @Override
     public void setCard(StoreItem storeItem) {
         setItemImage(storeItem.getImage());
         setItemTitleLabel(storeItem.getTitle());
@@ -43,16 +41,6 @@ public class ExclusiveCardController implements CardSettable {
         setAuthorBrandLabel(storeItem.getAuthorBrand());
         setGenreLabel(storeItem.getItemGenre());
         this.storeItem = storeItem;
-    }
-
-    @Override
-    public void setCard(StoreItem storeItem, int quantity) {
-
-    }
-
-    @Override
-    public void setCard(String genreIconPath, String genreLabel) {
-
     }
 
     public StoreItem getStoreItem() {
