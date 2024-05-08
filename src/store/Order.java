@@ -26,12 +26,12 @@ public class Order {
         StoreStorage.getStorage().getOrderArrayList().add(this);
     }
 
-    public String getTelNumber() {
-        return telNumber;
+    public DeliveryStatus getDeliveryStatus() {
+        return deliveryStatus;
     }
 
-    public void setTelNumber(String telNumber) {
-        this.telNumber = telNumber;
+    public String getTelNumber() {
+        return telNumber;
     }
 
     public String getUsername() {return username;}
@@ -40,31 +40,13 @@ public class Order {
         this.username = username;
     }
 
-    public HashMap<StoreItem, Integer> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(HashMap<StoreItem, Integer> orderItems) {
-        this.orderItems = orderItems;
-    }
+    public HashMap<StoreItem, Integer> getOrderItems() { return orderItems;}
 
     public double getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
-    }
-
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
-
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    public DeliveryStatus getDeliveryStatus() {return deliveryStatus;}
-
-    public void setDeliveryStatus(DeliveryStatus deliveryStatus) {this.deliveryStatus = deliveryStatus;}
 }

@@ -14,19 +14,16 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import page.login.LoginController;
 import page.card.SearchCardController;
 import page.userpage.components.SearchFilter;
 import store.ProgramController;
 import store.StoreStorage;
 import usage.ItemGenre;
-import usage.PageSettable;
 import utils.Config;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class SearchPageController extends UserPage implements PageSettable {
+public class SearchPageController extends UserPage {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -64,12 +61,6 @@ public class SearchPageController extends UserPage implements PageSettable {
         }
         return instance;
     }
-
-    @Override
-    public void setPage() {}
-
-    @Override
-    public void setPage(StoreItem storeItem) {}
 
     @Override
     public void setPage(String searchInput) {
@@ -309,6 +300,8 @@ public class SearchPageController extends UserPage implements PageSettable {
     public void logOutLabelClicked() {
         super.logOutLabelClicked();
     }
+
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
     public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();

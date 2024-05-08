@@ -1,7 +1,6 @@
 package page.userpage;
 
 import application.Main;
-import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +13,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.CategoriesCardController;
-import page.login.LoginController;
 import store.ProgramController;
-import usage.PageSettable;
 import utils.Config;
 
-public class CategoriesPageController extends UserPage implements PageSettable {
+public class CategoriesPageController extends UserPage {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -171,17 +168,6 @@ public class CategoriesPageController extends UserPage implements PageSettable {
         t.start();
     }
 
-    @Override
-    public void setPage(StoreItem storeItem) {
-
-    }
-
-    @Override
-    public void setPage(String input) {
-
-    }
-
-
     /// All methods below are related to "functional" FX EventHandler
     public void returnToUserMainPage() {
         super.returnToUserMainPage();
@@ -206,6 +192,8 @@ public class CategoriesPageController extends UserPage implements PageSettable {
     public void onWishlistLabelClicked() {
         super.onWishlistLabelClicked();
     }
+
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
 
     /// All methods below are related to "graphical" FX EventHandler

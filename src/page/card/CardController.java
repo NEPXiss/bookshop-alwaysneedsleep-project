@@ -8,9 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import page.userpage.BookPageController;
-import usage.CardSettable;
 
-public class CardController implements CardSettable {
+public class CardController {
     @FXML
     private ImageView itemImage;
     @FXML
@@ -26,7 +25,6 @@ public class CardController implements CardSettable {
 
     public CardController() {CardController.instance = this;}
 
-    @Override
     public void setCard(StoreItem storeItem) {
         setItemImage(storeItem.getImage());
         setItemTitleLabel(storeItem.getTitle());
@@ -34,16 +32,6 @@ public class CardController implements CardSettable {
         setPriceLabel(storeItem.getPrice());
         setAuthorBrandLabel(storeItem.getAuthorBrand());
         this.storeItem = storeItem;
-    }
-
-    @Override
-    public void setCard(StoreItem storeItem, int quantity) {
-
-    }
-
-    @Override
-    public void setCard(String genreIconPath, String genreLabel) {
-
     }
 
     public StoreItem getStoreItem() {

@@ -1,12 +1,12 @@
 package page.userpage;
 
-import application.Main;
 import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,11 +15,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.CartCardController;
-import page.login.LoginController;
 import person.UserAccount;
+import store.Order;
 import store.ProgramController;
-import usage.PageSettable;
 import utils.Config;
+
+import java.util.HashMap;
 
 public class CheckOutPageController extends CartPageController {
     @FXML
@@ -48,6 +49,12 @@ public class CheckOutPageController extends CartPageController {
     private Button placeOrderButton;
     @FXML
     private ImageView qrCodeImage;
+    @FXML
+    private TextField telephoneTextField;
+    @FXML
+    private TextArea addressTextArea;
+    @FXML
+    private Label alertLabel;
 
     @Override
     public void setPage() {
@@ -106,19 +113,33 @@ public class CheckOutPageController extends CartPageController {
                         throw new RuntimeException(e);
                     }
                     CartCardController cardController = fxmlLoader.getController();
-                    cardController.setCard(item,enteredUserAccount.getCartMap().get(item));
+                    cardController.setCard(item, enteredUserAccount.getCartMap().get(item));
                     cartBox.getChildren().add(itemCard);
-                    totalPrice+=enteredUserAccount.getCartMap().get(item)*item.getPrice();
+                    totalPrice += enteredUserAccount.getCartMap().get(item) * item.getPrice();
                 }
                 totalPriceLabel.setText(totalPrice + " ฿");
             }
         });
     }
 
-    public void onPlaceOrderButtonClicked(){
+    public void onPlaceOrderButtonClicked() {
         if (cartBox.getChildren().isEmpty()) {
         } else {
+            if (!(telephoneTextField.getText().isEmpty()) && !(addressTextArea.getText().isEmpty())) {
+                UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+                double totalPrice = 0;
+                for (StoreItem item : userAccount.getCartMap().keySet()) {
+                    totalPrice += item.getPrice() * userAccount.getCartMap().get(item);
+                }
 
+                HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
+                Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
+                userAccount.getOrderList().add(newOrder);
+                returnToUserMainPage();
+                userAccount.getCartMap().clear();
+            } else {
+                alertLabel.setText("Please enter your phone number and delivery address to place order");
+            }
         }
     }
 
@@ -144,9 +165,11 @@ public class CheckOutPageController extends CartPageController {
         super.categoriesLabelClicked();
     }
 
-    public void userCartLabelClicked(){
+    public void userCartLabelClicked() {
         super.userCartLabelClicked();
     }
+
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
 
     /// All methods below are related to "graphical" FX EventHandler

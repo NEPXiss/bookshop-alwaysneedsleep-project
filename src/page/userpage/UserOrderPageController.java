@@ -13,12 +13,14 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import page.card.CartCardController;
+import page.card.OrderCardController;
+import page.card.WishlistCardController;
 import person.UserAccount;
+import store.Order;
 import store.ProgramController;
 import utils.Config;
 
-public class CartPageController extends UserPage {
+public class UserOrderPageController extends UserPage{
     @FXML
     private Label usernameLabel;
     @FXML
@@ -36,29 +38,22 @@ public class CartPageController extends UserPage {
     @FXML
     private ImageView topLeftIconLogo;
     @FXML
-    private VBox cartBox;
-    @FXML
-    private Label totalPriceLabel;
-    @FXML
     private TextField searchTextField;
     @FXML
-    private Label proceedToCheckOutLabel;
-    private static CartPageController instance;
+    private VBox ordersBox;
+    private static UserOrderPageController instance;
 
-    public CartPageController() {
-        CartPageController.instance = this;
-    }
+    public UserOrderPageController() {UserOrderPageController.instance = this;}
 
-    public static CartPageController getInstance() {
+    public static UserOrderPageController getInstance() {
         if (instance == null) {
-            CartPageController.instance = new CartPageController();
+            UserOrderPageController.instance = new UserOrderPageController();
         }
         return instance;
     }
 
     @Override
     public void setPage(){
-
         /// POLYMORPHISM
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getDisplayUsername());
 
@@ -80,62 +75,51 @@ public class CartPageController extends UserPage {
 
         Thread t = new Thread(() -> {
             try {
-                reloadCartBox();
+                setOrdersBox();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
 
         t.start();
-
     }
 
-    public VBox getCartBox(){
-        return this.cartBox;
-    }
-
-    public Label getTotalPriceLabel(){
-        return totalPriceLabel;
-    }
-
-
-    /// All methods below are related to "functional" FX EventHandler
-    public void reloadCartBox(){
+    public void setOrdersBox(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 UserAccount enteredUserAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
-                if (!(enteredUserAccount.getCartMap().isEmpty())){
-                    double totalPrice = 0;
-                    for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
+
+                if (!(enteredUserAccount.getOrderList().isEmpty())){
+                    for (Order order : enteredUserAccount.getOrderList()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/CartCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("../card/OrderCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
-                        CartCardController cardController = fxmlLoader.getController();
-                        cardController.setCard(item,enteredUserAccount.getCartMap().get(item));
-                        cartBox.getChildren().add(itemCard);
-                        totalPrice+=enteredUserAccount.getCartMap().get(item)*item.getPrice();
+                        OrderCardController orderCardController = fxmlLoader.getController();
+                        orderCardController.setCard(order);
+                        ordersBox.getChildren().add(itemCard);
                     }
-                    totalPriceLabel.setText(totalPrice + " ฿");
                 }
+
+
             }
         });
     }
 
+
+
+    /// All methods below are related to "functional" FX EventHandler
     public void returnToUserMainPage() {
         super.returnToUserMainPage();
     }
-
     public void onWishlistLabelClicked(){
         super.onWishlistLabelClicked();
     }
-
-    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
     public void onSearchButtonClicked(){
         Main searchPage = Main.getInstance();
@@ -149,28 +133,16 @@ public class CartPageController extends UserPage {
         super.logOutLabelClicked();
     }
 
+    public void userCartLabelClicked(){
+        super.userCartLabelClicked();
+    }
+
     public void categoriesLabelClicked(){
         super.categoriesLabelClicked();
     }
 
-    public void onProceedToCheckOutLabelClicked(){
-        if (cartBox.getChildren().isEmpty()){
-        } else {
-            Main checkOutPage = Main.getInstance();
-            checkOutPage.changeScene("../page/userpage/CheckOutPage.fxml");
-
-            ///Set Cart Page
-            CheckOutPageController.getInstance().setPage();
-        }
-    }
-
 
     /// All methods below are related to "graphical" FX EventHandler
-
-    public void onMouseEnterCheckOutLabel() {proceedToCheckOutLabel.setBackground(Background.fill(Color.web( "606060")));}
-
-    public void onMouseExitCheckOutLabel() {proceedToCheckOutLabel.setBackground(Background.fill(Color.web( "DFDFDF")));}
-
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
@@ -210,4 +182,7 @@ public class CartPageController extends UserPage {
     public void onMouseExitUserOrdersButton() {
         userOrdersLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }
+
+
+
 }

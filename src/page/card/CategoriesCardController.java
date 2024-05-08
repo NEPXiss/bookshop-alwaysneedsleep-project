@@ -1,32 +1,19 @@
 package page.card;
 
 import application.Main;
-import base.StoreItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import page.userpage.SearchPageController;
-import usage.CardSettable;
 
-public class CategoriesCardController implements CardSettable {
+public class CategoriesCardController {
     @FXML
     private Label genreLabel;
     @FXML
     private ImageView genreIcon;
 
-    @Override
-    public void setCard(StoreItem storeItem) {
-
-    }
-
-    @Override
-    public void setCard(StoreItem storeItem, int quantity) {
-
-    }
-
-    @Override
     public void setCard(String genreIconPath, String genreLabel) {
         this.genreLabel.setText(genreLabel);
         try {

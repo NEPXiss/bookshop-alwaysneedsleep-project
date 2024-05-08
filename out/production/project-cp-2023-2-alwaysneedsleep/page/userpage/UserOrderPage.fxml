@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="786.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.userpage.CartPageController">
+<BorderPane prefHeight="786.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.userpage.UserOrderPageController">
    <top>
       <HBox prefHeight="61.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -67,7 +67,7 @@
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
-                  <Label fx:id="cartLabel" alignment="CENTER" onMouseEntered="#onMouseEnterCartButton" onMouseExited="#onMouseExitCartButton" prefHeight="53.0" prefWidth="260.0" text="Your Cart">
+                  <Label fx:id="cartLabel" alignment="CENTER" onMouseClicked="#userCartLabelClicked" onMouseEntered="#onMouseEnterCartButton" onMouseExited="#onMouseExitCartButton" prefHeight="53.0" prefWidth="260.0" text="Your Cart">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -97,7 +97,7 @@
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseClicked="#onUserOrderLabelClicked" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
+                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -135,7 +135,7 @@
                      <children>
                         <VBox layoutX="70.0" layoutY="37.0" prefHeight="640.0" prefWidth="960.0">
                            <children>
-                              <Label prefHeight="80.0" prefWidth="966.0" text="Your Cart">
+                              <Label prefHeight="80.0" prefWidth="966.0" text="Your Orders">
                                  <font>
                                     <Font name="FreesiaUPC" size="50.0" />
                                  </font>
@@ -147,43 +147,8 @@
                                  </padding>
                               </Label>
                               <Separator prefWidth="200.0" />
-                              <VBox fx:id="cartBox" prefHeight="562.0" prefWidth="960.0" />
+                              <VBox fx:id="ordersBox" prefHeight="562.0" prefWidth="960.0" />
                               <Separator prefWidth="200.0" />
-                              <HBox alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="914.0">
-                                 <children>
-                                    <HBox prefHeight="48.0" prefWidth="653.0">
-                                       <children>
-                                          <Label fx:id="proceedToCheckOutLabel" alignment="CENTER" onMouseClicked="#onProceedToCheckOutLabelClicked" onMouseEntered="#onMouseEnterCheckOutLabel" onMouseExited="#onMouseExitCheckOutLabel" prefHeight="61.0" prefWidth="205.0" style="-fx-background-color: #E0E0E0;" text="Proceed to Checkout">
-                                             <font>
-                                                <Font name="FreesiaUPC" size="31.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets top="15.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="64.0" prefWidth="106.0" text="Total :">
-                                       <font>
-                                          <Font name="FreesiaUPC" size="52.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets top="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="totalPriceLabel" prefHeight="64.0" prefWidth="172.0">
-                                       <font>
-                                          <Font name="FreesiaUPC" size="52.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets top="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </HBox>
                            </children>
                         </VBox>
                      </children>

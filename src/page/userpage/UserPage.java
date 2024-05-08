@@ -1,9 +1,14 @@
 package page.userpage;
 
 import application.Main;
+import base.StoreItem;
 import page.login.LoginController;
 
 public abstract class UserPage {
+    public void setPage(){}
+    public void setPage(String searchInput){}
+    public void setPage(StoreItem storeItem){}
+
     public void userCartLabelClicked(){
         Main cartPage = Main.getInstance();
         cartPage.changeScene("../page/userpage/CartPageInterface.fxml");
@@ -18,6 +23,14 @@ public abstract class UserPage {
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();
+    }
+
+    public void onUserOrderLabelClicked(){
+        Main userOrderPage = Main.getInstance();
+        userOrderPage.changeScene("../page/userpage/UserOrderPage.fxml");
+
+        ///Set search Page
+        UserOrderPageController.getInstance().setPage();
     }
 
     public void onWishlistLabelClicked(){

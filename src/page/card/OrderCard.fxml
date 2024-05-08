@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.card.OrderCardController">
+   <children>
+      <VBox prefHeight="221.0" prefWidth="429.0">
+         <children>
+            <HBox prefHeight="69.0" prefWidth="429.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="69.0" prefWidth="117.0" text="OrderID : ">
+                     <font>
+                        <Font name="FreesiaUPC" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orderIDLabel" prefHeight="89.0" prefWidth="318.0" text="Label">
+                     <font>
+                        <Font name="FreesiaUPC" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="153.0" prefWidth="429.0">
+               <content>
+                  <VBox fx:id="detailBox" prefHeight="200.0" prefWidth="425.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="221.0" prefWidth="516.0">
+         <children>
+            <HBox prefHeight="70.0" prefWidth="516.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="73.0" prefWidth="120.0" text="Contract No :">
+                     <font>
+                        <Font name="FreesiaUPC" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="telephoneLabel" prefHeight="70.0" prefWidth="302.0" text="12154564664">
+                     <font>
+                        <Font name="FreesiaUPC" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="71.0" prefWidth="516.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="118.0" text="Address :">
+                     <font>
+                        <Font name="FreesiaUPC" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="addressTextArea" prefHeight="71.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox prefHeight="34.0" prefWidth="516.0">
+               <children>
+                  <Label alignment="BOTTOM_RIGHT" prefHeight="33.0" prefWidth="122.0" text="STATUS : ">
+                     <font>
+                        <Font name="FreesiaUPC" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusLabel" alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="313.0" text="AWAITING" textFill="#1050bf">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="23.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="516.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="101.0" text="TOTAL :">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="39.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="priceLabel" alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="221.0" text="price">
+                     <font>
+                        <Font name="FreesiaUPC" size="38.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

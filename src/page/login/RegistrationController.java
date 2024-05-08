@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import person.UserAccount;
-import store.StoreAccountDataBase;
+import store.StoreDataBase;
 import utils.Config;
 
 public class RegistrationController {
@@ -55,7 +55,7 @@ public class RegistrationController {
             if (username.isEmpty() || password.isEmpty() || passwordValidate.isEmpty()) {
                 messageAlert.setText("Some information is missing. Please recheck your username and password");
             } else {
-                if (StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().containsKey(username)) {
+                if (StoreDataBase.getStoreAccountDataBase().getAccountMap().containsKey(username)) {
                     messageAlert.setText("This username has already been registered. Please try again");
                 } else {
                     if (username.length() <= 4) {

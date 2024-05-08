@@ -4,18 +4,17 @@ import base.Account;
 import person.AdminAccount;
 import person.StaffAccount;
 import person.UserAccount;
-import utils.Config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class StoreAccountDataBase {
+public class StoreDataBase {
     private HashMap<String, Account> accountMap;  //map Account username to Account
     private ArrayList<UserAccount> userAccountArrayList;
     private ArrayList<StaffAccount> staffAccountsArrayList;
-    private static StoreAccountDataBase storeAccountDataBase;
+    private static StoreDataBase storeDataBase;
 
-    public StoreAccountDataBase() {
+    public StoreDataBase() {
         this.accountMap = new HashMap<>();
 
         //put AdminAccount
@@ -35,15 +34,15 @@ public class StoreAccountDataBase {
         this.accountMap = accountMap;
     }
 
-    public static void setStoreAccountDataBase(StoreAccountDataBase storeAccountDataBase) {
-        StoreAccountDataBase.storeAccountDataBase = storeAccountDataBase;
+    public static void setStoreAccountDataBase(StoreDataBase storeDataBase) {
+        StoreDataBase.storeDataBase = storeDataBase;
     }
 
-    public static StoreAccountDataBase getStoreAccountDataBase() {
-        if (storeAccountDataBase == null) {
-            storeAccountDataBase = new StoreAccountDataBase();
+    public static StoreDataBase getStoreAccountDataBase() {
+        if (storeDataBase == null) {
+            storeDataBase = new StoreDataBase();
         }
-        return storeAccountDataBase;
+        return storeDataBase;
     }
 
     public ArrayList<UserAccount> getUserAccountArrayList() {

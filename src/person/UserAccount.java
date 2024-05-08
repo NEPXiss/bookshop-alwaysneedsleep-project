@@ -2,7 +2,7 @@ package person;
 
 import base.Account;
 import base.StoreItem;
-import store.StoreAccountDataBase;
+import store.StoreDataBase;
 import store.Order;
 import usage.ControllerInstance;
 import usage.Registrable;
@@ -38,7 +38,7 @@ public class UserAccount extends Account implements Registrable {
 
     @Override
     public void addAccountToDataBase(){
-        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
-        StoreAccountDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
+        StoreDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
+        StoreDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
     }
 }

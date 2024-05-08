@@ -97,7 +97,7 @@
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
+                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseClicked="#onUserOrderLabelClicked" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>

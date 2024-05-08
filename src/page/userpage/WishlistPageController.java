@@ -14,13 +14,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.WishlistCardController;
-import page.login.LoginController;
 import person.UserAccount;
 import store.ProgramController;
-import usage.PageSettable;
 import utils.Config;
 
-public class WishlistPageController extends UserPage implements PageSettable {
+public class WishlistPageController extends UserPage {
     @FXML
     private VBox wishlistBox;
     @FXML
@@ -85,17 +83,6 @@ public class WishlistPageController extends UserPage implements PageSettable {
         t.start();
 
     }
-
-    @Override
-    public void setPage(StoreItem storeItem) {
-
-    }
-
-    @Override
-    public void setPage(String input) {
-
-    }
-
     public VBox getWishlistBox() {
         return wishlistBox;
     }
@@ -139,6 +126,7 @@ public class WishlistPageController extends UserPage implements PageSettable {
         SearchPageController.getInstance().setPage(this.searchTextField.getText());
     }
 
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
     public void logOutLabelClicked() {
         super.logOutLabelClicked();
     }

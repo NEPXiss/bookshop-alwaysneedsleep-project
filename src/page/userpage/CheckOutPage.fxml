@@ -98,7 +98,7 @@
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
+                  <Label fx:id="userOrdersLabel" alignment="CENTER" onMouseClicked="#onUserOrderLabelClicked" onMouseEntered="#onMouseEnterUserOrdersButton" onMouseExited="#onMouseExitUserOrdersButton" prefHeight="53.0" prefWidth="260.0" text="Your Orders">
                      <font>
                         <Font name="DS-Arkorn" size="30.0" />
                      </font>
@@ -211,7 +211,7 @@
                                                                         <Font name="FreesiaUPC" size="25.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <TextField prefHeight="33.0" prefWidth="369.0" promptText="enter your phone number">
+                                                                  <TextField fx:id="telephoneTextField" prefHeight="33.0" prefWidth="369.0" promptText="enter your phone number">
                                                                      <HBox.margin>
                                                                         <Insets left="25.0" top="23.0" />
                                                                      </HBox.margin>
@@ -224,7 +224,7 @@
                                                                         <Font name="FreesiaUPC" size="25.0" />
                                                                      </font>
                                                                   </Label>
-                                                                  <TextArea prefHeight="156.0" prefWidth="368.0" promptText="enter your delivery address">
+                                                                  <TextArea fx:id="addressTextArea" prefHeight="156.0" prefWidth="368.0" promptText="enter your delivery address">
                                                                      <HBox.margin>
                                                                         <Insets left="10.0" />
                                                                      </HBox.margin>
@@ -252,6 +252,11 @@
                                                             </HBox>
                                                          </children>
                                                       </VBox>
+                                                      <Label fx:id="alertLabel" alignment="CENTER" layoutX="17.0" layoutY="21.0" prefHeight="17.0" prefWidth="643.0" textFill="#dd0303">
+                                                         <font>
+                                                            <Font name="FreesiaUPC Bold" size="27.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                              </content></ScrollPane>

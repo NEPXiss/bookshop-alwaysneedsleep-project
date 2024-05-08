@@ -18,14 +18,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import page.card.CardController;
-import page.login.LoginController;
 import person.UserAccount;
 import store.ProgramController;
 import store.StoreStorage;
-import usage.PageSettable;
 import utils.Config;
 
-public class BookPageController extends UserPage implements PageSettable {
+public class BookPageController extends UserPage {
     @FXML
     private ImageView wishlistIcon;
     @FXML
@@ -84,10 +82,6 @@ public class BookPageController extends UserPage implements PageSettable {
     }
 
     @Override
-    public void setPage() {
-    }
-
-    @Override
     public void setPage(StoreItem storeItem) {
         try {
             this.storeItem = storeItem;
@@ -140,11 +134,6 @@ public class BookPageController extends UserPage implements PageSettable {
         }
     }
 
-    @Override
-    public void setPage(String input) {
-
-    }
-
     public void setMoreFromThisBox(StoreItem storeItemOfThisPage) {
         Platform.runLater(new Runnable() {
             @Override
@@ -188,6 +177,8 @@ public class BookPageController extends UserPage implements PageSettable {
     public void logOutLabelClicked() {
         super.logOutLabelClicked();
     }
+
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
     public void onWishlistLabelClicked() {
         super.onWishlistLabelClicked();

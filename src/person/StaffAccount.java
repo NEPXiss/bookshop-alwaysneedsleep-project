@@ -1,7 +1,7 @@
 package person;
 
 import base.Account;
-import store.StoreAccountDataBase;
+import store.StoreDataBase;
 import usage.ControllerInstance;
 import usage.Registrable;
 
@@ -17,8 +17,8 @@ public class StaffAccount extends Account implements Registrable {
 
     @Override
     public void addAccountToDataBase(){
-        StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
-        StoreAccountDataBase.getStoreAccountDataBase().getStaffAccountsArrayList().add(this);
+        StoreDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
+        StoreDataBase.getStoreAccountDataBase().getStaffAccountsArrayList().add(this);
     }
 
     public int getStaffNumber() {

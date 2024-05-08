@@ -12,10 +12,9 @@ import page.userpage.BookPageController;
 import page.userpage.WishlistPageController;
 import person.UserAccount;
 import store.ProgramController;
-import usage.CardSettable;
 import usage.ItemGenre;
 
-public class WishlistCardController implements CardSettable {
+public class WishlistCardController {
     @FXML
     private Label titleLabel;
     @FXML
@@ -30,7 +29,6 @@ public class WishlistCardController implements CardSettable {
     private HBox cardBox;
     private StoreItem storeItem;
 
-    @Override
     public void setCard(StoreItem storeItem){
         this.storeItem = storeItem;
         this.titleLabel.setText(storeItem.getTitle());
@@ -38,16 +36,6 @@ public class WishlistCardController implements CardSettable {
         setGenreLabel(storeItem.getItemGenre());
         this.unitPriceLabel.setText(storeItem.getPrice() + " ฿");
         this.itemImage.setImage(storeItem.getImage());
-    }
-
-    @Override
-    public void setCard(StoreItem storeItem, int quantity) {
-
-    }
-
-    @Override
-    public void setCard(String genreIconPath, String genreLabel) {
-
     }
 
     public void setGenreLabel(ItemGenre itemGenre) {

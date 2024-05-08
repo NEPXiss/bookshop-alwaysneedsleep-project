@@ -16,13 +16,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import page.card.CardController;
 import page.card.ExclusiveCardController;
-import page.login.LoginController;
 import store.ProgramController;
 import store.StoreStorage;
-import usage.PageSettable;
 import utils.Config;
 
-public class UserMainPageController extends UserPage implements PageSettable {
+public class UserMainPageController extends UserPage {
     @FXML
     private Label usernameLabel;
     @FXML
@@ -89,14 +87,6 @@ public class UserMainPageController extends UserPage implements PageSettable {
             }
         });
         t.start();
-    }
-
-    @Override
-    public void setPage(StoreItem storeItem) {
-    }
-
-    @Override
-    public void setPage(String input) {
     }
 
     public void setNewArrivals() {
@@ -173,6 +163,7 @@ public class UserMainPageController extends UserPage implements PageSettable {
     public void categoriesLabelClicked(){
         super.categoriesLabelClicked();
     }
+    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
 
 
     /// All methods below are related to "graphical" FX EventHandler

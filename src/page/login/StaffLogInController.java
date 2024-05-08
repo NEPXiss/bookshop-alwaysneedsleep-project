@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import person.AdminAccount;
 import person.StaffAccount;
-import store.StoreAccountDataBase;
+import store.StoreDataBase;
 import utils.Config;
 import utils.GetAccess;
 
@@ -51,10 +51,10 @@ public class StaffLogInController {
 
 
     public void staffSignInButtonClicked() {
-        boolean isStaffAccount = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof StaffAccount;
-        boolean isAdminAccount = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof AdminAccount;
+        boolean isStaffAccount = StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof StaffAccount;
+        boolean isAdminAccount = StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()) instanceof AdminAccount;
         boolean isStaffOrAdminAccount = isAdminAccount || isStaffAccount;
-        boolean isAccountExist = StoreAccountDataBase.getStoreAccountDataBase().getAccountMap().containsKey(usernameTextField.getText());
+        boolean isAccountExist = StoreDataBase.getStoreAccountDataBase().getAccountMap().containsKey(usernameTextField.getText());
 
         if (!(usernameTextField.getText().isEmpty()) && !(logInPasswordField.getText().isEmpty())) {
             if (isAccountExist && isStaffOrAdminAccount) {
