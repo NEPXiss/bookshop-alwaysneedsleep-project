@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.staffpage.StaffMainPageController">
+   <children>
+      <BorderPane prefHeight="786.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;">
+         <top>
+            <HBox prefHeight="61.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="topLeftIconLogo" fitHeight="58.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/icons/logo_color_1.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="TOP_LEFT" prefHeight="62.0" prefWidth="194.0" style="-fx-background-color: #FFFFFF;" text=" BookSphere" textFill="#bf135f">
+                     <font>
+                        <Font name="French Script MT" size="45.0" />
+                     </font>
+                  </Label>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #8B322C;" />
+                  <AnchorPane prefHeight="61.0" prefWidth="1101.0" style="-fx-background-color: #DD5746;">
+                     <children>
+                        <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="508.0" layoutY="22.0" prefHeight="19.0" prefWidth="484.0" textFill="WHITE">
+                           <font>
+                              <Font name="DS-Arkorn" size="23.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="profileAvatarIcon" fitHeight="48.0" fitWidth="51.0" layoutX="1000.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/default/defaultprofile.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <AnchorPane prefHeight="725.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="160.0" prefWidth="260.0">
+                     <children>
+                        <Label prefHeight="53.0" prefWidth="271.0" style="-fx-background-color: #99627A;" text="  Settings" textFill="WHITE">
+                           <font>
+                              <Font name="BoonTook Mon Ultra" size="22.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </opaqueInsets>
+                        </Label>
+                        <Separator prefWidth="200.0" />
+                        <Separator prefWidth="200.0" />
+                        <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutLabelClicked" onMouseEntered="#onMouseEnterLogOutButton" onMouseExited="#onMouseExitLogOutButton" prefHeight="53.0" prefWidth="260.0" text="Log Out">
+                           <font>
+                              <Font name="DS-Arkorn" size="30.0" />
+                           </font>
+                        </Label>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #f3f6f4;" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane prefHeight="725.0" prefWidth="1100.0">
+                     <content>
+                        <AnchorPane prefHeight="725.0" prefWidth="1101.0">
+                           <children>
+                              <VBox fx:id="wishlistBox" layoutX="85.0" layoutY="33.0" prefHeight="660.0" prefWidth="919.0">
+                                 <children>
+                                    <Label prefHeight="46.0" prefWidth="919.0" style="-fx-background-color: #C0C0C0;" text="WORKSPACE">
+                                       <font>
+                                          <Font name="FreesiaUPC" size="30.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #C0C0C0;">
+                                       <children>
+                                          <Label fx:id="productManagementLabel" onMouseClicked="#onProductLabelClicked" onMouseEntered="#onEnterProductLabel" onMouseExited="#onExitProductLabel" prefHeight="125.0" prefWidth="963.0" style="-fx-background-color: #6C9DDC;" text="Products Management">
+                                             <font>
+                                                <Font name="FreesiaUPC" size="42.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="userpageManagementLabel" onMouseEntered="#onEnterUserLabel" onMouseExited="#onExitUserLabel" prefHeight="125.0" prefWidth="963.0" style="-fx-background-color: #DB3E78;" text="Userpage Management">
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                             <font>
+                                                <Font name="FreesiaUPC" size="42.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="orderManagementLabel" onMouseEntered="#onEnterOrderLabel" onMouseExited="#onExitOrderLabel" prefHeight="125.0" prefWidth="963.0" style="-fx-background-color: #3B9E91;" text="Order Management">
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                             <font>
+                                                <Font name="FreesiaUPC" size="42.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="414.0" prefWidth="919.0" style="-fx-background-radius: 15;">
+                                       <children>
+                                          <Label prefHeight="55.0" prefWidth="922.0" style="-fx-background-color: #C0C0C0;" text="ANNOUCEMENT FROM ADMIN">
+                                             <font>
+                                                <Font name="FreesiaUPC" size="30.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </Label>
+                                          <ScrollPane prefHeight="363.0" prefWidth="919.0">
+                                             <content>
+                                                <VBox prefHeight="305.0" prefWidth="916.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children></VBox>
+                           </children>
+                        </AnchorPane>
+                     </content></ScrollPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

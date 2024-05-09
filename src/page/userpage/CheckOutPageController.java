@@ -18,6 +18,8 @@ import page.card.CartCardController;
 import person.UserAccount;
 import store.Order;
 import store.ProgramController;
+import store.StoreDataBase;
+import store.StoreStorage;
 import utils.Config;
 
 import java.util.HashMap;
@@ -135,8 +137,15 @@ public class CheckOutPageController extends CartPageController {
                 HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
                 Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
                 userAccount.getOrderList().add(newOrder);
+                StoreStorage.getStorage().getOrderArrayList().add(newOrder);
                 returnToUserMainPage();
                 userAccount.getCartMap().clear();
+
+                /// Decrease the quantity of items:
+                for (StoreItem item : orderItemsMap.keySet()){
+                    item.setQuantity(item.getQuantity() - orderItemsMap.get(item));
+                }
+
             } else {
                 alertLabel.setText("Please enter your phone number and delivery address to place order");
             }

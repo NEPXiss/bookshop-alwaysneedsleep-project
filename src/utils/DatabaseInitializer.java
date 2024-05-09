@@ -46,7 +46,7 @@ public class DatabaseInitializer {
         Book book13 = new Book("The Brothers Karamazov", "Fyodor Dostoevsky", ItemGenre.FICTION, 870, 5, 50, "PH2", "books/brotherkaramazov.jpg" );
         StoreStorage.getStorage().getShelfMap().put(book13,book13.getItemLocation());
         book13.setDescription("The Brothers Karamasov is a murder mystery, a courtroom drama, and an exploration of erotic rivalry in a series of triangular love affairs involving the “wicked and sentimental” Fyodor Pavlovich Karamazov and his three sons―the impulsive and sensual Dmitri; the coldly rational Ivan; and the healthy, red-cheeked young novice Alyosha. Through the gripping events of their story, Dostoevsky portrays the whole of Russian life, is social and spiritual striving, in what was both the golden age and a tragic turning point in Russian culture.");
-        Book book14 = new Book("Outlier", "Malcom Gladwell", ItemGenre.PSYCHOLOGY, 550, 5, 50, "PH2", "books/outlier.jpg" );
+        Book book14 = new Book("Outlier", "Malcom Gladwell", ItemGenre.PSYCHOLOGY, 550, 5, 2, "PH2", "books/outlier.jpg" );
         StoreStorage.getStorage().getShelfMap().put(book14,book14.getItemLocation());
         book14.setDescription("From the bestselling author of Blink and The Tipping Point, Malcolm Gladwell's Outliers: The Story of Success overturns conventional wisdom about genius to show us what makes an ordinary person an extreme overachiever.");
 

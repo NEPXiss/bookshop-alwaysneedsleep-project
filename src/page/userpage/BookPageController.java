@@ -194,27 +194,40 @@ public class BookPageController extends UserPage {
         } else {
             UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
 
-            if (!(userAccount.getCartMap().containsKey(this.storeItem))) {
-                userAccount.getCartMap().put(this.storeItem, Integer.parseInt(this.quantityBox.getValue()));
-                quantityBoxAlert.setText("");
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Item already added to cart");
-                alert.setHeaderText(null);
-                alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " quantity of this item has been added to your cart!");
-                alert.showAndWait();
-            } else {
-                if (userAccount.getCartMap().get(this.storeItem) + Integer.parseInt(this.quantityBox.getValue()) > 5) {
-                    quantityBoxAlert.setText("You can order a maximum of 5 quantity of this item per order. You have " + userAccount.getCartMap().get(this.storeItem) + " on your cart.");
+            ///POLYMORPHISM
+            if (this.storeItem.isOrderable()) {
+                if (!(userAccount.getCartMap().containsKey(this.storeItem))) {
+                    if (Integer.parseInt(this.quantityBox.getValue())<=this.storeItem.getQuantity()){
+                        userAccount.getCartMap().put(this.storeItem, Integer.parseInt(this.quantityBox.getValue()));
+                        quantityBoxAlert.setText("");
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Item already added to cart");
+                        alert.setHeaderText(null);
+                        alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " quantity of this item has been added to your cart!");
+                        alert.showAndWait();
+                    } else {
+                        quantityBoxAlert.setText("there are " + this.storeItem.getQuantity() + " quantity of this item left!");
+                    }
                 } else {
-                    int oldQuantity = userAccount.getCartMap().get(this.storeItem);
-                    userAccount.getCartMap().put(this.storeItem, oldQuantity + Integer.parseInt(this.quantityBox.getValue()));
-                    quantityBoxAlert.setText("");
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Item already added to cart");
-                    alert.setHeaderText(null);
-                    alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " more quantity of this item has been added to your cart!");
-                    alert.showAndWait();
+                    if (userAccount.getCartMap().get(this.storeItem) + Integer.parseInt(this.quantityBox.getValue()) > 5) {
+                        quantityBoxAlert.setText("You can order a maximum of 5 quantity of this item per order. You have " + userAccount.getCartMap().get(this.storeItem) + " on your cart.");
+                    } else {
+                        int oldQuantity = userAccount.getCartMap().get(this.storeItem);
+                        if ((oldQuantity + Integer.parseInt(this.quantityBox.getValue())) <= this.storeItem.getQuantity()) {
+                            userAccount.getCartMap().put(this.storeItem, oldQuantity + Integer.parseInt(this.quantityBox.getValue()));
+                            quantityBoxAlert.setText("");
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Item already added to cart");
+                            alert.setHeaderText(null);
+                            alert.setContentText(Integer.parseInt(this.quantityBox.getValue()) + " more quantity of this item has been added to your cart!");
+                            alert.showAndWait();
+                        } else {
+                            quantityBoxAlert.setText("there are " + this.storeItem.getQuantity() + " quantity of this item left!");
+                        }
+                    }
                 }
+            } else {
+                quantityBoxAlert.setText("item out of stock!");
             }
         }
     }

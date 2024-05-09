@@ -21,9 +21,6 @@ public class CardController {
     @FXML
     private Label priceLabel;
     private StoreItem storeItem;
-    private static CardController instance;
-
-    public CardController() {CardController.instance = this;}
 
     public void setCard(StoreItem storeItem) {
         setItemImage(storeItem.getImage());

@@ -7,11 +7,12 @@ import usage.Orderable;
 public abstract class StoreItem implements Orderable {
     private int quantity;
     private String itemLocation;
-    private final String title;
+    private String title;
     private Image image;
-    private final ItemGenre itemGenre;
+    private ItemGenre itemGenre;
     private double price;
-    private final String authorBrand;
+    private String authorBrand;
+    private String imagePath;
     private int rating;
 
     public StoreItem(String title, String authorBrand, ItemGenre itemGenre, double price, int rating, int quantity, String itemLocation, String imageByPath) {
@@ -22,6 +23,7 @@ public abstract class StoreItem implements Orderable {
         this.price = price;
         setRating(rating);
         this.itemLocation = itemLocation;
+        this.imagePath = imageByPath;
         setImageByPath(imageByPath);
 
     }
@@ -68,6 +70,9 @@ public abstract class StoreItem implements Orderable {
     public String getTitle() {
         return title;
     }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public ItemGenre getItemGenre() {
         return itemGenre;
@@ -81,6 +86,10 @@ public abstract class StoreItem implements Orderable {
         return authorBrand;
     }
 
+    public void setAuthorBrand(String authorBrand) {
+        this.authorBrand = authorBrand;
+    }
+
     public int getRating() {
         return rating;
     }
@@ -89,9 +98,21 @@ public abstract class StoreItem implements Orderable {
         return image;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setItemGenre(ItemGenre itemGenre){
+        this.itemGenre = itemGenre;
+    }
+
     public void setRating(int rating) {
-        if (rating < 0) {
-            this.rating = 0;
+        if (rating < 1) {
+            this.rating = 1;
         } else if (rating > 5) {
             this.rating = 5;
         } else {

@@ -110,11 +110,12 @@ public class SearchPageController extends UserPage {
 
     }
 
-
+    /// this method works together with CategoriesPageController
     public void setSearchBox(String searchInput) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                /// the "if" statement is related to Categories
                 if ((searchInput.equals("FICTION")) || (searchInput.equals("HISTORY AND POLITICS")) || (searchInput.equals("PHILOSOPHY")) || (searchInput.equals("SCIENCE")) || (searchInput.equals("PSYCHOLOGY")) || (searchInput.equals("EDUCATION"))) {
                     if ((searchInput.equals("FICTION"))){
                         searchResultAlert.setText("FICTION");
@@ -225,7 +226,7 @@ public class SearchPageController extends UserPage {
                             }
                         }
                     }
-
+                    /// the "else" statement return the search result
                 } else {
                     if (searchInput.isEmpty()) {
                         searchResultAlert.setText("Search Result for  ...");

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StoreDataBase {
+    /// This class manages everything related to accounts
     private HashMap<String, Account> accountMap;  //map Account username to Account
     private ArrayList<UserAccount> userAccountArrayList;
     private ArrayList<StaffAccount> staffAccountsArrayList;
@@ -23,7 +24,8 @@ public class StoreDataBase {
         //example accounts
         UserAccount userAccount1 = new UserAccount("suvijak", "12345");
         accountMap.put(userAccount1.getUsername(),userAccount1);
-
+        StaffAccount staffAccount1 = new StaffAccount("staff@Steven", "12345", 2005);
+        accountMap.put(staffAccount1.getUsername(),staffAccount1);
     }
 
     public HashMap<String, Account> getAccountMap() {

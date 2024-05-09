@@ -94,15 +94,15 @@
                               <Font name="FreesiaUPC" size="36.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="20.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="totalPriceLabel" prefHeight="27.0" prefWidth="107.0" text="600 ฿">
+                        <Label fx:id="totalPriceLabel" prefHeight="27.0" prefWidth="157.0" text="60000.0 ฿">
                            <font>
                               <Font name="FreesiaUPC" size="37.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="20.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
                      </children>

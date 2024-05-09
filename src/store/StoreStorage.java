@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StoreStorage {
+    /// this class manages StoreItems and Orders
     private HashMap<StoreItem, String> shelfMap; //Map item to shelfLocation
     private ArrayList<StoreItem> newArrivalList;
     private ArrayList<StoreItem> recommendedItemsList;
