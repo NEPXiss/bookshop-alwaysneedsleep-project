@@ -14,8 +14,9 @@ public abstract class StoreItem implements Orderable {
     private String authorBrand;
     private String imagePath;
     private int rating;
+    private String description;
 
-    public StoreItem(String title, String authorBrand, ItemGenre itemGenre, double price, int rating, int quantity, String itemLocation, String imageByPath) {
+    public StoreItem(String title, String authorBrand, ItemGenre itemGenre, double price, int rating, int quantity, String itemLocation, String imageByPath, String description) {
         this.title = title;
         this.authorBrand = authorBrand;
         this.quantity = quantity;
@@ -25,6 +26,7 @@ public abstract class StoreItem implements Orderable {
         this.itemLocation = itemLocation;
         this.imagePath = imageByPath;
         setImageByPath(imageByPath);
+        this.description = description;
 
     }
 
@@ -118,5 +120,17 @@ public abstract class StoreItem implements Orderable {
         } else {
             this.rating = rating;
         }
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getFullDescription(){
+        return "StoreItem." + getItemGenre().toString() + "\n" + description;
     }
 }

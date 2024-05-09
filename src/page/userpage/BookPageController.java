@@ -123,13 +123,7 @@ public class BookPageController extends UserPage {
             /// Set quantityBox
             quantityBox.getItems().addAll(quantity);
             priceLabel.setText(storeItem.getPrice() + " ฿");
-            if (storeItem instanceof Book) {
-                String description = ((Book) storeItem).getDescription();
-                descriptionText.setText(description);
-            } else {
-                descriptionText.setText("---");
-            }
-
+            descriptionText.setText(storeItem.getFullDescription());
         } catch (Exception e) {
         }
     }

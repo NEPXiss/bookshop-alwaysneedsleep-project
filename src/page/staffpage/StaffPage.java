@@ -20,7 +20,7 @@ public abstract class StaffPage {
         StaffMainPageController.getInstance().setPage();
     }
 
-    public void onProductLabelClicked(){
+    public void goToProductManagementPage(){
         Main productManagementPage = Main.getInstance();
         productManagementPage.changeScene("../page/staffpage/ProductManagementPage.fxml");
 

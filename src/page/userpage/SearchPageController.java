@@ -233,7 +233,7 @@ public class SearchPageController extends UserPage {
                     } else {
                         searchResultAlert.setText("Search Result for  ..." + searchInput + "...");
                     }
-                    for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
+                    for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         if ((item.getTitle().toLowerCase().contains(searchInput.toLowerCase())) || ((item.getAuthorBrand().toLowerCase().contains(searchInput.toLowerCase())))) {
                             FXMLLoader fxmlLoader = new FXMLLoader();
                             fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));

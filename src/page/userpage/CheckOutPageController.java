@@ -1,13 +1,11 @@
 package page.userpage;
 
 import base.StoreItem;
+import item.Book;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -23,6 +21,7 @@ import store.StoreStorage;
 import utils.Config;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 public class CheckOutPageController extends CartPageController {
     @FXML
@@ -128,22 +127,31 @@ public class CheckOutPageController extends CartPageController {
         if (cartBox.getChildren().isEmpty()) {
         } else {
             if (!(telephoneTextField.getText().isEmpty()) && !(addressTextArea.getText().isEmpty())) {
-                UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
-                double totalPrice = 0;
-                for (StoreItem item : userAccount.getCartMap().keySet()) {
-                    totalPrice += item.getPrice() * userAccount.getCartMap().get(item);
-                }
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Product Detail Confirmation Dialog");
+                alert.setContentText("Do you want to proceed?");
 
-                HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
-                Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
-                userAccount.getOrderList().add(newOrder);
-                StoreStorage.getStorage().getOrderArrayList().add(newOrder);
-                returnToUserMainPage();
-                userAccount.getCartMap().clear();
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+                    double totalPrice = 0;
+                    for (StoreItem item : userAccount.getCartMap().keySet()) {
+                        totalPrice += item.getPrice() * userAccount.getCartMap().get(item);
+                    }
 
-                /// Decrease the quantity of items:
-                for (StoreItem item : orderItemsMap.keySet()){
-                    item.setQuantity(item.getQuantity() - orderItemsMap.get(item));
+                    HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
+                    Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
+                    userAccount.getOrderList().add(newOrder);
+                    StoreStorage.getStorage().getOrderArrayList().add(newOrder);
+                    returnToUserMainPage();
+                    userAccount.getCartMap().clear();
+
+                    /// Decrease the quantity of items:
+                    for (StoreItem item : orderItemsMap.keySet()){
+                        item.setQuantity(item.getQuantity() - orderItemsMap.get(item));
+                    }
+                } else {
+                    alert.close();
                 }
 
             } else {

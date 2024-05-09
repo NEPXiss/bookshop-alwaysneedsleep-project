@@ -20,7 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
-public class ItemStaffPageController extends StaffPage{
+public class ItemStaffPageController extends StaffPage {
     @FXML
     private Label logOutLabel;
     @FXML
@@ -54,25 +54,21 @@ public class ItemStaffPageController extends StaffPage{
     @FXML
     private ChoiceBox<String> ratingChoiceBox;
 
-    public ItemStaffPageController (){ItemStaffPageController.instance = this;}
+    public ItemStaffPageController() {
+        ItemStaffPageController.instance = this;
+    }
 
-    public static ItemStaffPageController getInstance(){
+    public static ItemStaffPageController getInstance() {
         if (instance == null) {
             ItemStaffPageController.instance = new ItemStaffPageController();
         }
         return instance;
     }
 
-    public void setPage(StoreItem item){
+    public void setPage(StoreItem item) {
         /// POLYMORPHISM
         usernameLabel.setText(ProgramController.getInstance().getEnteredAccount().getDisplayUsername());
         this.storeItem = item;
-
-        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE, ItemGenre.STATIONERY};
-        genreChoiceBox.getItems().addAll(genreChoices);
-
-        String[] ratingChoice = {"1", "2", "3", "4", "5"};
-        ratingChoiceBox.getItems().addAll(ratingChoice);
 
         /// Set Avatar Icon
         try {
@@ -82,8 +78,6 @@ public class ItemStaffPageController extends StaffPage{
         } catch (Exception e) {
         }
 
-        /// Set item detail
-        itemImage.setImage(item.getImage());
 
         /// Set Top Left Logo
         try {
@@ -93,6 +87,14 @@ public class ItemStaffPageController extends StaffPage{
         } catch (Exception e) {
         }
 
+        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE, ItemGenre.STATIONERY};
+        genreChoiceBox.getItems().addAll(genreChoices);
+
+        String[] ratingChoice = {"1", "2", "3", "4", "5"};
+        ratingChoiceBox.getItems().addAll(ratingChoice);
+
+        /// Set item detail
+        itemImage.setImage(this.storeItem.getImage());
         productTextField.setText(this.storeItem.getTitle());
         authorBrandTextField.setText(this.storeItem.getAuthorBrand());
         priceTextField.setText(String.valueOf(this.storeItem.getPrice()));
@@ -100,15 +102,11 @@ public class ItemStaffPageController extends StaffPage{
         locationTextField.setText(this.storeItem.getItemLocation());
         genreChoiceBox.setValue(this.storeItem.getItemGenre());
         ratingChoiceBox.setValue(String.valueOf(this.storeItem.getRating()));
-
-        if (this.storeItem instanceof Book){
-            descriptionTextArea.setText(((Book) this.storeItem).getDescription());
-        } else {
-            descriptionTextArea.setDisable(true);
-        }
+        imagePathLabel.setText(this.storeItem.getImagePath());
+        descriptionTextArea.setText(storeItem.getDescription());
     }
 
-    public void onChangeImageButtonClicked(){
+    public void onChangeImageButtonClicked() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG", "*.jpg"),
@@ -129,48 +127,26 @@ public class ItemStaffPageController extends StaffPage{
         }
     }
 
-    public void onSaveButtonClicked(){
-        if (storeItem instanceof Book){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Product Detail Confirmation Dialog");
-                alert.setContentText("Do you want to proceed?");
+    public void onSaveButtonClicked() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Product Detail Confirmation Dialog");
+        alert.setContentText("Do you want to proceed?");
 
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    storeItem.setTitle(productTextField.getText());
-                    storeItem.setAuthorBrand(authorBrandTextField.getText());
-                    storeItem.setRating(Integer.parseInt(ratingChoiceBox.getValue()));
-                    storeItem.setQuantity(Integer.parseInt(quantityTextField.getText()));
-                    storeItem.setPrice(Double.parseDouble(priceTextField.getText()));
-                    storeItem.setItemLocation(locationTextField.getText());
-                    storeItem.setItemGenre(genreChoiceBox.getValue());
-                    storeItem.setImage(this.itemImage.getImage());
-                    ((Book) storeItem).setDescription(descriptionTextArea.getText());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            storeItem.setTitle(productTextField.getText());
+            storeItem.setAuthorBrand(authorBrandTextField.getText());
+            storeItem.setRating(Integer.parseInt(ratingChoiceBox.getValue()));
+            storeItem.setQuantity(Integer.parseInt(quantityTextField.getText()));
+            storeItem.setPrice(Double.parseDouble(priceTextField.getText()));
+            storeItem.setItemLocation(locationTextField.getText());
+            storeItem.setItemGenre(genreChoiceBox.getValue());
+            storeItem.setImage(this.itemImage.getImage());
+            storeItem.setDescription(descriptionTextArea.getText());
 
-                    onProductLabelClicked();
-                } else {
-                    alert.close();
-                }
+            goToProductManagementPage();
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Product Detail Confirmation Dialog");
-            alert.setContentText("Do you want to proceed?");
-
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                storeItem.setTitle(productTextField.getText());
-                storeItem.setAuthorBrand(authorBrandTextField.getText());
-                storeItem.setRating(Integer.parseInt(ratingChoiceBox.getValue()));
-                storeItem.setQuantity(Integer.parseInt(quantityTextField.getText()));
-                storeItem.setPrice(Double.parseDouble(priceTextField.getText()));
-                storeItem.setItemLocation(locationTextField.getText());
-                storeItem.setItemGenre(genreChoiceBox.getValue());
-                storeItem.setImage(this.itemImage.getImage());
-
-                onProductLabelClicked();
-            } else {
-                alert.close();
-            }
+            alert.close();
         }
     }
 
@@ -184,7 +160,7 @@ public class ItemStaffPageController extends StaffPage{
         super.topLeftLabelClicked();
     }
 
-    public void backButtonClicked(){
+    public void backButtonClicked() {
         Main productManagementPage = Main.getInstance();
         productManagementPage.changeScene("../page/staffpage/ProductManagementPage.fxml");
 
@@ -197,6 +173,7 @@ public class ItemStaffPageController extends StaffPage{
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }

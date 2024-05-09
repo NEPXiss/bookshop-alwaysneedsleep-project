@@ -250,7 +250,7 @@
                                  </font></Label>
                            </children>
                         </VBox>
-                        <Label fx:id="backLabel" alignment="CENTER" layoutX="996.0" layoutY="431.0" onMouseClicked="#returnToUserMainPage" onMouseEntered="#onMouseEnterBackLabel" onMouseExited="#onMouseExitBackLabel" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #DFDFDF;" text="Back">
+                        <Label fx:id="backLabel" alignment="CENTER" layoutX="982.0" layoutY="38.0" onMouseClicked="#returnToUserMainPage" onMouseEntered="#onMouseEnterBackLabel" onMouseExited="#onMouseExitBackLabel" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #DFDFDF;" text="Back">
                            <font>
                               <Font name="FreesiaUPC" size="28.0" />
                            </font>

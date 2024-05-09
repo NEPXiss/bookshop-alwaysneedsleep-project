@@ -1,5 +1,6 @@
 package page.staffpage;
 
+import application.Main;
 import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -127,6 +128,14 @@ public class ProductManagementController extends StaffPage {
     @Override
     public void topLeftLabelClicked() {
         super.topLeftLabelClicked();
+    }
+
+    public void addNewProductButtonClicked(){
+        Main newProductPage = Main.getInstance();
+        newProductPage.changeScene("../page/staffpage/NewItemPage.fxml");
+
+        ///// Set StaffPage
+        NewItemPageController.getInstance().setPage();
     }
 
     /// All methods below are related to "graphical" FX EventHandler
