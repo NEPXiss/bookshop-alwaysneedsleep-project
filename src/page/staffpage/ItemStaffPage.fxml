@@ -216,6 +216,11 @@
                                     <Font name="FreesiaUPC" size="52.0" />
                                  </font>
                               </Label>
+                              <Button layoutX="136.0" layoutY="692.0" mnemonicParsing="false" onMouseClicked="#onDeleteProductButtonClicked" prefHeight="30.0" prefWidth="134.0" style="-fx-background-color: #C62828;" text="Remove Product" textFill="WHITE">
+                                 <font>
+                                    <Font name="FreesiaUPC" size="21.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </content></ScrollPane>

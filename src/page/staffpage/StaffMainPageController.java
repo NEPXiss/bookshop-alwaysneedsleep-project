@@ -26,7 +26,6 @@ public class StaffMainPageController extends StaffPage{
     private Label userpageManagementLabel;
     @FXML
     private Label orderManagementLabel;
-
     private static StaffMainPageController instance;
 
     public StaffMainPageController() { StaffMainPageController.instance = this;}
@@ -62,6 +61,11 @@ public class StaffMainPageController extends StaffPage{
     @Override
     public void logOutLabelClicked() {
         super.logOutLabelClicked();
+    }
+
+    @Override
+    public void goToUserPageManagementPage() {
+        super.goToUserPageManagementPage();
     }
 
     /// All methods below are related to "graphical" FX EventHandler

@@ -1,6 +1,7 @@
 package base;
 
 import javafx.scene.image.Image;
+import store.StoreStorage;
 import usage.ItemGenre;
 import usage.Orderable;
 
@@ -28,6 +29,12 @@ public abstract class StoreItem implements Orderable {
         setImageByPath(imageByPath);
         this.description = description;
 
+    }
+
+    public void removeItself() {
+        StoreStorage.getStorage().getShelfMap().remove(this);
+        StoreStorage.getStorage().getRecommendedItemsList().remove(this);
+        StoreStorage.getStorage().getNewArrivalList().remove(this);
     }
 
     @Override

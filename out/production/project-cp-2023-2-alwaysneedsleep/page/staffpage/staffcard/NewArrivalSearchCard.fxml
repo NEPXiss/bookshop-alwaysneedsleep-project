@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="cardBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.staffpage.staffcard.NewArrivalSearchCardController">
+   <children>
+      <ImageView fx:id="itemImage" fitHeight="180.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../../../../res/books/letteroftolkien.jpg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="200.0" prefWidth="986.0">
+         <children>
+            <Label fx:id="titleLabel" alignment="BOTTOM_LEFT" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="44.0" prefWidth="332.0" text="Letters Of J.R.R. Tolkien">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="FreesiaUPC Bold" size="39.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="17.0" prefWidth="332.0">
+               <children>
+                  <Label text="by">
+                     <font>
+                        <Font name="FreesiaUPC" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="authorBrandLabel" prefHeight="21.0" prefWidth="248.0" text="Fyodor Dostoevsky">
+                     <font>
+                        <Font name="FreesiaUPC" size="29.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Label fx:id="genreLabel" prefHeight="29.0" prefWidth="334.0" text="Fiction">
+               <font>
+                  <Font name="FreesiaUPC" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="unitPriceLabel" alignment="BOTTOM_LEFT" prefHeight="82.0" prefWidth="332.0" text="300 ฿">
+               <font>
+                  <Font name="FreesiaUPC" size="52.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="557.0">
+               <children>
+                  <Label alignment="CENTER" onMouseClicked="#addToNewArrivals" prefHeight="17.0" prefWidth="142.0" text="Add to New Arrivals">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="21.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
+         </children>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="433.0" />
+   </children>
+</HBox>

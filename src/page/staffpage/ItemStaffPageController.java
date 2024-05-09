@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import store.ProgramController;
+import store.StoreStorage;
 import usage.ItemGenre;
 import utils.Config;
 
@@ -144,6 +145,20 @@ public class ItemStaffPageController extends StaffPage {
             storeItem.setImage(this.itemImage.getImage());
             storeItem.setDescription(descriptionTextArea.getText());
 
+            goToProductManagementPage();
+        } else {
+            alert.close();
+        }
+    }
+
+    public void onDeleteProductButtonClicked() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Product Removal Confirmation Dialog");
+        alert.setContentText("Do you want to proceed? : Removing product '" + this.storeItem.getTitle() + "'");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            this.storeItem.removeItself();
             goToProductManagementPage();
         } else {
             alert.close();

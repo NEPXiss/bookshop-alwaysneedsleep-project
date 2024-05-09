@@ -127,33 +127,45 @@ public class CheckOutPageController extends CartPageController {
         if (cartBox.getChildren().isEmpty()) {
         } else {
             if (!(telephoneTextField.getText().isEmpty()) && !(addressTextArea.getText().isEmpty())) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Product Detail Confirmation Dialog");
-                alert.setContentText("Do you want to proceed?");
+                UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
+                HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
 
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    UserAccount userAccount = (UserAccount) ProgramController.getInstance().getEnteredAccount();
-                    double totalPrice = 0;
-                    for (StoreItem item : userAccount.getCartMap().keySet()) {
-                        totalPrice += item.getPrice() * userAccount.getCartMap().get(item);
+                boolean areAllOrderable = true;
+                for (StoreItem item : orderItemsMap.keySet()) {
+                    if (!(StoreStorage.getStorage().getShelfMap().containsKey(item))) {
+                        areAllOrderable = false;
                     }
-
-                    HashMap<StoreItem, Integer> orderItemsMap = new HashMap<>(userAccount.getCartMap());
-                    Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
-                    userAccount.getOrderList().add(newOrder);
-                    StoreStorage.getStorage().getOrderArrayList().add(newOrder);
-                    returnToUserMainPage();
-                    userAccount.getCartMap().clear();
-
-                    /// Decrease the quantity of items:
-                    for (StoreItem item : orderItemsMap.keySet()){
-                        item.setQuantity(item.getQuantity() - orderItemsMap.get(item));
-                    }
-                } else {
-                    alert.close();
                 }
 
+                if (areAllOrderable) {
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Product Detail Confirmation Dialog");
+                    alert.setContentText("Do you want to proceed?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+                        double totalPrice = 0;
+                        for (StoreItem item : userAccount.getCartMap().keySet()) {
+                            totalPrice += item.getPrice() * userAccount.getCartMap().get(item);
+                        }
+
+                        Order newOrder = new Order(ProgramController.getInstance().getEnteredAccount().getUsername(), orderItemsMap, totalPrice, addressTextArea.getText(), telephoneTextField.getText());
+                        userAccount.getOrderList().add(newOrder);
+                        StoreStorage.getStorage().getOrderArrayList().add(newOrder);
+                        returnToUserMainPage();
+                        userAccount.getCartMap().clear();
+
+                        /// Decrease the quantity of items:
+                        for (StoreItem item : orderItemsMap.keySet()) {
+                            item.setQuantity(item.getQuantity() - orderItemsMap.get(item));
+                        }
+                    } else {
+                        alert.close();
+                    }
+                } else {
+                    alertLabel.setText("There is a problem ordering this item. Please contact staffs");
+                }
             } else {
                 alertLabel.setText("Please enter your phone number and delivery address to place order");
             }
@@ -186,7 +198,9 @@ public class CheckOutPageController extends CartPageController {
         super.userCartLabelClicked();
     }
 
-    public void onUserOrderLabelClicked() {super.onUserOrderLabelClicked();}
+    public void onUserOrderLabelClicked() {
+        super.onUserOrderLabelClicked();
+    }
 
 
     /// All methods below are related to "graphical" FX EventHandler

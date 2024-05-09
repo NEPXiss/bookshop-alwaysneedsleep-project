@@ -108,7 +108,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="userpageManagementLabel" alignment="CENTER" onMouseEntered="#onEnterUserLabel" onMouseExited="#onExitUserLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #DB3E78;" text="Userpage Management">
+                                                <Label fx:id="userpageManagementLabel" alignment="CENTER" onMouseClicked="#goToUserPageManagementPage" onMouseEntered="#onEnterUserLabel" onMouseExited="#onExitUserLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #DB3E78;" text="Userpage Management">
                                                    <padding>
                                                       <Insets left="20.0" />
                                                    </padding>
