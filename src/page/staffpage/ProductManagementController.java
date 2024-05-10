@@ -83,7 +83,7 @@ public class ProductManagementController extends StaffPage {
                     productBox.getChildren().clear();
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/ItemCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/ItemCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -99,7 +99,7 @@ public class ProductManagementController extends StaffPage {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         if ((item.getTitle().toLowerCase().contains(input.toLowerCase())) || (item.getAuthorBrand().toLowerCase().contains(input.toLowerCase()))){
                             FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/ItemCard.fxml"));
+                            fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/ItemCard.fxml"));
                             HBox itemCard = null;
                             try {
                                 itemCard = fxmlLoader.load();
@@ -132,7 +132,7 @@ public class ProductManagementController extends StaffPage {
 
     public void addNewProductButtonClicked(){
         Main newProductPage = Main.getInstance();
-        newProductPage.changeScene("../page/staffpage/NewItemPage.fxml");
+        newProductPage.changeScene("/page/staffpage/NewItemPage.fxml");
 
         ///// Set StaffPage
         NewItemPageController.getInstance().setPage();

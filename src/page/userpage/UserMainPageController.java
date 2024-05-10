@@ -95,7 +95,7 @@ public class UserMainPageController extends UserPage {
             public void run() {
                 for (StoreItem item : StoreStorage.getStorage().getNewArrivalList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/ExclusiveCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/card/ExclusiveCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
@@ -118,7 +118,7 @@ public class UserMainPageController extends UserPage {
                 int column = 0;
                 for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/Card.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/card/Card.fxml"));
                     VBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
@@ -150,7 +150,7 @@ public class UserMainPageController extends UserPage {
 
     public void onSearchButtonClicked(){
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

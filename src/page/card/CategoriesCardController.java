@@ -25,7 +25,7 @@ public class CategoriesCardController {
 
     public void onGenreLabelClicked() {
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.genreLabel.getText());

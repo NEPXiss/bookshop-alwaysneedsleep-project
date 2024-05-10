@@ -93,7 +93,7 @@ public class UserOrderPageController extends UserPage{
                 if (!(enteredUserAccount.getOrderList().isEmpty())){
                     for (Order order : enteredUserAccount.getOrderList()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/OrderCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/card/OrderCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -123,7 +123,7 @@ public class UserOrderPageController extends UserPage{
 
     public void onSearchButtonClicked(){
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

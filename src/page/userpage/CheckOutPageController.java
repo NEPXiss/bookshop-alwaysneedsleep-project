@@ -106,7 +106,7 @@ public class CheckOutPageController extends CartPageController {
                 double totalPrice = 0;
                 for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/CartCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/card/CartCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();

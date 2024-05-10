@@ -78,7 +78,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add fiction category
                         FXMLLoader fictionLoader = new FXMLLoader();
-                        fictionLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        fictionLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox fictionHBox = null;
                         try {
                             fictionHBox = fictionLoader.load();
@@ -91,7 +91,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add history category
                         FXMLLoader historyLoader = new FXMLLoader();
-                        historyLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        historyLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox historyHBox = null;
                         try {
                             historyHBox = historyLoader.load();
@@ -105,7 +105,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add Philosophy category
                         FXMLLoader philosophyLoader = new FXMLLoader();
-                        philosophyLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        philosophyLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox philosophyHbox = null;
                         try {
                             philosophyHbox = philosophyLoader.load();
@@ -119,7 +119,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add Science category
                         FXMLLoader scienceLoader = new FXMLLoader();
-                        scienceLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        scienceLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox scienceHbox = null;
                         try {
                             scienceHbox = scienceLoader.load();
@@ -133,7 +133,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add Psychology category
                         FXMLLoader psychologyLoader = new FXMLLoader();
-                        psychologyLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        psychologyLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox psychologyHBox = null;
                         try {
                             psychologyHBox = psychologyLoader.load();
@@ -147,7 +147,7 @@ public class CategoriesPageController extends UserPage {
 
                         ///Add Education category
                         FXMLLoader educationLoader = new FXMLLoader();
-                        educationLoader.setLocation(getClass().getResource("../card/CategoriesCard.fxml"));
+                        educationLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox educationHbox = null;
                         try {
                             educationHbox = educationLoader.load();
@@ -175,7 +175,7 @@ public class CategoriesPageController extends UserPage {
 
     public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

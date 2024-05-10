@@ -37,7 +37,7 @@ public class OrderDetailCardController {
 
     public void onMouseClickTitleLabel(){
         Main bookPage = Main.getInstance();
-        bookPage.changeScene("../page/userpage/BookPageInterface.fxml");
+        bookPage.changeScene("/page/userpage/BookPageInterface.fxml");
 
         ///Set up -> setPage and setMoreFromThisAuthor
         BookPageController.getInstance().setPage(this.storeItem);

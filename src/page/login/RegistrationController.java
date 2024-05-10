@@ -78,7 +78,7 @@ public class RegistrationController {
 
                                 ////////////////////////////////////
                                 Main backToLogInPage = Main.getInstance();
-                                backToLogInPage.changeScene("../page/login/LoginInterface.fxml");
+                                backToLogInPage.changeScene("/page/login/LoginInterface.fxml");
                                 ///Set logo image in LoginInterface
                                 LoginController.getInstance().setLogoImage();
 
@@ -97,7 +97,7 @@ public class RegistrationController {
     public void backButtonClicked() {
         try {
             Main backToLogInPage = Main.getInstance();
-            backToLogInPage.changeScene("../page/login/LoginInterface.fxml");
+            backToLogInPage.changeScene("/page/login/LoginInterface.fxml");
 
             ///Set logo image in LoginInterface
             LoginController.getInstance().setLogoImage();

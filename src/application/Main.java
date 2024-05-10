@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         instance = this;
-        Parent root = FXMLLoader.load(getClass().getResource("../page/login/LoginInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/page/login/LoginInterface.fxml"));
         Scene scene = new Scene(root, 1360, 786);
         primaryStage.setScene(scene);
 

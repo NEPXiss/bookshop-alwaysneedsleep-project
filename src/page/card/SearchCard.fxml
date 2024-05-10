@@ -20,7 +20,7 @@
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="986.0">
          <children>
-            <Label fx:id="titleLabel" alignment="BOTTOM_LEFT" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="44.0" prefWidth="332.0" text="Letters Of J.R.R. Tolkien">
+            <Label fx:id="titleLabel" alignment="BOTTOM_LEFT" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="44.0" prefWidth="551.0" text="Letters Of J.R.R. Tolkien">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

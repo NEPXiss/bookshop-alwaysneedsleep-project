@@ -28,7 +28,7 @@ public class ItemCardController extends WishlistCardController {
 
     public void onMouseClickTitleLabel(){
         Main itemStaffPage = Main.getInstance();
-        itemStaffPage.changeScene("../page/staffpage/ItemStaffPage.fxml");
+        itemStaffPage.changeScene("/page/staffpage/ItemStaffPage.fxml");
 
         ///Set page
         ItemStaffPageController.getInstance().setPage(this.storeItem);

@@ -99,7 +99,7 @@ public class UserPageManagementController extends StaffPage {
 
                 for (StoreItem item : StoreStorage.getStorage().getNewArrivalList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/NewArrivalCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/NewArrivalCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
@@ -114,7 +114,7 @@ public class UserPageManagementController extends StaffPage {
                 if (input.isEmpty()) {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/NewArrivalSearchCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/NewArrivalSearchCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -129,7 +129,7 @@ public class UserPageManagementController extends StaffPage {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         if ((item.getTitle().toLowerCase().contains(input.toLowerCase())) || (item.getAuthorBrand().toLowerCase().contains(input.toLowerCase()))) {
                             FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/NewArrivalSearchCard.fxml"));
+                            fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/NewArrivalSearchCard.fxml"));
                             HBox itemCard = null;
                             try {
                                 itemCard = fxmlLoader.load();
@@ -154,7 +154,7 @@ public class UserPageManagementController extends StaffPage {
 
                 for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/RecommCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/RecommCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
@@ -169,7 +169,7 @@ public class UserPageManagementController extends StaffPage {
                 if (input.isEmpty()) {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/RecommSearchCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/RecommSearchCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -184,7 +184,7 @@ public class UserPageManagementController extends StaffPage {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         if ((item.getTitle().toLowerCase().contains(input.toLowerCase())) || (item.getAuthorBrand().toLowerCase().contains(input.toLowerCase()))) {
                             FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("../staffpage/staffcard/RecommSearchCard.fxml"));
+                            fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/RecommSearchCard.fxml"));
                             HBox itemCard = null;
                             try {
                                 itemCard = fxmlLoader.load();

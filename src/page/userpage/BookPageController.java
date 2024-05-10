@@ -135,7 +135,7 @@ public class BookPageController extends UserPage {
                 for (StoreItem storeItem : StoreStorage.getStorage().getShelfMap().keySet()) {
                     if ((storeItem.getAuthorBrand().equals(storeItemOfThisPage.getAuthorBrand())) && !(storeItem.equals(storeItemOfThisPage))) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/Card.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/card/Card.fxml"));
                         VBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -158,7 +158,7 @@ public class BookPageController extends UserPage {
 
     public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

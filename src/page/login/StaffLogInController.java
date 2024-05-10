@@ -67,7 +67,7 @@ public class StaffLogInController {
                         staffLogInMessageLabel.setText("Logging in...");
                         ////go to staff main page
                         Main staffMainPage = Main.getInstance();
-                        staffMainPage.changeScene("../page/staffpage/StaffMainPage.fxml");
+                        staffMainPage.changeScene("/page/staffpage/StaffMainPage.fxml");
 
                         ///// Set ProgramController
                         ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()), ControllerInstance.STAFF);
@@ -103,7 +103,7 @@ public class StaffLogInController {
 
     public void setSignInAsUserButtonClicked() {
         Main userSigninPage = Main.getInstance();
-        userSigninPage.changeScene("../page/login/LoginInterface.fxml");
+        userSigninPage.changeScene("/page/login/LoginInterface.fxml");
 
         ///Set logo image in LoginInterface
         LoginController.getInstance().setLogoImage();

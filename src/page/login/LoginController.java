@@ -61,7 +61,7 @@ public class LoginController {
                         ///// Go to UserMainPage
                         logInMessageLabel.setText("Logging in...");
                         Main userMainPage = Main.getInstance();
-                        userMainPage.changeScene("../page/userpage/UserMainPageInterface.fxml");
+                        userMainPage.changeScene("/page/userpage/UserMainPageInterface.fxml");
 
                         ///// Set ProgramController
                         ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()), ControllerInstance.USER);
@@ -90,7 +90,7 @@ public class LoginController {
     public void setSignInAsStaffButtonClicked() {
         try {
             Main staffSigninPage = Main.getInstance();
-            staffSigninPage.changeScene("../page/login/StaffLoginInterface.fxml");
+            staffSigninPage.changeScene("/page/login/StaffLoginInterface.fxml");
 
             /// Set Logo image for StaffInterface
             StaffLogInController.getInstance().setLogoImage();
@@ -102,7 +102,7 @@ public class LoginController {
     public void registerButtonClicked() {
         try {
             Main registrationPage = Main.getInstance();
-            registrationPage.changeScene("../page/login/RegistrationInterface.fxml");
+            registrationPage.changeScene("/page/login/RegistrationInterface.fxml");
 
             /// Set Logo image for RegistrationInterface
             RegistrationController.getInstance().setLogoImage();

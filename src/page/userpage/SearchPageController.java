@@ -71,7 +71,7 @@ public class SearchPageController extends UserPage {
 
         /// Add filterBox
         FXMLLoader filterLoader = new FXMLLoader();
-        filterLoader.setLocation(getClass().getResource("../userpage/components/SearchFilter.fxml"));
+        filterLoader.setLocation(getClass().getResource("/page/userpage/components/SearchFilter.fxml"));
         HBox filterBox = null;
         try {
             filterBox = filterLoader.load();
@@ -122,7 +122,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.FICTION)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -140,7 +140,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.PHILOSOPHY)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -158,7 +158,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.SCIENCE)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -176,7 +176,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.PSYCHOLOGY)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -194,7 +194,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.EDUCATION)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -212,7 +212,7 @@ public class SearchPageController extends UserPage {
                         for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()){
                             if (item.getItemGenre().equals(ItemGenre.HISTORY)){
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                                 HBox itemCard = null;
                                 try {
                                     itemCard = fxmlLoader.load();
@@ -236,7 +236,7 @@ public class SearchPageController extends UserPage {
                     for (StoreItem item : StoreStorage.getStorage().getShelfMap().keySet()) {
                         if ((item.getTitle().toLowerCase().contains(searchInput.toLowerCase())) || ((item.getAuthorBrand().toLowerCase().contains(searchInput.toLowerCase())))) {
                             FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                            fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                             HBox itemCard = null;
                             try {
                                 itemCard = fxmlLoader.load();
@@ -266,7 +266,7 @@ public class SearchPageController extends UserPage {
 
                 for (StoreItem item : storeItems) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../card/SearchCard.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/page/card/SearchCard.fxml"));
                     HBox itemCard = null;
                     try {
                         itemCard = fxmlLoader.load();
@@ -306,7 +306,7 @@ public class SearchPageController extends UserPage {
 
     public void onSearchButtonClicked() {
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

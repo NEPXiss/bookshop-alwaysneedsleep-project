@@ -109,7 +109,7 @@ public class CartPageController extends UserPage {
                     double totalPrice = 0;
                     for (StoreItem item : enteredUserAccount.getCartMap().keySet()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/CartCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/card/CartCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -139,7 +139,7 @@ public class CartPageController extends UserPage {
 
     public void onSearchButtonClicked(){
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());
@@ -157,7 +157,7 @@ public class CartPageController extends UserPage {
         if (cartBox.getChildren().isEmpty()){
         } else {
             Main checkOutPage = Main.getInstance();
-            checkOutPage.changeScene("../page/userpage/CheckOutPage.fxml");
+            checkOutPage.changeScene("/page/userpage/CheckOutPage.fxml");
 
             ///Set Cart Page
             CheckOutPageController.getInstance().setPage();

@@ -177,7 +177,7 @@ public class ItemStaffPageController extends StaffPage {
 
     public void backButtonClicked() {
         Main productManagementPage = Main.getInstance();
-        productManagementPage.changeScene("../page/staffpage/ProductManagementPage.fxml");
+        productManagementPage.changeScene("/page/staffpage/ProductManagementPage.fxml");
 
         ///// Set StaffPage
         ProductManagementController.getInstance().setPage("");

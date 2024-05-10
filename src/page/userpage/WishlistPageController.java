@@ -95,7 +95,7 @@ public class WishlistPageController extends UserPage {
                 if (!(enteredUserAccount.getWishList().isEmpty())){
                     for (StoreItem item : enteredUserAccount.getWishList()) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("../card/WishlistCard.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/page/card/WishlistCard.fxml"));
                         HBox itemCard = null;
                         try {
                             itemCard = fxmlLoader.load();
@@ -120,7 +120,7 @@ public class WishlistPageController extends UserPage {
 
     public void onSearchButtonClicked(){
         Main searchPage = Main.getInstance();
-        searchPage.changeScene("../page/userpage/SearchPageInterface.fxml");
+        searchPage.changeScene("/page/userpage/SearchPageInterface.fxml");
 
         ///Set search Page
         SearchPageController.getInstance().setPage(this.searchTextField.getText());

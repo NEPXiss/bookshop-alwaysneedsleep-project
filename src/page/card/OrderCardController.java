@@ -35,7 +35,7 @@ public class OrderCardController {
 
         for (StoreItem item : order.getOrderItems().keySet()){
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../card/OrderDetailCard.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/page/card/OrderDetailCard.fxml"));
             HBox itemCard = null;
             try {
                 itemCard = fxmlLoader.load();

@@ -96,7 +96,7 @@
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="productManagementLabel" alignment="CENTER" onMouseClicked="#goToProductManagementPage" onMouseEntered="#onEnterProductLabel" onMouseExited="#onExitProductLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #6C9DDC;" text="Products Management">
+                                                <Label fx:id="productManagementLabel" alignment="CENTER" onMouseClicked="#goToProductManagementPage" onMouseEntered="#onEnterProductLabel" onMouseExited="#onExitProductLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #6C9DDC; -fx-background-radius: 15;" text="Products Management">
                                                    <font>
                                                       <Font name="FreesiaUPC" size="36.0" />
                                                    </font>
@@ -108,7 +108,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="userpageManagementLabel" alignment="CENTER" onMouseClicked="#goToUserPageManagementPage" onMouseEntered="#onEnterUserLabel" onMouseExited="#onExitUserLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #DB3E78;" text="Userpage Management">
+                                                <Label fx:id="userpageManagementLabel" alignment="CENTER" onMouseClicked="#goToUserPageManagementPage" onMouseEntered="#onEnterUserLabel" onMouseExited="#onExitUserLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #DB3E78; -fx-background-radius: 15;" text="Userpage Management">
                                                    <padding>
                                                       <Insets left="20.0" />
                                                    </padding>
@@ -120,7 +120,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="orderManagementLabel" alignment="CENTER" onMouseEntered="#onEnterOrderLabel" onMouseExited="#onExitOrderLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #3B9E91;" text="Order Management">
+                                                <Label fx:id="orderManagementLabel" alignment="CENTER" onMouseEntered="#onEnterOrderLabel" onMouseExited="#onExitOrderLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #3B9E91; -fx-background-radius: 15;" text="Order Management">
                                                    <padding>
                                                       <Insets left="20.0" />
                                                    </padding>

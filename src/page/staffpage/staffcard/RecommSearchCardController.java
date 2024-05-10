@@ -24,14 +24,14 @@ public class RecommSearchCardController extends RecommCardController{
     }
     public void onMouseClickTitleLabel(){
         Main itemStaffPage = Main.getInstance();
-        itemStaffPage.changeScene("../page/staffpage/ItemStaffPage.fxml");
+        itemStaffPage.changeScene("/page/staffpage/ItemStaffPage.fxml");
 
         ///Set page
         ItemStaffPageController.getInstance().setPage(this.storeItem);
     }
 
     public void addToRecomm() {
-        if (!(StoreStorage.getStorage().getRecommendedItemsList().contains(this.storeItem))){
+        if (!(StoreStorage.getStorage().getRecommendedItemsList().contains(this.storeItem)) && (StoreStorage.getStorage().getRecommendedItemsList().size() < 18)){
             StoreStorage.getStorage().getRecommendedItemsList().add(this.storeItem);
             Thread t = new Thread(() -> {
                 try {
