@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="cardBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="page.adminpage.admincard.AccountDetailCardController">
+   <children>
+      <VBox prefHeight="150.0" prefWidth="388.0" style="-fx-background-color: #E0E0E0;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="142.0" text="USERNAME :">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="usernameLabel" prefHeight="75.0" prefWidth="243.0" text="username">
+                     <font>
+                        <Font name="FreesiaUPC" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="143.0" text="ACCOUNT TYPE :">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="accountTypeLabel" prefHeight="75.0" prefWidth="242.0" text="STAFF">
+                     <font>
+                        <Font name="FreesiaUPC Bold" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <AnchorPane prefHeight="150.0" prefWidth="540.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="37.0" layoutY="14.0" prefHeight="35.0" prefWidth="466.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="92.0" text="USERNAME :">
+                     <font>
+                        <Font name="FreesiaUPC" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameTextField" prefHeight="25.0" prefWidth="310.0" />
+               </children>
+            </HBox>
+            <HBox fx:id="passwordHBox" alignment="CENTER_LEFT" layoutX="37.0" layoutY="49.0" prefHeight="35.0" prefWidth="466.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="92.0" text="PASSWORD :">
+                     <font>
+                        <Font name="FreesiaUPC" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="buttonBox" alignment="CENTER" layoutX="74.0" layoutY="93.0" prefHeight="43.0" prefWidth="354.0">
+               <children>
+                  <Button fx:id="saveButton" mnemonicParsing="false" onMouseClicked="#onSaveButtonClicked" prefHeight="25.0" prefWidth="82.0" text="SAVE">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="resetButton" mnemonicParsing="false" onMouseClicked="#onResetButtonClicked" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #2754D0;" text="RESET" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#onDeleteButtonClicked" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #C42323;" text="Delete this account" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

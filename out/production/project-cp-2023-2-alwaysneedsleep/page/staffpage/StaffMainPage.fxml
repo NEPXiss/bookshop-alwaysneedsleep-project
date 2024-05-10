@@ -120,7 +120,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="orderManagementLabel" alignment="CENTER" onMouseEntered="#onEnterOrderLabel" onMouseExited="#onExitOrderLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #3B9E91; -fx-background-radius: 15;" text="Order Management">
+                                                <Label fx:id="orderManagementLabel" alignment="CENTER" onMouseClicked="#goToOrderManagementPage" onMouseEntered="#onEnterOrderLabel" onMouseExited="#onExitOrderLabel" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #3B9E91; -fx-background-radius: 15;" text="Order Management">
                                                    <padding>
                                                       <Insets left="20.0" />
                                                    </padding>
@@ -130,26 +130,6 @@
                                                 </Label>
                                              </children>
                                           </HBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox prefHeight="414.0" prefWidth="919.0" style="-fx-background-radius: 15;">
-                                       <children>
-                                          <Label prefHeight="55.0" prefWidth="922.0" style="-fx-background-color: #C0C0C0;" text="ANNOUCEMENT FROM ADMIN">
-                                             <font>
-                                                <Font name="FreesiaUPC" size="30.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                             <padding>
-                                                <Insets left="20.0" />
-                                             </padding>
-                                          </Label>
-                                          <ScrollPane prefHeight="363.0" prefWidth="919.0">
-                                             <content>
-                                                <VBox prefHeight="305.0" prefWidth="916.0" />
-                                             </content>
-                                          </ScrollPane>
                                        </children>
                                     </VBox>
                                  </children></VBox>

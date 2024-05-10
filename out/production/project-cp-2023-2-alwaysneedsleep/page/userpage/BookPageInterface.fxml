@@ -182,14 +182,22 @@
                                  </children>
                               </HBox>
                               <Separator prefWidth="200.0" />
-                              <Text fx:id="descriptionText" strokeType="OUTSIDE" strokeWidth="0.0" text="J.R.R. Tolkien was one of the most prolific letter writers of this century. Over the years he wrote to his publishers, his family, to friends (including C.S. Lewis, W.H. Auden and Naomi Mitchison) and to fans of his books. The letters present a fascinating and highly detailed portrait of the man in many of his aspects: as storyteller, scholar, Catholic, parent and observer of the world around him. They also shed much light on his creative genius and grand design for the creation of a whole new world – Middle-earth." wrappingWidth="609.13671875">
-                                 <font>
-                                    <Font name="Cambria" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </VBox.margin>
-                              </Text>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="167.0" prefWidth="653.0">
+                                       <children>
+                                          <Text fx:id="descriptionText" strokeType="OUTSIDE" strokeWidth="0.0" text="J.R.R. Tolkien was one of the most prolific letter writers of this century. Over the years he wrote to his publishers, his family, to friends (including C.S. Lewis, W.H. Auden and Naomi Mitchison) and to fans of his books. The letters present a fascinating and highly detailed portrait of the man in many of his aspects: as storyteller, scholar, Catholic, parent and observer of the world around him. They also shed much light on his creative genius and grand design for the creation of a whole new world – Middle-earth." wrappingWidth="605.13671875">
+                                             <font>
+                                                <Font name="Cambria" size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
                               <Separator prefWidth="200.0" />
                               <HBox prefHeight="21.0" prefWidth="650.0">
                                  <children>

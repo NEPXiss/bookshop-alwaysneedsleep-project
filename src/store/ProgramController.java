@@ -1,10 +1,8 @@
 package store;
 
 import base.Account;
-import usage.ControllerInstance;
 
 public class ProgramController {
-    private ControllerInstance controllerInstance;
     private Account enteredAccount;
     private static ProgramController instance;
 
@@ -16,9 +14,8 @@ public class ProgramController {
         return enteredAccount;
     }
 
-    public void setEnteredAccount(Account enteredAccount, ControllerInstance controllerInstance) {
+    public void setEnteredAccount(Account enteredAccount) {
         this.enteredAccount = enteredAccount;
-        this.controllerInstance = controllerInstance;
     }
 
     public static ProgramController getInstance() {
@@ -26,9 +23,5 @@ public class ProgramController {
             instance = new ProgramController();
         }
         return instance;
-    }
-
-    public ControllerInstance getControllerInstance() {
-        return controllerInstance;
     }
 }

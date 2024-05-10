@@ -11,7 +11,6 @@ import page.userpage.UserMainPageController;
 import person.UserAccount;
 import store.ProgramController;
 import store.StoreDataBase;
-import usage.ControllerInstance;
 import utils.Config;
 import utils.GetAccess;
 
@@ -64,7 +63,7 @@ public class LoginController {
                         userMainPage.changeScene("/page/userpage/UserMainPageInterface.fxml");
 
                         ///// Set ProgramController
-                        ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()), ControllerInstance.USER);
+                        ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()));
 
                         ///// Set UserMainPageInterface
                         UserMainPageController.getInstance().setPage();

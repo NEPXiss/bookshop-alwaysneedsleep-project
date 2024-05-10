@@ -22,7 +22,7 @@
          <children>
             <Label fx:id="titleLabel" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="17.0" prefWidth="156.0" text="Meditation">
                <font>
-                  <Font name="FreesiaDSE Bold" size="30.0" />
+                  <Font name="FreesiaUPC Bold" size="30.0" />
                </font>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -30,7 +30,7 @@
             </Label>
             <Label fx:id="authorBrandLabel" text="Marcus Aurelius">
                <font>
-                  <Font name="FreesiaDSE" size="20.0" />
+                  <Font name="FreesiaUPC Bold" size="20.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="2.0" />
@@ -41,7 +41,7 @@
                   <Label fx:id="starLabel" prefHeight="17.0" prefWidth="80.0" text="star" />
                   <Label fx:id="priceLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="76.0" text="300">
                      <font>
-                        <Font name="FreesiaDSE" size="27.0" />
+                        <Font name="FreesiaUPC" size="27.0" />
                      </font>
                   </Label>
                </children>

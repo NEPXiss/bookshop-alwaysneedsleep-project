@@ -8,13 +8,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import page.adminpage.AdminMainPageController;
 import page.staffpage.StaffMainPageController;
-import page.userpage.UserMainPageController;
 import person.AdminAccount;
 import person.StaffAccount;
 import store.ProgramController;
 import store.StoreDataBase;
-import usage.ControllerInstance;
 import utils.Config;
 import utils.GetAccess;
 
@@ -70,7 +69,7 @@ public class StaffLogInController {
                         staffMainPage.changeScene("/page/staffpage/StaffMainPage.fxml");
 
                         ///// Set ProgramController
-                        ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()), ControllerInstance.STAFF);
+                        ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()));
 
                         ///// Set StaffPage
                         StaffMainPageController.getInstance().setPage();
@@ -81,8 +80,14 @@ public class StaffLogInController {
                     if (GetAccess.validateLogin(usernameTextField.getText(), logInPasswordField.getText())) {
                         staffLogInMessageLabel.setText("Logging in...");
                         ////go to admin main page
+                        Main adminMainPage = Main.getInstance();
+                        adminMainPage.changeScene("/page/adminpage/AdminMainPage.fxml");
 
+                        ///// Set ProgramController
+                        ProgramController.getInstance().setEnteredAccount(StoreDataBase.getStoreAccountDataBase().getAccountMap().get(usernameTextField.getText()));
 
+                        ///// Set AdminPage
+                        AdminMainPageController.getInstance().setPage("");
 
                     } else {
                         staffLogInMessageLabel.setText("Incorrect Password - Please try again");

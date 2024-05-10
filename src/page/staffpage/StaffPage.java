@@ -35,4 +35,12 @@ public abstract class StaffPage {
         ///// Set StaffPage
         UserPageManagementController.getInstance().setPage();
     }
+
+    public void goToOrderManagementPage(){
+        Main orderManagementPage = Main.getInstance();
+        orderManagementPage.changeScene("/page/staffpage/OrderManagementPage.fxml");
+
+        ///// Set StaffPage
+        OrderManagementPageController.getInstance().setPage("");
+    }
 }

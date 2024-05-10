@@ -11,8 +11,8 @@
       <element id="extracted-dir" path="$USER_HOME$/Desktop/COMPUTER ENGINEERING LECTURE NOTE/JAVAFX/openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/lib/javafx.media.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/COMPUTER ENGINEERING LECTURE NOTE/JAVAFX/openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/COMPUTER ENGINEERING LECTURE NOTE/JAVAFX/openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/lib/javafx.web.jar" path-in-jar="/" />
-      <element id="dir-copy" path="$PROJECT_DIR$/res" />
       <element id="module-source" name="project-cp-2023-2-alwaysneedsleep" />
+      <element id="dir-copy" path="$PROJECT_DIR$/res" />
     </root>
   </artifact>
 </component>

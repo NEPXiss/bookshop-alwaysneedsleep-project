@@ -4,7 +4,6 @@ import base.Account;
 import base.StoreItem;
 import store.StoreDataBase;
 import store.Order;
-import usage.ControllerInstance;
 import usage.Registrable;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class UserAccount extends Account implements Registrable {
     private HashMap<StoreItem, Integer> cartMap;
     private ArrayList<StoreItem> wishList;
     public UserAccount(String username, String password) {
-        super(username, password, ControllerInstance.USER);
+        super(username, password);
         this.orderList = new ArrayList<Order>();
         this.cartMap = new HashMap<>();
         this.wishList = new ArrayList<>();
@@ -25,6 +24,11 @@ public class UserAccount extends Account implements Registrable {
     public String getDisplayUsername(){
         return "USER : " + super.getUsername();
     }  /// OVERRIDE TO USE POLYMORPHISM
+
+    @Override
+    public String getAccountType(){
+        return "USER";
+    } /// OVERRIDE TO USE POLYMORPHISM
 
     public ArrayList<Order> getOrderList() {return orderList;}
 
@@ -39,6 +43,5 @@ public class UserAccount extends Account implements Registrable {
     @Override
     public void addAccountToDataBase(){
         StoreDataBase.getStoreAccountDataBase().getAccountMap().put(this.getUsername(),this);
-        StoreDataBase.getStoreAccountDataBase().getUserAccountArrayList().add(this);
     }
 }

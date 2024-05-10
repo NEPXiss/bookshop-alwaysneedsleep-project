@@ -25,22 +25,22 @@
          <children>
             <Label fx:id="itemTitleLabel" onMouseClicked="#onMouseClickTitleLabel" onMouseEntered="#onEnterTitleLabel" onMouseExited="#onExitTitleLabel" prefHeight="45.0" prefWidth="266.0" text="Les Miserable">
                <font>
-                  <Font name="FreesiaDSE Bold" size="52.0" />
+                  <Font name="FreesiaUPC Bold" size="52.0" />
                </font>
             </Label>
             <Label fx:id="authorBrandLabel" prefHeight="34.0" prefWidth="273.0" text="Victor Hugo">
                <font>
-                  <Font name="FreesiaDSE" size="36.0" />
+                  <Font name="FreesiaUPC" size="36.0" />
                </font>
             </Label>
             <Label fx:id="genreLabel" prefHeight="34.0" prefWidth="278.0" text="Fiction">
                <font>
-                  <Font name="FreesiaDSE" size="29.0" />
+                  <Font name="FreesiaUPC" size="29.0" />
                </font>
             </Label>
             <Label fx:id="priceLabel" alignment="CENTER_RIGHT" prefHeight="56.0" prefWidth="266.0" text="450฿ ">
                <font>
-                  <Font name="FreesiaDSE" size="52.0" />
+                  <Font name="FreesiaUPC" size="52.0" />
                </font>
             </Label>
             <Label fx:id="starLabel" prefHeight="43.0" prefWidth="266.0" text="star">

@@ -23,13 +23,15 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
         this.telNumber = telNumber;
         this.deliveryStatus = DeliveryStatus.AWAITING;
-        StoreStorage.getStorage().getOrderArrayList().add(this);
     }
 
     public DeliveryStatus getDeliveryStatus() {
         return deliveryStatus;
     }
 
+    public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
     public String getTelNumber() {
         return telNumber;
     }

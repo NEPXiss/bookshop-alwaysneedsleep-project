@@ -68,6 +68,11 @@ public class StaffMainPageController extends StaffPage{
         super.goToUserPageManagementPage();
     }
 
+    @Override
+    public void goToOrderManagementPage(){
+        super.goToOrderManagementPage();
+    }
+
     /// All methods below are related to "graphical" FX EventHandler
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
