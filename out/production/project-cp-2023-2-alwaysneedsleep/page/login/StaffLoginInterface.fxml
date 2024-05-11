@@ -34,15 +34,15 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="345.0" layoutY="237.0" text="STAFF LOGIN">
+            <Label layoutX="315.0" layoutY="235.0" text="STAFF LOGIN">
                <font>
-                  <Font name="Franklin Gothic Medium" size="41.0" />
+                  <Font name="Century" size="41.0" />
                </font>
             </Label>
             <TextField fx:id="usernameTextField" layoutX="415.0" layoutY="311.0" prefHeight="25.0" prefWidth="191.0" promptText="Enter your username" />
             <Label layoutX="310.0" layoutY="346.0" text="Password :">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Century" size="18.0" />
                </font>
             </Label>
             <Button fx:id="staffSignInButton" layoutX="536.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#staffSignInButtonClicked" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #4793AF;" text="Sign in" textFill="WHITE">
