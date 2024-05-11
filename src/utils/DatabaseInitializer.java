@@ -369,7 +369,7 @@ public class DatabaseInitializer {
                 "\"One of the best critiques of current mathematics education I have ever seen.\"-Keith Devlin, math columnist on NPR's Morning Edition A brilliant research mathematician who has devoted his career to teaching kids reveals math to be creative and beautiful and rejects standard anxiety-producing teaching methods. Witty and accessible, Paul Lockhart's controversial approach will provoke spirited debate among educators and parents alike and it will alter the way we think about math forever. Paul Lockhart, has taught mathematics at Brown University and UC Santa Cruz. Since 2000, he has dedicated himself to K-12 level students at St. Ann's School in Brooklyn, New York.");
         StoreStorage.getStorage().getShelfMap().put(book60,book60.getItemLocation());
 
-        Book book61 = new Book("A Mind at Play", "", ItemGenre.EDUCATION, 722, 5, 10, "ED4", "books/amindatplay.jpg",
+        Book book61 = new Book("A Mind at Play", "Jimmy Soni", ItemGenre.EDUCATION, 722, 5, 10, "ED4", "books/amindatplay.jpg",
                 "Chronicles the life and times of the groundbreaking Information Age intellect, revealing how his discoveries and innovations set the stage for the digital era and influenced the work of collaborators and rivals.");
         StoreStorage.getStorage().getShelfMap().put(book61,book61.getItemLocation());
 
@@ -500,9 +500,9 @@ public class DatabaseInitializer {
 
 
         ///add example books to newArrivalList
-        StoreStorage.getStorage().getNewArrivalList().add(book3);
-        StoreStorage.getStorage().getNewArrivalList().add(book5);
-        StoreStorage.getStorage().getNewArrivalList().add(book16);
+        StoreStorage.getStorage().getNewArrivalList().add(book57);
+        StoreStorage.getStorage().getNewArrivalList().add(book53);
+        StoreStorage.getStorage().getNewArrivalList().add(book61);
 
         ///add example books to recommendedItemsList
         StoreStorage.getStorage().getRecommendedItemsList().add(book2);

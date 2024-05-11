@@ -42,8 +42,4 @@ public class StoreStorage {
     public ArrayList<StoreItem> getRecommendedItemsList() {
         return recommendedItemsList;
     }
-
-    public void addItemToShelf(StoreItem storeItem, String shelf) {
-        this.shelfMap.put(storeItem, shelf);
-    }
 }

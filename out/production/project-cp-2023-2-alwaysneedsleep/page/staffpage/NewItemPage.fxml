@@ -86,11 +86,7 @@
                      <content>
                         <AnchorPane prefHeight="725.0" prefWidth="1101.0">
                            <children>
-                              <ImageView fx:id="itemImage" fitHeight="413.0" fitWidth="306.0" layoutX="67.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../res/books/letteroftolkien.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="itemImage" fitHeight="413.0" fitWidth="306.0" layoutX="67.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
                               <ScrollPane layoutX="380.0" layoutY="34.0" prefHeight="658.0" prefWidth="609.0">
                                  <content>
                                     <VBox prefHeight="663.0" prefWidth="609.0">

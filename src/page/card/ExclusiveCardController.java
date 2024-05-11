@@ -72,8 +72,6 @@ public class ExclusiveCardController {
             genreLabel.setText("Psychology");
         } else if (itemGenre.equals(ItemGenre.PHILOSOPHY)) {
             genreLabel.setText("Philosophy");
-        } else if (itemGenre.equals(ItemGenre.STATIONERY)) {
-            genreLabel.setText("Stationery");
         }
     }
 

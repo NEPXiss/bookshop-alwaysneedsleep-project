@@ -88,7 +88,7 @@ public class ItemStaffPageController extends StaffPage {
         } catch (Exception e) {
         }
 
-        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE, ItemGenre.STATIONERY};
+        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE};
         genreChoiceBox.getItems().addAll(genreChoices);
 
         String[] ratingChoice = {"1", "2", "3", "4", "5"};

@@ -15,7 +15,7 @@ import utils.Config;
 
 import java.util.Optional;
 
-public class NewItemPageController extends ItemStaffPageController{
+public class NewItemPageController extends ItemStaffPageController {
     @FXML
     private Label logOutLabel;
     @FXML
@@ -46,7 +46,10 @@ public class NewItemPageController extends ItemStaffPageController{
     private ChoiceBox<String> ratingChoiceBox;
     private static NewItemPageController instance;
 
-    public NewItemPageController() {NewItemPageController.instance = this;}
+    public NewItemPageController() {
+        NewItemPageController.instance = this;
+    }
+
     public static NewItemPageController getInstance() {
         if (instance == null) {
             NewItemPageController.instance = new NewItemPageController();
@@ -74,7 +77,7 @@ public class NewItemPageController extends ItemStaffPageController{
         } catch (Exception e) {
         }
 
-        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE, ItemGenre.STATIONERY};
+        ItemGenre[] genreChoices = {ItemGenre.FICTION, ItemGenre.HISTORY, ItemGenre.PHILOSOPHY, ItemGenre.PSYCHOLOGY, ItemGenre.EDUCATION, ItemGenre.SCIENCE};
         genreChoiceBox.getItems().addAll(genreChoices);
 
         String[] ratingChoice = {"1", "2", "3", "4", "5"};
@@ -89,14 +92,17 @@ public class NewItemPageController extends ItemStaffPageController{
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            if (genreChoiceBox.getValue().equals(ItemGenre.STATIONERY)) {
-                ////
+            Book newBook = new Book(productTextField.getText(), authorBrandTextField.getText(), genreChoiceBox.getValue(), Double.parseDouble(priceTextField.getText()),
+                    Integer.parseInt(ratingChoiceBox.getValue()), Integer.parseInt(quantityTextField.getText()), locationTextField.getText(), this.imagePathLabel.getText(), descriptionTextArea.getText());
+            if (this.itemImage.getImage() == null) {
+                String classLoaderPath = ClassLoader.getSystemResource("default/defaultbook.png").toString();
+                newBook.setImage(new Image(classLoaderPath));
             } else {
-                Book newBook = new Book(productTextField.getText(), authorBrandTextField.getText(), genreChoiceBox.getValue(), Double.parseDouble(priceTextField.getText()),
-                        Integer.parseInt(ratingChoiceBox.getValue()), Integer.parseInt(quantityTextField.getText()), locationTextField.getText(), this.imagePathLabel.getText(), descriptionTextArea.getText());
                 newBook.setImage(this.itemImage.getImage());
-                StoreStorage.getStorage().getShelfMap().put(newBook,newBook.getItemLocation());
             }
+            StoreStorage.getStorage().getShelfMap().put(newBook, newBook.getItemLocation());
+
+            ///// Return to product management page
             goToProductManagementPage();
         } else {
             alert.close();
@@ -127,6 +133,7 @@ public class NewItemPageController extends ItemStaffPageController{
     public void onMouseEnterLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("D4D4D4")));
     }
+
     public void onMouseExitLogOutButton() {
         logOutLabel.setBackground(Background.fill(Color.web("FFFFFF")));
     }

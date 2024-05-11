@@ -4,6 +4,7 @@ import application.Main;
 import base.StoreItem;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -38,8 +39,18 @@ public class RecommSearchCardController extends RecommCardController{
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            /// remove card
-                            UserPageManagementController.getInstance().getRecommBox().getChildren().add(cardBox);
+                            /// add card to recomm box
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("/page/staffpage/staffcard/RecommCard.fxml"));
+                            HBox itemCard = null;
+                            try {
+                                itemCard = fxmlLoader.load();
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            RecommCardController recommCardController = fxmlLoader.getController();
+                            recommCardController.setCard(storeItem);
+                            UserPageManagementController.getInstance().getRecommBox().getChildren().add(itemCard);
                         }
                     });
                 } catch (Exception e) {

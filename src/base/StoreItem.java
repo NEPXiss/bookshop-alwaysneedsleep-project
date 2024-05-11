@@ -137,6 +137,7 @@ public abstract class StoreItem implements Orderable {
         this.description = description;
     }
 
+    @Override
     public String getFullDescription(){
         return "StoreItem." + getItemGenre().toString() + "\n" + description;
     }

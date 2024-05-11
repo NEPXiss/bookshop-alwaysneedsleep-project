@@ -76,7 +76,7 @@ public class CategoriesPageController extends UserPage {
                     @Override
                     public void run() {
 
-                        ///Add fiction category
+                        ///Add Fiction category
                         FXMLLoader fictionLoader = new FXMLLoader();
                         fictionLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox fictionHBox = null;
@@ -89,7 +89,7 @@ public class CategoriesPageController extends UserPage {
                         fictionCard.setCard("icons/fictionicon.png", "FICTION");
                         categoriesBox.getChildren().add(fictionHBox);
 
-                        ///Add history category
+                        ///Add History category
                         FXMLLoader historyLoader = new FXMLLoader();
                         historyLoader.setLocation(getClass().getResource("/page/card/CategoriesCard.fxml"));
                         HBox historyHBox = null;

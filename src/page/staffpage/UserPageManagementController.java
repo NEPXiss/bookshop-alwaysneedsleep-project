@@ -96,6 +96,7 @@ public class UserPageManagementController extends StaffPage {
             @Override
             public void run() {
                 newArrivalSearchBox.getChildren().clear();
+                newArrivalBox.getChildren().clear();
 
                 for (StoreItem item : StoreStorage.getStorage().getNewArrivalList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
@@ -151,6 +152,7 @@ public class UserPageManagementController extends StaffPage {
             @Override
             public void run() {
                 recommSearchBox.getChildren().clear();
+                recommBox.getChildren().clear();
 
                 for (StoreItem item : StoreStorage.getStorage().getRecommendedItemsList()) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
