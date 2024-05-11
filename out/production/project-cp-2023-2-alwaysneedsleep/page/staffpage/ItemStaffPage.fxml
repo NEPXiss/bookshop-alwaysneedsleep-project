@@ -40,7 +40,7 @@
                      <children>
                         <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="508.0" layoutY="22.0" prefHeight="19.0" prefWidth="484.0" textFill="WHITE">
                            <font>
-                              <Font name="DS-Arkorn" size="23.0" />
+                              <Font name="FreesiaUPC" size="23.0" />
                            </font>
                         </Label>
                         <ImageView fx:id="profileAvatarIcon" fitHeight="48.0" fitWidth="51.0" layoutX="1000.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -60,7 +60,7 @@
                      <children>
                         <Label prefHeight="53.0" prefWidth="271.0" style="-fx-background-color: #99627A;" text="  Settings" textFill="WHITE">
                            <font>
-                              <Font name="BoonTook Mon Ultra" size="22.0" />
+                              <Font name="FreesiaUPC" size="39.0" />
                            </font>
                            <opaqueInsets>
                               <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
@@ -70,7 +70,7 @@
                         <Separator prefWidth="200.0" />
                         <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutLabelClicked" onMouseEntered="#onMouseEnterLogOutButton" onMouseExited="#onMouseExitLogOutButton" prefHeight="53.0" prefWidth="260.0" text="Log Out">
                            <font>
-                              <Font name="DS-Arkorn" size="30.0" />
+                              <Font name="FreesiaUPC" size="31.0" />
                            </font>
                         </Label>
                         <Separator prefWidth="200.0" />
