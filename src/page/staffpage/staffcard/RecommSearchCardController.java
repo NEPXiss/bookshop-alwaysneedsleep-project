@@ -15,8 +15,6 @@ import store.StoreStorage;
 public class RecommSearchCardController extends RecommCardController{
     @FXML
     private Label titleLabel;
-    @FXML
-    private HBox cardBox;
     private StoreItem storeItem;
     @Override
     public void setCard(StoreItem storeItem) {

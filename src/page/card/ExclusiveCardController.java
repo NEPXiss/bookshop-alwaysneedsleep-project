@@ -27,11 +27,6 @@ public class ExclusiveCardController {
     @FXML
     private Label starLabel;
     private StoreItem storeItem;
-    private static ExclusiveCardController instance;
-
-    public ExclusiveCardController() {
-        ExclusiveCardController.instance = this;
-    }
 
     public void setCard(StoreItem storeItem) {
         setItemImage(storeItem.getImage());

@@ -24,8 +24,6 @@ public class StaffLogInController {
     @FXML
     private PasswordField logInPasswordField;
     @FXML
-    private Button staffSignInButton;
-    @FXML
     private Label signInAsUserButton;
     @FXML
     private Label staffLogInMessageLabel;

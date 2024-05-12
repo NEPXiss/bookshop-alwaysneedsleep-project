@@ -47,8 +47,6 @@ public class CheckOutPageController extends CartPageController {
     @FXML
     private VBox cartBox;
     @FXML
-    private Button placeOrderButton;
-    @FXML
     private ImageView qrCodeImage;
     @FXML
     private TextField telephoneTextField;

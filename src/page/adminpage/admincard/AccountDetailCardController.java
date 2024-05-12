@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import page.adminpage.AdminMainPageController;
 import person.UserAccount;
+import store.StoreDataBase;
 
 import java.util.Optional;
 
@@ -60,11 +61,11 @@ public class AccountDetailCardController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
+            StoreDataBase.getStoreAccountDataBase().getAccountMap().remove(this.account.getUsername());
             this.account.setUsername(usernameTextField.getText());
             TextField textField = (TextField) passwordHBox.getChildren().get(1);
             this.account.setPassword(textField.getText());
-            usernameTextField.setText(this.account.getUsername());
-            textField.setText(this.account.getPassword());
+            StoreDataBase.getStoreAccountDataBase().getAccountMap().put(this.account.getUsername(),this.account);
         } else {
             alert.close();
         }
