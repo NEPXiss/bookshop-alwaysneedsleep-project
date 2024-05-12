@@ -13,9 +13,9 @@ public class RegistrationController {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private PasswordField passwordTextField;
+    private PasswordField passwordField;
     @FXML
-    private PasswordField passwordValidateTextField;
+    private PasswordField passwordValidateField;
     @FXML
     private Label backLabel;
     @FXML
@@ -46,8 +46,8 @@ public class RegistrationController {
 
     public void createNewUserAccount() {
         String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        String passwordValidate = passwordValidateTextField.getText();
+        String password = passwordField.getText();
+        String passwordValidate = passwordValidateField.getText();
 
         try {
             if (username.isEmpty() || password.isEmpty() || passwordValidate.isEmpty()) {

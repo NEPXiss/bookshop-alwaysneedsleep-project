@@ -55,8 +55,8 @@
                   <Font name="Century" size="18.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordTextField" layoutX="443.0" layoutY="369.0" prefHeight="25.0" prefWidth="265.0" promptText="Please enter your password" />
-            <PasswordField fx:id="passwordValidateTextField" layoutX="443.0" layoutY="413.0" prefHeight="25.0" prefWidth="265.0" promptText="Please re-enter your password" />
+            <PasswordField fx:id="passwordField" layoutX="443.0" layoutY="369.0" prefHeight="25.0" prefWidth="265.0" promptText="Please enter your password" />
+            <PasswordField fx:id="passwordValidateField" layoutX="443.0" layoutY="413.0" prefHeight="25.0" prefWidth="265.0" promptText="Please re-enter your password" />
             <Button fx:id="registerButton" layoutX="296.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#createNewUserAccount" prefHeight="25.0" prefWidth="402.0" style="-fx-background-color: #387ADF;" text="Register" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
