@@ -62,7 +62,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="backButton" alignment="CENTER_RIGHT" layoutX="667.0" layoutY="561.0" onMouseClicked="#backButtonClicked" onMouseEntered="#onMouseEnterBackButton" onMouseExited="#onMouseExitBackButton" prefHeight="18.0" prefWidth="40.0" text="Back">
+            <Label fx:id="backLabel" alignment="CENTER_RIGHT" layoutX="667.0" layoutY="561.0" onMouseClicked="#backLabelClicked" onMouseEntered="#onMouseEnterBackLabel" onMouseExited="#onMouseExitBackLabel" prefHeight="18.0" prefWidth="40.0" text="Back">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>

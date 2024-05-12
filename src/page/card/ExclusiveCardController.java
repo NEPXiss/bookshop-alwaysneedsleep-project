@@ -13,8 +13,6 @@ import usage.ItemGenre;
 
 public class ExclusiveCardController {
     @FXML
-    private HBox itemCard;
-    @FXML
     private ImageView itemImage;
     @FXML
     private Label itemTitleLabel;

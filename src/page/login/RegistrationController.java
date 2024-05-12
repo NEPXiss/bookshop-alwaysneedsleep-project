@@ -17,9 +17,7 @@ public class RegistrationController {
     @FXML
     private PasswordField passwordValidateTextField;
     @FXML
-    private Button registerButton;
-    @FXML
-    private Label backButton;
+    private Label backLabel;
     @FXML
     private Label messageAlert;
     @FXML
@@ -94,7 +92,7 @@ public class RegistrationController {
         }
     }
 
-    public void backButtonClicked() {
+    public void backLabelClicked() {
         try {
             Main backToLogInPage = Main.getInstance();
             backToLogInPage.changeScene("/page/login/LoginInterface.fxml");
@@ -105,12 +103,12 @@ public class RegistrationController {
         }
     }
 
-    public void onMouseEnterBackButton() {
-        backButton.setPrefWidth(50);
+    public void onMouseEnterBackLabel() {
+        backLabel.setPrefWidth(50);
     }
 
-    public void onMouseExitBackButton() {
-        backButton.setPrefWidth(40);
+    public void onMouseExitBackLabel() {
+        backLabel.setPrefWidth(40);
     }
 
 

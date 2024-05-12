@@ -22,7 +22,7 @@ public class LoginController {
     @FXML
     private PasswordField logInPasswordField;
     @FXML
-    private Label signInAsStaffButton;
+    private Label signInAsStaffLabel;
     @FXML
     private Label logInMessageLabel;
     @FXML
@@ -86,7 +86,7 @@ public class LoginController {
         }
     }
 
-    public void setSignInAsStaffButtonClicked() {
+    public void setSignInAsStaffLabelClicked() {
         try {
             Main staffSigninPage = Main.getInstance();
             staffSigninPage.changeScene("/page/login/StaffLoginInterface.fxml");
@@ -109,12 +109,12 @@ public class LoginController {
         }
     }
 
-    public void onMouseEnterSignInAsStaffButton() {
-        signInAsStaffButton.setPrefWidth(105);
+    public void onMouseEnterSignInAsStaffLabel() {
+        signInAsStaffLabel.setPrefWidth(105);
     }
 
-    public void onMouseExitSignInAsStaffButton() {
-        signInAsStaffButton.setPrefWidth(95);
+    public void onMouseExitSignInAsStaffLabel() {
+        signInAsStaffLabel.setPrefWidth(95);
     }
 
 }

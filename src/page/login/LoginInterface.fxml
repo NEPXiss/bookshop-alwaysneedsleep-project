@@ -55,7 +55,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="signInAsStaffButton" alignment="CENTER" layoutX="520.0" layoutY="533.0" onMouseClicked="#setSignInAsStaffButtonClicked" onMouseEntered="#onMouseEnterSignInAsStaffButton" onMouseExited="#onMouseExitSignInAsStaffButton" prefHeight="18.0" prefWidth="95.0" text="Sign in as staff">
+            <Label fx:id="signInAsStaffLabel" alignment="CENTER" layoutX="520.0" layoutY="533.0" onMouseClicked="#setSignInAsStaffLabelClicked" onMouseEntered="#onMouseEnterSignInAsStaffLabel" onMouseExited="#onMouseExitSignInAsStaffLabel" prefHeight="18.0" prefWidth="95.0" text="Sign in as staff">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="15.0" />
                </font>
