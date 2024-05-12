@@ -23,12 +23,12 @@ public class UserAccount extends Account implements Registrable {
     @Override
     public String getDisplayUsername(){
         return "USER : " + super.getUsername();
-    }  /// OVERRIDE TO USE POLYMORPHISM
+    }  /// POLYMORPHISM
 
     @Override
     public String getAccountType(){
         return "USER";
-    } /// OVERRIDE TO USE POLYMORPHISM
+    } /// POLYMORPHISM
 
     public ArrayList<Order> getOrderList() {return orderList;}
 

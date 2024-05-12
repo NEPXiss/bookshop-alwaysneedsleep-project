@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StoreDataBase {
-    /// This class manages everything related to accounts
-    private HashMap<String, Account> accountMap;  //map Account username to Account
+    /// This class manages accounts
+    private HashMap<String, Account> accountMap;  //maps an account’s username to itself.
     private static StoreDataBase storeDataBase;
 
     public StoreDataBase() {
