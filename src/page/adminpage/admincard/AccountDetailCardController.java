@@ -23,8 +23,6 @@ public class AccountDetailCardController {
     @FXML
     private Button saveButton;
     @FXML
-    private Button deleteButton;
-    @FXML
     private HBox cardBox;
     @FXML
     private Button resetButton;
