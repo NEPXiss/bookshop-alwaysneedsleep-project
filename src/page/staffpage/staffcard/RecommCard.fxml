@@ -60,7 +60,7 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="557.0">
                <children>
-                  <Label alignment="CENTER" onMouseClicked="#removeFromRecommCard" prefHeight="17.0" prefWidth="219.0" text="Remove this from Recommended List">
+                  <Label alignment="CENTER" onMouseClicked="#removeFromRecomm" prefHeight="17.0" prefWidth="219.0" text="Remove this from Recommended List">
                      <font>
                         <Font name="FreesiaUPC Bold" size="18.0" />
                      </font>

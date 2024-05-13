@@ -33,7 +33,7 @@ public class RecommCardController extends WishlistCardController {
         ItemStaffPageController.getInstance().setPage(this.storeItem);
     }
 
-    public void removeFromRecommCard() {
+    public void removeFromRecomm() {
         StoreStorage.getStorage().getRecommendedItemsList().remove(this.storeItem);
         Thread t = new Thread(() -> {
             try {
