@@ -69,6 +69,11 @@ public class StaffMainPageController extends StaffPage{
     }
 
     @Override
+    public void goToProductManagementPage() {
+        super.goToProductManagementPage();
+    }
+
+    @Override
     public void goToOrderManagementPage(){
         super.goToOrderManagementPage();
     }

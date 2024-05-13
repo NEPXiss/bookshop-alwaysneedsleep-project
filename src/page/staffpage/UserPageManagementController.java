@@ -33,11 +33,7 @@ public class UserPageManagementController extends StaffPage {
     @FXML
     private TextField newArrivalSearchTextField;
     @FXML
-    private Button newArrivalSearchButton;
-    @FXML
     private TextField recommTextField;
-    @FXML
-    private Button recommSearchButton;
     @FXML
     private VBox newArrivalBox;
     @FXML
