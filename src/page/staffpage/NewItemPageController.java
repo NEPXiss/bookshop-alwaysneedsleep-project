@@ -92,8 +92,22 @@ public class NewItemPageController extends ItemStaffPageController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            Book newBook = new Book(productTextField.getText(), authorBrandTextField.getText(), genreChoiceBox.getValue(), Double.parseDouble(priceTextField.getText()),
-                    Integer.parseInt(ratingChoiceBox.getValue()), Integer.parseInt(quantityTextField.getText()), locationTextField.getText(), this.imagePathLabel.getText(), descriptionTextArea.getText());
+            int quantity;
+            double price;
+            try {
+                quantity = Integer.parseInt(quantityTextField.getText());
+            } catch (NumberFormatException e) {
+                quantity = 0;
+            }
+
+            try {
+                price = Double.parseDouble(priceTextField.getText());
+            } catch (NumberFormatException e) {
+                price = 0;
+            }
+
+            Book newBook = new Book(productTextField.getText(), authorBrandTextField.getText(), genreChoiceBox.getValue(), price,
+                    Integer.parseInt(ratingChoiceBox.getValue()), quantity, locationTextField.getText(), this.imagePathLabel.getText(), descriptionTextArea.getText());
             if (this.itemImage.getImage() == null) {
                 String classLoaderPath = ClassLoader.getSystemResource("default/defaultbook.png").toString();
                 newBook.setImage(new Image(classLoaderPath));
